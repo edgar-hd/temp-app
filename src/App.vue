@@ -2,12 +2,14 @@
   <div class="component-web">
     <div class="sidebar">
       <img class="TJY-cutout-logo" alt="Logo" :src="TjyCutoutLogo" />
-      <div class="text-wrapper">TIM JUSTINA YEUNG</div>
-      <div class="text-wrapper">About</div>
-      <div class="text-wrapper">Contact</div>
-      <a class="text-wrapper" href="https://www.linkedin.com/in/timjustina/" target="_blank"
-        rel="noopener noreferrer">Linkedin</a>
-      <div class="text-wrapper">Portfolio</div>
+      <div class="name-wrapper text-wrapper">TIM JUSTINA YEUNG</div>
+      <div class="text-links-container">
+        <div class="text-wrapper">About</div>
+        <div class="text-wrapper">Contact</div>
+        <a class="text-wrapper" href="https://www.linkedin.com/in/timjustina/" target="_blank"
+          rel="noopener noreferrer">Linkedin</a>
+        <div class="text-wrapper">Portfolio</div>
+      </div>
     </div>
     <div class="main-content">
       <p>Multiplatform Design for Home Medication Solution</p>
@@ -78,9 +80,9 @@ export default {
   name: 'ComponentWeb',
   data() {
     return {
-      TjyCutoutLogo
+      TjyCutoutLogo,
     };
-  }
+  },
 };
 </script>
 
@@ -165,12 +167,71 @@ html {
 .body-text {
   font-size: 16px;
   font-weight: 300;
-  margin-bottom: 2rem;
   /* Adds space after body-text sections */
 }
 
-.body-text p {
-  margin-bottom: 1.5rem;
-  /* Space between paragraphs within body-text */
+/* Mobile Styles */
+@media (max-width: 768px) {
+  #app {
+    padding: 0;
+    /* Allow scroll on the app */
+  }
+
+  .component-web {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ece5e5;
+    display: flex;
+  }
+
+  .TJY-cutout-logo {
+    height: 60px;
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  .text-wrapper {
+    font-size: 18px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    font-size: 16px;
+    height: auto;
+    padding: 16px;
+  }
+
+  .text-links-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Style for the text links */
+  .text-links-container .text-wrapper {
+    margin: 0 5px;
+    white-space: nowrap;
+  }
+
+  .name-wrapper {
+    align-self: flex-start;
+    text-align: left;
+    width: 100%;
+    order: -1;
+    /* Move to top in mobile view */
+  }
+
+  .body-text {
+    font-size: 14px;
+  }
 }
 </style>
