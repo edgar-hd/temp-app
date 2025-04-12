@@ -1,6 +1,6 @@
 <template>
   <div class="component-web">
-    <div class="sidebar">
+    <div class="sidebar" :class="{ 'hide': isHidden }">
       <img class="TJY-cutout-logo" alt="Logo" :src="TjyCutoutLogo" />
       <div class="name-wrapper text-wrapper">TIM JUSTINA YEUNG</div>
       <div class="text-links-container">
@@ -81,8 +81,35 @@ export default {
   data() {
     return {
       TjyCutoutLogo,
+      isHidden: false,
+      lastScrollY: window.scrollY,
+      currentScrollY: 0
     };
   },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+  },
+  beforeUnmount() {  // Changed from unmounted to beforeUnmount
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      this.currentScrollY = window.scrollY;
+
+      if (this.currentScrollY > this.lastScrollY) {
+        // Scrolling down
+        this.isHidden = true;
+      } else if (this.currentScrollY < this.lastScrollY) {
+        // Scrolling up
+        this.isHidden = false;
+      }
+
+      // Update the scroll position after a small delay
+      setTimeout(() => {
+        this.lastScrollY = this.currentScrollY;
+      }, 50);
+    }
+  }
 };
 </script>
 
@@ -182,7 +209,9 @@ html {
   }
 
   .sidebar {
-    position: static;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: auto;
     padding: 10px;
@@ -190,6 +219,12 @@ html {
     align-items: center;
     background-color: #ece5e5;
     display: flex;
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar.hide {
+    transform: translateY(-100%);
   }
 
   .TJY-cutout-logo {
@@ -208,6 +243,7 @@ html {
     font-size: 16px;
     height: auto;
     padding: 16px;
+    padding-top: 200px;
   }
 
   .text-links-container {
