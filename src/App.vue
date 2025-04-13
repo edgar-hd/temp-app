@@ -11,7 +11,7 @@
         <div class="text-wrapper">Portfolio</div>
       </div>
     </div>
-    <div class="main-content">
+    <div class="main-content" @scroll="handleScroll">
       <p>Multiplatform Design for Home Medication Solution</p>
       <div class="body-text">
         <p>
@@ -82,32 +82,26 @@ export default {
     return {
       TjyCutoutLogo,
       isHidden: false,
-      lastScrollY: window.scrollY,
-      currentScrollY: 0
+      lastScrollY: 0
     };
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll, { passive: true });
-  },
-  beforeUnmount() {  // Changed from unmounted to beforeUnmount
-    window.removeEventListener('scroll', this.handleScroll);
+    console.log('Component mounted');
+    this.lastScrollY = 0;
   },
   methods: {
-    handleScroll() {
-      this.currentScrollY = window.scrollY;
+    handleScroll(event) {
+      const currentScrollY = event.target.scrollTop;
 
-      if (this.currentScrollY > this.lastScrollY) {
+      if (currentScrollY > this.lastScrollY) {
         // Scrolling down
         this.isHidden = true;
-      } else if (this.currentScrollY < this.lastScrollY) {
+      } else {
         // Scrolling up
         this.isHidden = false;
       }
 
-      // Update the scroll position after a small delay
-      setTimeout(() => {
-        this.lastScrollY = this.currentScrollY;
-      }, 50);
+      this.lastScrollY = currentScrollY;
     }
   }
 };
@@ -199,13 +193,15 @@ html {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+
   #app {
     padding: 0;
-    /* Allow scroll on the app */
   }
 
   .component-web {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
   }
 
   .sidebar {
@@ -213,7 +209,7 @@ html {
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
+    height: 174px;
     padding: 10px;
     flex-direction: column;
     align-items: center;
@@ -221,6 +217,10 @@ html {
     display: flex;
     transform: translateY(0);
     transition: transform 0.3s ease-in-out;
+    transform-origin: top;
+    /* Add this */
+    will-change: transform;
+    /* Add this for performance */
   }
 
   .sidebar.hide {
@@ -244,6 +244,7 @@ html {
     height: auto;
     padding: 16px;
     padding-top: 200px;
+    overflow-y: auto;
   }
 
   .text-links-container {
