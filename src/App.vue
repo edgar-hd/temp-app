@@ -119,21 +119,24 @@ html {
   display: flex;
   height: auto;
   width: 100%;
+  position: relative;
+  max-width: 1442px;
 }
 
 .sidebar {
-  position: fixed;
-  left: 1204px;
+  position: sticky;
   top: 0;
   width: 238px;
   min-width: 236px;
   height: 100vh;
   background-color: #ffffff;
   padding-top: 82px;
-  padding-left: 35px;
+  padding-left: 32px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: auto;
+  order: 2;
 }
 
 .text-links-container {
@@ -162,44 +165,38 @@ html {
 
 .main-content {
   --padding-top: 82px;
-  margin-right: 0;
-  width: 1204px;
+  width: clamp(746px, calc(100% - 238px), 1204px);
   min-height: 100vh;
   background-color: #ffffff;
-  font-family: "Maven Pro", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
   padding-left: 82px;
   padding-top: var(--padding-top);
   display: flex;
   flex-direction: column;
   position: relative;
+  order: 1;
 }
 
 .main-content p {
   margin-bottom: 1rem;
 }
 
-
 .main-content::before {
   content: '';
   position: absolute;
   left: 82px;
-  top: calc(var(--padding-top) + 0px);
-  /* 82px from top edge, after padding */
+  top: var(--padding-top);
   width: 1px;
   bottom: 0;
-  /* 👈 This stretches it to the bottom */
   background-color: #BABABA;
 }
 
 .main-content::after {
   content: '';
   position: absolute;
-  left: 1204px;
-  top: 82px;
+  right: 0;
+  top: var(--padding-top);
   width: 1px;
-  height: calc(100vh - 82px);
+  bottom: 0;
   background-color: #BABABA;
 }
 
@@ -236,7 +233,8 @@ html {
   line-height: 40px;
   letter-spacing: -2%;
   color: #4D4D4D;
-  max-width: 880px;
+  max-width: calc(100% - 80px);
+  text-align: left;
 }
 
 .bold-text {
@@ -256,8 +254,9 @@ html {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-left: auto;
+  margin-left: 82px;
   margin-right: 0;
+  width: calc(100% - 82px);
 }
 
 .left_shot {
@@ -266,15 +265,19 @@ html {
   align-items: flex-start;
   margin-right: auto;
   margin-left: 0;
-}
-
-.right_shot .shot-image {
-  align-self: flex-end;
+  width: calc(100% - 82px);
 }
 
 .right_shot .shot-info {
   align-self: flex-start;
   text-align: left;
+  max-width: 100%;
+}
+
+.left_shot .shot-info {
+  align-self: flex-start;
+  text-align: left;
+  max-width: 100%;
 }
 
 .left_shot .shot-image {
@@ -289,8 +292,9 @@ html {
 .shot-image {
   position: relative;
   top: 4px;
-  width: 1040px;
+  max-width: 1040px;
   height: auto;
+  width: 100%;
 }
 
 .shot-info {
@@ -326,7 +330,7 @@ html {
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
+@media (max-width: 998px) {
 
   #app {
     padding: 0;
