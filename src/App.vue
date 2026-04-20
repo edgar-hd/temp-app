@@ -14,15 +14,37 @@
       <div class="name-wrapper text-wrapper">TIM JUSTINA YEUNG</div>
       <div class="body-text">
         <p>
-          I'm Justina, a <span class="bold-text">Product Designer</span> with a background in
+          I'm Justina, <span class="bold-text">a Product Designer</span> with a background in
           Neuroscience and research. I deeply enjoy understanding complex
           problems and providing creative
-          solutions for
-          <span class="bold-text">people</span>
-          <img class="heart-icon" :src="HeartIcon" alt="heart" />
+          solutions
+          <span class="bold-text">for people.</span>
         </p>
       </div>
-      <img class="shot" :src="Shot1" alt="shot1" />
+      <div class="right_shot">
+        <img class="shot-image" :src="Shot1" alt="shot1" />
+        <div class="shot-info">
+          <p class="shot-title">Tracking Medication Adherence: Dashboard Design</p>
+          <p class="shot-role">Lead Product Designer</p>
+          <p class="shot-company">Kin Technology | 2023-2025</p>
+        </div>
+      </div>
+      <div class="left_shot">
+        <img class="shot-image" :src="Shot1" alt="left shot" />
+        <div class="shot-info">
+          <p class="shot-title">Multiplatform Design for Home Medication Solution </p>
+          <p class="shot-role">Lead Product Designer</p>
+          <p class="shot-company">Kin Technology | 2023-2025</p>
+        </div>
+      </div>
+      <div class="right_shot">
+        <img class="shot-image" :src="Shot1" alt="shot1" />
+        <div class="shot-info">
+          <p class="shot-title">Art Curation Experience and Marketplace: Mobile App Design</p>
+          <p class="shot-role">Founding Designer</p>
+          <p class="shot-company">PONS.ai | 2019</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -95,54 +117,43 @@ html {
 
 .component-web {
   display: flex;
-  height: 100vh;
+  height: auto;
   width: 100%;
 }
 
 .sidebar {
   position: fixed;
-  right: 0;
+  left: 1204px;
   top: 0;
   width: 238px;
+  min-width: 236px;
   height: 100vh;
   background-color: #ffffff;
-  padding-top: 60px;
+  padding-top: 82px;
   padding-left: 35px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.sidebar::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 60px;
-  /* Start border 60px from top */
-  width: 1px;
-  height: calc(100% - 60px);
-  /* Adjust height to account for top offset */
-  background-color: #BABABA;
-}
-
 .text-links-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 40px;
+  gap: 32px;
   width: 100%;
 }
 
 .text-links-container .text-wrapper {
   text-align: left;
   width: 100%;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 25px;
   font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.48px;
+  line-height: 100%;
+  letter-spacing: -2%;
   cursor: pointer;
   transition: color 0.2s ease;
+  vertical-align: middle;
 }
 
 .text-links-container .text-wrapper:hover {
@@ -150,25 +161,46 @@ html {
 }
 
 .main-content {
-  margin-right: 300px;
-  width: calc(100% - 300px);
-  height: 100vh;
-  overflow-y: visible;
+  --padding-top: 82px;
+  margin-right: 0;
+  width: 1204px;
+  min-height: 100vh;
   background-color: #ffffff;
   font-family: "Maven Pro", sans-serif;
   font-size: 20px;
   font-weight: 600;
-  text-align: left;
-  padding-left: 80px;
-  padding-top: 60px;
-  gap: 0px;
+  padding-left: 82px;
+  padding-top: var(--padding-top);
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .main-content p {
   margin-bottom: 1rem;
-  /* Adds space after paragraphs */
+}
+
+
+.main-content::before {
+  content: '';
+  position: absolute;
+  left: 82px;
+  top: calc(var(--padding-top) + 0px);
+  /* 82px from top edge, after padding */
+  width: 1px;
+  bottom: 0;
+  /* 👈 This stretches it to the bottom */
+  background-color: #BABABA;
+}
+
+.main-content::after {
+  content: '';
+  position: absolute;
+  left: 1204px;
+  top: 82px;
+  width: 1px;
+  height: calc(100vh - 82px);
+  background-color: #BABABA;
 }
 
 .TJY-cutout-logo {
@@ -198,21 +230,18 @@ html {
 
 .body-text {
   font-family: "Maven Pro", sans-serif;
-  font-size: 30px;
   font-weight: 400;
+  font-style: normal;
+  font-size: 28px;
   line-height: 40px;
-  letter-spacing: -0.6px;
+  letter-spacing: -2%;
   color: #4D4D4D;
   max-width: 880px;
 }
 
 .bold-text {
-  font-family: "Maven Pro", sans-serif;
-  font-size: 32px;
   font-weight: 500;
-  letter-spacing: -0.64px;
-  display: inline;
-  position: relative;
+  color: #0914c5;
 }
 
 .heart-icon {
@@ -223,14 +252,77 @@ html {
   height: auto;
 }
 
-.shot {
+.right_shot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.left_shot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.right_shot .shot-image {
+  align-self: flex-end;
+}
+
+.right_shot .shot-info {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.left_shot .shot-image {
+  align-self: flex-start;
+}
+
+.left_shot .shot-info {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.shot-image {
   position: relative;
   top: 4px;
-  width: 1200px;
+  width: 1040px;
   height: auto;
-  /* Align to right */
-  margin-left: 120px;
-  margin-right: 0;
+}
+
+.shot-info {
+  font-family: "Maven Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 32px;
+  letter-spacing: -2%;
+  color: #4D4D4D;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+.shot-info p {
+  margin: 0;
+}
+
+.shot-title {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.shot-role {
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 24px;
+}
+
+.shot-company {
+  font-size: 25px;
+  line-height: 24px;
 }
 
 /* Mobile Styles */
