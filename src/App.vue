@@ -99,10 +99,9 @@ html {
   margin: 0;
   padding: 0px;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: hidden;
   background-color: #ffffff;
   scroll-behavior: smooth;
-  /* Add background color to body */
 }
 
 #app {
@@ -112,15 +111,16 @@ html {
   display: flex;
   max-width: max-content;
   padding: 0;
-  /* Prevent scroll on the app */
+  overflow-y: hidden;
 }
 
 .component-web {
   display: flex;
-  height: auto;
+  height: 100vh;
   width: 100%;
   position: relative;
   max-width: 1442px;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -137,6 +137,7 @@ html {
   align-items: flex-start;
   margin-left: auto;
   order: 2;
+  z-index: 10;
 }
 
 .text-links-container {
@@ -167,6 +168,7 @@ html {
   --padding-top: 82px;
   width: clamp(746px, calc(100% - 238px), 1204px);
   min-height: 100vh;
+  height: auto;
   background-color: #ffffff;
   padding-left: 82px;
   padding-top: var(--padding-top);
@@ -174,6 +176,8 @@ html {
   flex-direction: column;
   position: relative;
   order: 1;
+  overflow-x: visible;
+  overflow-y: auto;
 }
 
 .main-content p {
@@ -186,7 +190,7 @@ html {
   left: 82px;
   top: var(--padding-top);
   width: 1px;
-  bottom: 0;
+  height: calc(100% - var(--padding-top));
   background-color: #BABABA;
 }
 
