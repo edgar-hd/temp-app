@@ -21,28 +21,30 @@
           <span class="bold-text">for people.</span>
         </p>
       </div>
-      <div class="right_shot">
-        <img class="shot-image" :src="Shot1" alt="shot1" />
-        <div class="shot-info">
-          <p class="shot-title">Tracking Medication Adherence: Dashboard Design</p>
-          <p class="shot-role">Lead Product Designer</p>
-          <p class="shot-company">Kin Technology | 2023-2025</p>
+      <div class="shots-container">
+        <div class="right_shot">
+          <img class="shot-image" :src="Shot1" alt="shot1" />
+          <div class="shot-info">
+            <p class="shot-title">Tracking Medication Adherence: Dashboard Design</p>
+            <p class="shot-role">Lead Product Designer</p>
+            <p class="shot-company">Kin Technology | 2023-2025</p>
+          </div>
         </div>
-      </div>
-      <div class="left_shot">
-        <img class="shot-image" :src="Shot1" alt="left shot" />
-        <div class="shot-info">
-          <p class="shot-title">Multiplatform Design for Home Medication Solution </p>
-          <p class="shot-role">Lead Product Designer</p>
-          <p class="shot-company">Kin Technology | 2023-2025</p>
+        <div class="left_shot">
+          <img class="shot-image" :src="Shot1" alt="left shot" />
+          <div class="shot-info">
+            <p class="shot-title">Multiplatform Design for Home Medication Solution </p>
+            <p class="shot-role">Lead Product Designer</p>
+            <p class="shot-company">Kin Technology | 2023-2025</p>
+          </div>
         </div>
-      </div>
-      <div class="right_shot">
-        <img class="shot-image" :src="Shot1" alt="shot1" />
-        <div class="shot-info">
-          <p class="shot-title">Art Curation Experience and Marketplace: Mobile App Design</p>
-          <p class="shot-role">Founding Designer</p>
-          <p class="shot-company">PONS.ai | 2019</p>
+        <div class="right_shot">
+          <img class="shot-image" :src="Shot1" alt="shot1" />
+          <div class="shot-info">
+            <p class="shot-title">Art Curation Experience and Marketplace: Mobile App Design</p>
+            <p class="shot-role">Founding Designer</p>
+            <p class="shot-company">PONS.ai | 2019</p>
+          </div>
         </div>
       </div>
     </div>
@@ -74,10 +76,8 @@ export default {
       const currentScrollY = event.target.scrollTop;
 
       if (currentScrollY > this.lastScrollY) {
-        // Scrolling down
         this.isHidden = true;
       } else {
-        // Scrolling up
         this.isHidden = false;
       }
 
@@ -178,30 +178,28 @@ html {
   order: 1;
   overflow-x: visible;
   overflow-y: auto;
+  background:
+    linear-gradient(to right, transparent 82px, #BABABA 82px, transparent 83px),
+    linear-gradient(to left, transparent 0px, #BABABA 0px, transparent 1px),
+    linear-gradient(to bottom,
+      transparent calc(100% - 82px),
+      #BABABA calc(100% - 82px),
+      #BABABA calc(100% - 81.5px),
+      transparent calc(100% - 81.5px));
+  background-repeat: no-repeat;
+  background-size:
+    100% calc(100% - 164px),
+    100% calc(100% - 164px),
+    calc(100% - 82px) 100%;
+  background-position:
+    0 82px,
+    100% 82px,
+    82px 0;
+  background-attachment: local;
 }
 
 .main-content p {
   margin-bottom: 1rem;
-}
-
-.main-content::before {
-  content: '';
-  position: absolute;
-  left: 82px;
-  top: var(--padding-top);
-  width: 1px;
-  height: calc(100% - var(--padding-top));
-  background-color: #BABABA;
-}
-
-.main-content::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: var(--padding-top);
-  width: 1px;
-  bottom: 0;
-  background-color: #BABABA;
 }
 
 .TJY-cutout-logo {
@@ -246,12 +244,8 @@ html {
   color: #0914c5;
 }
 
-.heart-icon {
-  margin-left: 12px;
-  position: relative;
-  top: 4px;
-  width: 26px;
-  height: auto;
+.shots-container {
+  padding-bottom: 164px;
 }
 
 .right_shot {
@@ -310,10 +304,6 @@ html {
   color: #4D4D4D;
   margin-top: 16px;
   margin-bottom: 40px;
-}
-
-.shot-info p {
-  margin: 0;
 }
 
 .shot-title {
