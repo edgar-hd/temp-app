@@ -1,8 +1,11 @@
+<!-- App.vue - MODIFIED version of your original -->
 <template>
   <div class="component-web">
     <div class="sidebar" :class="{ 'hide': isHidden }">
       <div class="text-links-container">
-        <div class="text-wrapper">Portfolio</div>
+        <div class="text-wrapper">
+          <router-link to="/">Portfolio</router-link>
+        </div>
         <div class="text-wrapper">About</div>
         <a class="text-wrapper" href="https://www.linkedin.com/in/timjustina/" target="_blank"
           rel="noopener noreferrer">Linkedin</a>
@@ -10,59 +13,20 @@
       </div>
     </div>
     <div class="main-content" @scroll="handleScroll">
-      <img class="TJY-cutout-logo" alt="Logo" :src="TjyCutoutLogo" />
-      <div class="name-wrapper text-wrapper">TIM JUSTINA YEUNG</div>
-      <div class="body-text">
-        <p>
-          I'm Justina, <span class="bold-text">a Product Designer</span> with a background in
-          Neuroscience and research. I deeply enjoy understanding complex
-          problems and providing creative
-          solutions
-          <span class="bold-text">for people.</span>
-        </p>
-      </div>
-      <div class="shots-container">
-        <div class="right_shot">
-          <img class="shot-image" :src="Shot1" alt="shot1" />
-          <div class="shot-info">
-            <p class="shot-title">Tracking Medication Adherence: Dashboard Design</p>
-            <p class="shot-role">Lead Product Designer</p>
-            <p class="shot-company">Kin Technology | 2023-2025</p>
-          </div>
-        </div>
-        <div class="left_shot">
-          <img class="shot-image" :src="Shot1" alt="left shot" />
-          <div class="shot-info">
-            <p class="shot-title">Multiplatform Design for Home Medication Solution </p>
-            <p class="shot-role">Lead Product Designer</p>
-            <p class="shot-company">Kin Technology | 2023-2025</p>
-          </div>
-        </div>
-        <div class="right_shot">
-          <img class="shot-image" :src="Shot1" alt="shot1" />
-          <div class="shot-info">
-            <p class="shot-title">Art Curation Experience and Marketplace: Mobile App Design</p>
-            <p class="shot-role">Founding Designer</p>
-            <p class="shot-company">PONS.ai | 2019</p>
-          </div>
-        </div>
-      </div>
+      <!-- This is where the magic happens -->
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
 import TjyCutoutLogo from './assets/TjyCutoutLogo.svg';
-import HeartIcon from './assets/heart.svg';
-import Shot1 from './assets/shot1.png';
 
 export default {
   name: 'ComponentWeb',
   data() {
     return {
       TjyCutoutLogo,
-      HeartIcon,
-      Shot1,
       isHidden: false,
       lastScrollY: 0
     };
@@ -74,13 +38,11 @@ export default {
   methods: {
     handleScroll(event) {
       const currentScrollY = event.target.scrollTop;
-
       if (currentScrollY > this.lastScrollY) {
         this.isHidden = true;
       } else {
         this.isHidden = false;
       }
-
       this.lastScrollY = currentScrollY;
     }
   }
@@ -403,4 +365,13 @@ html {
     font-size: 14px;
   }
 }
-</style>// Triggering a new deployment
+
+.router-link-active {
+  color: #44E1C5;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: inherit;
+}
+</style>
