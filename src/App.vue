@@ -1,7 +1,7 @@
 <!-- App.vue - MODIFIED version of your original -->
 <template>
   <div class="component-web">
-    <div class="sidebar" :class="{ 'hide': isHidden }">
+    <div class="sidebar" :class="{ 'hide': isHidden }" v-if="showSidebar">
       <div class="text-links-container">
         <div class="text-wrapper">
           <router-link to="/">Portfolio</router-link>
@@ -12,8 +12,7 @@
         <div class="text-wrapper">CV</div>
       </div>
     </div>
-    <div class="main-content" @scroll="handleScroll">
-      <!-- This is where the magic happens -->
+    <div class="main-content" :class="{ 'no-sidebar': !showSidebar }" @scroll="handleScroll">
       <router-view />
     </div>
   </div>
@@ -30,6 +29,11 @@ export default {
       isHidden: false,
       lastScrollY: 0
     };
+  },
+  computed: {
+    showSidebar() {
+      return this.$route.path === '/' || this.$route.path === '/portfolio'
+    }
   },
   mounted() {
     console.log('Component mounted');
@@ -283,6 +287,16 @@ html {
 .shot-company {
   font-size: 25px;
   line-height: 24px;
+}
+
+.main-content.no-sidebar {
+  width: 100% !important;
+  background: none !important;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Mobile Styles */

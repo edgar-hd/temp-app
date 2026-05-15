@@ -16,8 +16,7 @@
                 <img class="shot-image" :src="Shot1" alt="shot1" />
                 <div class="shot-info">
                     <p class="shot-title">
-                        <router-link :to="{ name: 'project', params: { id: 'medication-dashboard' } }"
-                            class="project-link">
+                        <router-link to="/project/MedicationDashboard" class="project-link">
                             Tracking Medication Adherence: Dashboard Design
                         </router-link>
                     </p>
@@ -25,12 +24,12 @@
                     <p class="shot-company">Kin Technology | 2023-2025</p>
                 </div>
             </div>
+
             <div class="left_shot">
                 <img class="shot-image" :src="Shot1" alt="left shot" />
                 <div class="shot-info">
                     <p class="shot-title">
-                        <router-link :to="{ name: 'project', params: { id: 'multiplatform-solution' } }"
-                            class="project-link">
+                        <router-link to="/project/MultiplatformSolution" class="project-link">
                             Multiplatform Design for Home Medication Solution
                         </router-link>
                     </p>
@@ -38,11 +37,12 @@
                     <p class="shot-company">Kin Technology | 2023-2025</p>
                 </div>
             </div>
+
             <div class="right_shot">
                 <img class="shot-image" :src="Shot1" alt="shot1" />
                 <div class="shot-info">
                     <p class="shot-title">
-                        <router-link :to="{ name: 'project', params: { id: 'art-curation' } }" class="project-link">
+                        <router-link to="/project/art-curation" class="project-link">
                             Art Curation Experience and Marketplace: Mobile App Design
                         </router-link>
                     </p>

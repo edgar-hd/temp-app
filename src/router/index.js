@@ -1,18 +1,21 @@
-// router/index.js
 import { createRouter, createWebHistory } from 'vue-router'
 import Portfolio from '../views/Portfolio.vue'
-import ProjectDetail from '../views/ProjectDetail.vue'
 
 const routes = [
     {
         path: '/',
-        name: 'portfolio',
-        component: Portfolio  // This makes Portfolio the default homepage
+        name: 'Portfolio',
+        component: Portfolio
     },
     {
-        path: '/project/:id',
-        name: 'project',
-        component: ProjectDetail
+        path: '/project/MedicationDashboard',
+        name: 'MedicationDashboard',
+        component: () => import('../views/MedicationDashboard.vue')
+    },
+    {
+        path: '/project/MultiplatformSolution',
+        name: 'MultiplatformSolution',
+        component: () => import('../views/MultiplatformSolution.vue')
     }
 ]
 
