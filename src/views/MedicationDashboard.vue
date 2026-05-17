@@ -55,10 +55,11 @@
                 had helped us to identify dashboard contents that are most relevant to our users.
             </p>
 
-            <div class="full-image">
-                <img :src="img1" alt="Affinity-Interrelationship Diagram" loading="lazy" decoding="async" />
-                <p class="caption">Affinity-Interrelationship Diagram based on user research findings</p>
-            </div>
+            <ZoomableImage
+                :src="img1"
+                alt="Affinity-Interrelationship Diagram"
+                caption="Affinity-Interrelationship Diagram based on user research findings"
+            />
 
             <h3>Define the narrative</h3>
             <p>User-driven exploration is an important aspect of dashboard design, and so is
@@ -102,11 +103,11 @@
         <section>
             <h2>Design</h2>
 
-            <div class="full-image">
-                <img :src="img2" alt="Mockups" loading="lazy" decoding="async" />
-                <p class="caption">On the left: mockups of primary user's mobile dashboard. On the right: wireframes
-                    for caregiver-facing dashboard.</p>
-            </div>
+            <ZoomableImage
+                :src="img2"
+                alt="Mockups"
+                caption="On the left: mockups of primary user's mobile dashboard. On the right: wireframes for caregiver-facing dashboard."
+            />
 
             <h3>Plot first, compose later</h3>
             <p>The design process began with creating a range of data visualisation widgets <strong>without getting
@@ -144,16 +145,17 @@
                 wedges - as human brain is bias for reading lengths better than areas or angles.
             </p>
 
-            <div class="full-image">
-                <img :src="img3" alt="Colour system" loading="lazy" decoding="async" />
-                <p class="caption">Colour palettes for the dashboard design with colour contrast audit for WCAG
-                    compliance</p>
-            </div>
+            <ZoomableImage
+                :src="img3"
+                alt="Colour system"
+                caption="Colour palettes for the dashboard design with colour contrast audit for WCAG compliance"
+            />
 
-            <div class="full-image">
-                <img :src="img4" alt="Design iterations" loading="lazy" decoding="async" />
-                <p class="caption">Design iterations of Dispense Summary</p>
-            </div>
+            <ZoomableImage
+                :src="img4"
+                alt="Design iterations"
+                caption="Design iterations of Dispense Summary"
+            />
 
             <h3>Integrating multiple variables without losing clarity</h3>
             <p>Adherence is the most important KPI of the product for users. Although it is an impactful quick
@@ -176,9 +178,7 @@
                 summarises all the variables at a specific time point is another important way to help users make
                 sense of the axes of the graph.</p>
 
-            <div class="full-image">
-                <img :src="img5" alt="Adherence trend" loading="lazy" decoding="async" />
-            </div>
+            <ZoomableImage :src="img5" alt="Adherence trend" />
 
             <h3>Design for accessibility</h3>
             <p>Consistent with the rest of the product, conscious efforts have been made to optimise the design
@@ -218,14 +218,13 @@
                 not to overshadow the functions of other relevant features where more detailed information can be
                 found.</p>
 
-            <div class="full-image">
-                <img :src="img6" alt="Missed Dose Insights" loading="lazy" decoding="async" />
-                <p class="caption">Prototype of Missed Dose Insights</p>
-            </div>
+            <ZoomableImage
+                :src="img6"
+                alt="Missed Dose Insights"
+                caption="Prototype of Missed Dose Insights"
+            />
 
-            <div class="full-image">
-                <img :src="img7" alt="Caregiver dashboard" loading="lazy" decoding="async" />
-            </div>
+            <ZoomableImage :src="img7" alt="Caregiver dashboard" />
         </section>
 
         <section>
@@ -253,6 +252,7 @@
 
 <script>
 import ProjectDetail from './ProjectDetail.vue'
+import ZoomableImage from '../components/ZoomableImage.vue'
 import img0 from '../assets/medication-dashboard/0_dashboard_hero.png'
 import img1 from '../assets/medication-dashboard/1_affinity_interrelation_large_margin_portfolio.jpg'
 import img2 from '../assets/medication-dashboard/2_primary_user_vs_caregiver_dashboard_portfolio.png'
@@ -264,7 +264,7 @@ import img7 from '../assets/medication-dashboard/7_caregiver_dashboard_portfolio
 
 export default {
     name: 'MedicationDashboard',
-    components: { ProjectDetail },
+    components: { ProjectDetail, ZoomableImage },
     data() {
         return { img0, img1, img2, img3, img4, img5, img6, img7 }
     },
