@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <ProjectDetail>
         <h1>Improving medication adherence: Dashboard Design</h1>
         <div class="meta">
             <span>Kin Technology</span>
@@ -24,8 +24,8 @@
             </p>
         </section>
 
-        <div class="full-image">
-            <img src="https://placehold.co/1440x811" alt="Dashboard hero" />
+        <div class="full-image hero-image">
+            <img :src="img0" alt="Dashboard hero" />
         </div>
 
         <section>
@@ -56,7 +56,7 @@
             </p>
 
             <div class="full-image">
-                <img src="https://placehold.co/1100x751" alt="Affinity-Interrelationship Diagram" />
+                <img :src="img1" alt="Affinity-Interrelationship Diagram" loading="lazy" decoding="async" />
                 <p class="caption">Affinity-Interrelationship Diagram based on user research findings</p>
             </div>
 
@@ -102,8 +102,8 @@
         <section>
             <h2>Design</h2>
 
-            <div class="image-row">
-                <img src="https://placehold.co/1100x751" alt="Mockups" />
+            <div class="full-image">
+                <img :src="img2" alt="Mockups" loading="lazy" decoding="async" />
                 <p class="caption">On the left: mockups of primary user's mobile dashboard. On the right: wireframes
                     for caregiver-facing dashboard.</p>
             </div>
@@ -145,7 +145,13 @@
             </p>
 
             <div class="full-image">
-                <img src="https://placehold.co/1100x751" alt="Design iterations" />
+                <img :src="img3" alt="Colour system" loading="lazy" decoding="async" />
+                <p class="caption">Colour palettes for the dashboard design with colour contrast audit for WCAG
+                    compliance</p>
+            </div>
+
+            <div class="full-image">
+                <img :src="img4" alt="Design iterations" loading="lazy" decoding="async" />
                 <p class="caption">Design iterations of Dispense Summary</p>
             </div>
 
@@ -170,6 +176,10 @@
                 summarises all the variables at a specific time point is another important way to help users make
                 sense of the axes of the graph.</p>
 
+            <div class="full-image">
+                <img :src="img5" alt="Adherence trend" loading="lazy" decoding="async" />
+            </div>
+
             <h3>Design for accessibility</h3>
             <p>Consistent with the rest of the product, conscious efforts have been made to optimise the design
                 according to WCAG criteria of accessibility. For example, to improve
@@ -192,12 +202,6 @@
                 information to improve accessibility.
             </p>
 
-            <div class="full-image">
-                <img src="https://placehold.co/1100x751" alt="Colour palette" />
-                <p class="caption">Colour palettes for the dashboard design with colour contrast audit for WCAG
-                    compliance</p>
-            </div>
-
             <h3>Chunk by purpose</h3>
             <p>We realised early on at the discovery stage that the goals users have in mind when engaging dashboard
                 can be divided into two categories of purpose: 1) to gain insights on clients' performances or
@@ -215,12 +219,12 @@
                 found.</p>
 
             <div class="full-image">
-                <img src="https://placehold.co/1100x751" alt="Missed Dose Insights" />
+                <img :src="img6" alt="Missed Dose Insights" loading="lazy" decoding="async" />
                 <p class="caption">Prototype of Missed Dose Insights</p>
             </div>
 
             <div class="full-image">
-                <img src="https://placehold.co/1100x751" alt="Sidebar" />
+                <img :src="img7" alt="Caregiver dashboard" loading="lazy" decoding="async" />
             </div>
         </section>
 
@@ -244,110 +248,25 @@
             <h2>Reflection</h2>
             <p>Analytical plan / rewrite content here</p>
         </section>
-    </div>
+    </ProjectDetail>
 </template>
 
 <script>
+import ProjectDetail from './ProjectDetail.vue'
+import img0 from '../assets/medication-dashboard/0_dashboard_hero.png'
+import img1 from '../assets/medication-dashboard/1_affinity_interrelation_large_margin_portfolio.jpg'
+import img2 from '../assets/medication-dashboard/2_primary_user_vs_caregiver_dashboard_portfolio.png'
+import img3 from '../assets/medication-dashboard/3_colour_system_portfolio.png'
+import img4 from '../assets/medication-dashboard/4_dispense_summary_portfolio.png'
+import img5 from '../assets/medication-dashboard/5_adherence_trend_portfolio.png'
+import img6 from '../assets/medication-dashboard/6_missed_dose_insights_portfolio.png'
+import img7 from '../assets/medication-dashboard/7_caregiver_dashboard_portfolio.png'
+
 export default {
-    name: 'MedicationDashboard'
+    name: 'MedicationDashboard',
+    components: { ProjectDetail },
+    data() {
+        return { img0, img1, img2, img3, img4, img5, img6, img7 }
+    },
 }
 </script>
-
-<style scoped>
-.page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-h1 {
-    font-size: 35px;
-    font-family: "Maven Pro", sans-serif;
-    font-weight: 400;
-    color: #2C2C2C;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.meta {
-    color: #757575;
-    font-size: 24px;
-    font-family: "Maven Pro", sans-serif;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.intro {
-    font-size: 20px;
-    font-family: "EB Garamond", serif;
-    line-height: 30px;
-    color: #2C2C2C;
-    margin-bottom: 60px;
-    text-align: center;
-}
-
-section {
-    margin-bottom: 60px;
-}
-
-h2 {
-    font-size: 24px;
-    font-family: "Maven Pro", sans-serif;
-    font-weight: 600;
-    color: #2C2C2C;
-    margin-bottom: 20px;
-}
-
-h3 {
-    font-size: 22px;
-    font-family: "Maven Pro", sans-serif;
-    font-weight: 600;
-    color: #2C2C2C;
-    margin-top: 30px;
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 20px;
-    font-family: "EB Garamond", serif;
-    line-height: 30px;
-    color: #2C2C2C;
-    margin-bottom: 20px;
-}
-
-strong {
-    font-weight: 700;
-}
-
-.highlight {
-    color: #FC0F0F;
-}
-
-.full-image {
-    margin: 40px 0;
-    width: 100%;
-}
-
-.full-image img {
-    width: 100%;
-    height: auto;
-}
-
-.caption {
-    font-size: 14px;
-    font-family: "Maven Pro", sans-serif;
-    color: #757575;
-    text-align: center;
-    margin-top: 8px;
-}
-
-.image-row {
-    margin: 40px 0;
-}
-
-.image-row img {
-    width: 100%;
-    height: auto;
-}
-</style>
