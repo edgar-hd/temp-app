@@ -7,17 +7,29 @@
       :src="videoSrc"
       controls
       playsinline
-      @click.stop
     />
-    <button
+
+    <div
       v-else
-      type="button"
-      class="poster-trigger"
-      :aria-label="`Play video: ${alt}`"
-      @click="play"
+      class="poster-wrap"
+      @mouseenter="isHovered = true"
+      @mouseleave="isHovered = false"
     >
-      <img :src="poster" :alt="alt" />
-    </button>
+      <button type="button" class="poster-trigger" :aria-label="`Play video: ${alt}`" @click="play">
+        <img :src="poster" :alt="alt" class="poster-img" />
+      </button>
+      <video
+        v-show="isHovered"
+        class="video-hover"
+        :src="videoSrc"
+        controls
+        preload="metadata"
+        muted
+        playsinline
+        @click="play"
+      />
+    </div>
+
     <p v-if="caption" class="caption">{{ caption }}</p>
   </div>
 </template>
@@ -32,10 +44,14 @@ export default {
     caption: { type: String, default: '' },
   },
   data() {
-    return { isPlaying: false }
+    return {
+      isPlaying: false,
+      isHovered: false,
+    }
   },
   methods: {
     play() {
+      this.isHovered = false
       this.isPlaying = true
       this.$nextTick(() => {
         this.$refs.video?.play()
@@ -46,6 +62,11 @@ export default {
 </script>
 
 <style scoped>
+.poster-wrap {
+  position: relative;
+  width: 100%;
+}
+
 .poster-trigger {
   display: block;
   width: 100%;
@@ -55,13 +76,19 @@ export default {
   cursor: pointer;
 }
 
-.poster-trigger img {
+.poster-img {
   width: 100%;
   display: block;
 }
 
-.poster-trigger:hover img {
-  opacity: 0.92;
+.video-hover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .video-player {

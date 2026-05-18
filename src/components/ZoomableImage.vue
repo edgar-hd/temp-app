@@ -188,7 +188,7 @@ export default {
 
 .lightbox-img {
   display: block;
-  width: 300vw;
+  width: 400vw;
   height: auto;
 }
 </style>
