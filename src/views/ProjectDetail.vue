@@ -113,8 +113,7 @@ export default {
   text-indent: -999px;
 }
 
-.main :global(.intro),
-.main :global(p) {
+.main :global(.intro) {
   font-family: 'EB Garamond', Georgia, serif;
   font-size: 20px;
   line-height: 30px;
@@ -142,7 +141,11 @@ export default {
 }
 
 .main :global(section p) {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 20px;
+  line-height: 30px;
   text-align: left;
+  margin-bottom: 32px;
 }
 
 .main :global(.full-image) {

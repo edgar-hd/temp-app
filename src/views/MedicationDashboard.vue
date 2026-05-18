@@ -103,11 +103,11 @@
         <section>
             <h2>Design</h2>
 
-            <ZoomableImage
-                :src="img2"
-                alt="Mockups"
-                caption="On the left: mockups of primary user's mobile dashboard. On the right: wireframes for caregiver-facing dashboard."
-            />
+            <div class="full-image">
+                <img :src="img2" alt="Mockups" loading="lazy" decoding="async" />
+                <p class="caption">On the left: mockups of primary user's mobile dashboard. On the right: wireframes
+                    for caregiver-facing dashboard.</p>
+            </div>
 
             <h3>Plot first, compose later</h3>
             <p>The design process began with creating a range of data visualisation widgets <strong>without getting
@@ -145,17 +145,16 @@
                 wedges - as human brain is bias for reading lengths better than areas or angles.
             </p>
 
-            <ZoomableImage
-                :src="img3"
-                alt="Colour system"
-                caption="Colour palettes for the dashboard design with colour contrast audit for WCAG compliance"
-            />
+            <div class="full-image">
+                <img :src="img3" alt="Colour system" loading="lazy" decoding="async" />
+                <p class="caption">Colour palettes for the dashboard design with colour contrast audit for WCAG
+                    compliance</p>
+            </div>
 
-            <ZoomableImage
-                :src="img4"
-                alt="Design iterations"
-                caption="Design iterations of Dispense Summary"
-            />
+            <div class="full-image">
+                <img :src="img4" alt="Design iterations" loading="lazy" decoding="async" />
+                <p class="caption">Design iterations of Dispense Summary</p>
+            </div>
 
             <h3>Integrating multiple variables without losing clarity</h3>
             <p>Adherence is the most important KPI of the product for users. Although it is an impactful quick
@@ -178,7 +177,9 @@
                 summarises all the variables at a specific time point is another important way to help users make
                 sense of the axes of the graph.</p>
 
-            <ZoomableImage :src="img5" alt="Adherence trend" />
+            <div class="full-image">
+                <img :src="img5" alt="Adherence trend" loading="lazy" decoding="async" />
+            </div>
 
             <h3>Design for accessibility</h3>
             <p>Consistent with the rest of the product, conscious efforts have been made to optimise the design
@@ -218,13 +219,14 @@
                 not to overshadow the functions of other relevant features where more detailed information can be
                 found.</p>
 
-            <ZoomableImage
-                :src="img6"
-                alt="Missed Dose Insights"
-                caption="Prototype of Missed Dose Insights"
-            />
+            <div class="full-image">
+                <img :src="img6" alt="Missed Dose Insights" loading="lazy" decoding="async" />
+                <p class="caption">Prototype of Missed Dose Insights</p>
+            </div>
 
-            <ZoomableImage :src="img7" alt="Caregiver dashboard" />
+            <div class="full-image">
+                <img :src="img7" alt="Caregiver dashboard" loading="lazy" decoding="async" />
+            </div>
         </section>
 
         <section>
@@ -253,14 +255,14 @@
 <script>
 import ProjectDetail from './ProjectDetail.vue'
 import ZoomableImage from '../components/ZoomableImage.vue'
-import img0 from '../assets/medication-dashboard/0_dashboard_hero.png'
+import img0 from '../assets/medication-dashboard/0_dashboard_hero.jpg'
 import img1 from '../assets/medication-dashboard/1_affinity_interrelation_large_margin_portfolio.jpg'
-import img2 from '../assets/medication-dashboard/2_primary_user_vs_caregiver_dashboard_portfolio.png'
-import img3 from '../assets/medication-dashboard/3_colour_system_portfolio.png'
-import img4 from '../assets/medication-dashboard/4_dispense_summary_portfolio.png'
-import img5 from '../assets/medication-dashboard/5_adherence_trend_portfolio.png'
-import img6 from '../assets/medication-dashboard/6_missed_dose_insights_portfolio.png'
-import img7 from '../assets/medication-dashboard/7_caregiver_dashboard_portfolio.png'
+import img2 from '../assets/medication-dashboard/2_primary_user_vs_caregiver_dashboard_portfolio.jpg'
+import img3 from '../assets/medication-dashboard/3_colour_system_portfolio.jpg'
+import img4 from '../assets/medication-dashboard/4_dispense_summary_portfolio.jpg'
+import img5 from '../assets/medication-dashboard/5_adherence_trend_portfolio.jpg'
+import img6 from '../assets/medication-dashboard/6_missed_dose_insights_portfolio.jpg'
+import img7 from '../assets/medication-dashboard/7_caregiver_dashboard_portfolio.jpg'
 
 export default {
     name: 'MedicationDashboard',
