@@ -200,8 +200,8 @@ export default {
 }
 
 .main :global(.hero-image) {
-  max-width: 1920px;
-  width: min(1920px, calc(100vw - 40px));
+  width: 100vw;
+  max-width: 100vw;
 }
 
 .main :global(.full-image img) {
