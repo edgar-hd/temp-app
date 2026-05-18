@@ -16,7 +16,7 @@
       :aria-label="`Play video: ${alt}`"
       @click="play"
     >
-      <img :src="poster" :alt="alt" loading="lazy" decoding="async" />
+      <img :src="poster" :alt="alt" />
     </button>
     <p v-if="caption" class="caption">{{ caption }}</p>
   </div>

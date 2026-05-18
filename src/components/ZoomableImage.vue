@@ -1,13 +1,13 @@
 <template>
   <div class="full-image">
     <button
+      v-show="!isOpen"
       type="button"
       class="zoomable-trigger"
-      :aria-expanded="isOpen"
       :aria-label="`View full size: ${alt}`"
       @click="open"
     >
-      <img :src="src" :alt="alt" loading="lazy" decoding="async" />
+      <img :src="src" :alt="alt" />
     </button>
     <p v-if="caption" class="caption">{{ caption }}</p>
 
@@ -21,11 +21,11 @@
         aria-modal="true"
         :aria-label="alt"
       >
-        <button type="button" class="lightbox-close" aria-label="Close" @click="close">×</button>
+        <button type="button" class="lightbox-close" aria-label="Close" @click.stop="close">×</button>
         <div
           class="lightbox-stage"
           :class="isZoomed ? 'cursor-zoom-out' : 'cursor-zoom-in'"
-          @click="toggleZoom"
+          @click="toggleZoom($event)"
         >
           <img
             :src="src"
@@ -68,20 +68,48 @@ export default {
       this.isOpen = true
       document.body.style.overflow = 'hidden'
     },
-    // Single zoom toggle: fit ↔ zoomed (one step in, one step out)
-    toggleZoom() {
-      this.isZoomed = !this.isZoomed
-      this.$nextTick(() => {
-        const el = this.$refs.lightbox
-        if (!el) return
-        if (this.isZoomed) {
-          el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2
-          el.scrollTop = (el.scrollHeight - el.clientHeight) / 2
-        } else {
-          el.scrollLeft = 0
-          el.scrollTop = 0
-        }
-      })
+    toggleZoom(event) {
+      const lightbox = this.$refs.lightbox
+      if (!lightbox) return
+
+      if (!this.isZoomed) {
+        const img = lightbox.querySelector('.lightbox-img')
+        if (!img) return
+
+        const lbRect = lightbox.getBoundingClientRect()
+        const imgRect = img.getBoundingClientRect()
+        const ratioX = this.clamp((event.clientX - imgRect.left) / imgRect.width, 0, 1)
+        const ratioY = this.clamp((event.clientY - imgRect.top) / imgRect.height, 0, 1)
+        const viewX = event.clientX - lbRect.left
+        const viewY = event.clientY - lbRect.top
+
+        this.isZoomed = true
+        this.$nextTick(() => {
+          requestAnimationFrame(() => {
+            const scrollX = ratioX * img.scrollWidth - viewX
+            const scrollY = ratioY * img.scrollHeight - viewY
+            lightbox.scrollLeft = this.clamp(
+              scrollX,
+              0,
+              lightbox.scrollWidth - lightbox.clientWidth
+            )
+            lightbox.scrollTop = this.clamp(
+              scrollY,
+              0,
+              lightbox.scrollHeight - lightbox.clientHeight
+            )
+          })
+        })
+      } else {
+        this.isZoomed = false
+        this.$nextTick(() => {
+          lightbox.scrollLeft = 0
+          lightbox.scrollTop = 0
+        })
+      }
+    },
+    clamp(value, min, max) {
+      return Math.max(min, Math.min(value, max))
     },
     close() {
       const scrollY = this.savedScroll

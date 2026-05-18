@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.page">
-    <header :class="$style.topBar">
+    <header :class="[$style.topBar, headerHidden && $style.topBarHidden]">
       <div :class="$style.logoBlock">
         <img :class="$style.logo" :src="logo" alt="" />
         <div :class="$style.name">TIM JUSTINA YEUNG</div>
@@ -24,7 +24,34 @@ import logo from '../assets/TjyCutoutLogo.svg'
 export default {
   name: 'ProjectDetail',
   data() {
-    return { logo }
+    return {
+      logo,
+      headerHidden: false,
+      lastScrollY: 0,
+    }
+  },
+  mounted() {
+    this.lastScrollY = window.scrollY
+    window.addEventListener('scroll', this.onScroll, { passive: true })
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll() {
+      const y = window.scrollY
+      const delta = y - this.lastScrollY
+
+      if (y <= 0) {
+        this.headerHidden = false
+      } else if (delta > 0) {
+        this.headerHidden = true
+      } else if (delta < 0) {
+        this.headerHidden = false
+      }
+
+      this.lastScrollY = y
+    },
   },
 }
 </script>
@@ -39,12 +66,24 @@ export default {
 }
 
 .topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
   padding: 82px 82px 40px;
-  max-width: 1440px;
-  margin: 0 auto;
+  background: #fff;
+  transition: transform 0.35s ease;
+  transform: translateY(0);
+}
+
+.topBarHidden {
+  transform: translateY(-100%);
 }
 
 .logoBlock {
@@ -79,9 +118,9 @@ export default {
 }
 
 .main {
-  max-width: 650px;
+  max-width: calc(650px + 6ch);
   margin: 0 auto;
-  padding: 0 20px 120px;
+  padding: 170px 20px 120px;
   line-height: 1.5;
 }
 
