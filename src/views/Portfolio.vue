@@ -107,6 +107,7 @@ export default {
     width: 90%;
     height: auto;
     display: block;
+    transition: opacity 0.2s ease;
 }
 
 .shot-details {
@@ -137,8 +138,8 @@ export default {
     cursor: pointer;
 }
 
-.shot-image-link:hover img {
-    opacity: 0.92;
+.portfolio-shot-block:hover img {
+    opacity: 0.82;
 }
 
 .shot-title {
@@ -157,9 +158,10 @@ export default {
 .project-link {
     color: inherit;
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-.project-link:hover {
+.portfolio-shot-block:hover .project-link {
     color: #000aaa;
 }
 

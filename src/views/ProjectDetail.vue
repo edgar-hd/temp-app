@@ -1,10 +1,10 @@
 <template>
   <div :class="$style.page">
     <header :class="[$style.topBar, headerHidden && $style.topBarHidden]">
-      <div :class="$style.logoBlock">
+      <router-link to="/" :class="$style.logoBlock">
         <img :class="$style.logo" :src="logo" alt="" />
         <div :class="$style.name">TIM JUSTINA YEUNG</div>
-      </div>
+      </router-link>
       <nav :class="$style.nav">
         <router-link to="/" :class="$style.navLink">Portfolio</router-link>
         <span :class="$style.navLink">About</span>
@@ -90,6 +90,8 @@ export default {
   display: flex;
   align-items: center;
   gap: 24px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo {
