@@ -56,7 +56,7 @@
             </p>
 
             <ZoomableImage
-                :src="img1"
+                :src="svg1"
                 alt="Affinity-Interrelationship Diagram"
                 caption="Affinity-Interrelationship Diagram based on user research findings"
             />
@@ -255,7 +255,7 @@ import ProjectDetail from './ProjectDetail.vue'
 import ZoomableImage from '../components/ZoomableImage.vue'
 import VideoPoster from '../components/VideoPoster.vue'
 import img0 from '../assets/medication-dashboard/0_dashboard_hero.jpg'
-import img1 from '../assets/medication-dashboard/1_affinity_interrelation_large_margin_portfolio.jpg'
+import svg1 from '../assets/medication-dashboard/1_affinity_interrelation_large_margin_portfolio.svg'
 import img2 from '../assets/medication-dashboard/2_primary_user_vs_caregiver_dashboard_portfolio.jpg'
 import img3 from '../assets/medication-dashboard/3_colour_system_portfolio.jpg'
 import img4 from '../assets/medication-dashboard/4_dispense_summary_portfolio.jpg'
@@ -270,7 +270,7 @@ export default {
     name: 'MedicationDashboard',
     components: { ProjectDetail, ZoomableImage, VideoPoster },
     data() {
-        return { img0, img1, img2, img3, img4, img5, img6, img7, vid5, vid6, vid7 }
+        return { img0, svg1, img2, img3, img4, img5, img6, img7, vid5, vid6, vid7 }
     },
 }
 </script>
