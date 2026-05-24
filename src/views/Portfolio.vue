@@ -71,8 +71,9 @@
 
             <section class="hero">
                 <p class="hero-intro">
-                    Product Designer with a background in Neuroscience and research.
-                    Deeply enjoy understanding complex problems and providing creative solutions for people :)
+                    <strong class="hero-intro-em">Product Designer</strong> with a background in Neuroscience and research.
+                    Deeply enjoy understanding complex problems and providing creative solutions
+                    <strong class="hero-intro-em">for people :)</strong>
                 </p>
                 <a class="cta-button" href="mailto:design@timjustina.com">Drop me a line</a>
             </section>
@@ -417,9 +418,14 @@ export default {
     margin: 100px 0 0 371px;
     font-family: 'Fira Code', monospace;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 40px;
+    color: var(--muted);
+}
+
+.hero-intro-em {
     color: var(--brand);
+    font-weight: 600;
 }
 
 .cta-button {
@@ -523,7 +529,7 @@ export default {
 
 .project:hover .project-title-link,
 .project:focus-within .project-title-link {
-    color: var(--brand-hover);
+    color: var(--brand);
 }
 
 .project-description {
