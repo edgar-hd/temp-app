@@ -318,7 +318,7 @@ export default {
 
 .nav {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     gap: 40px;
 }
 
@@ -335,25 +335,30 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 38px;
+    height: 38px;
+    padding: 0;
+}
+
+.nav-link--stacked > span:first-child {
+    flex: none;
+    height: 30px;
+    line-height: 30px;
 }
 
 .nav-indicator {
     width: 16px;
     height: 8px;
-    flex-shrink: 0;
-    border-radius: 50% 50% 0 0;
+    flex: none;
+    border-radius: 8px 8px 0 0;
     background: var(--brand);
     opacity: 0;
-    transform: rotate(-180deg) scaleY(0);
-    transform-origin: bottom center;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform: rotate(-180deg);
+    transition: opacity 0.2s ease;
 }
 
 .nav-link--stacked:hover .nav-indicator,
 .nav-link--stacked:focus-visible .nav-indicator {
     opacity: 1;
-    transform: rotate(-180deg) scaleY(1);
 }
 
 .portfolio-main {
