@@ -475,15 +475,15 @@ export default {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 1110px;
+    max-width: 842px;
 }
 
 .project--featured {
-    max-width: 962px;
+    max-width: 842px;
 }
 
 .project--offset {
-    max-width: 941px;
+    max-width: 842px;
     transform: translate3d(452px, 0, 0);
 }
 
@@ -732,7 +732,7 @@ export default {
     }
 
     .project:last-child {
-        max-width: 1110px;
+        max-width: 842px;
         margin-top: 144px;
     }
 
