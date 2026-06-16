@@ -260,7 +260,8 @@ export default {
     justify-content: space-between;
     gap: 40px;
     width: 100%;
-    padding: 44px var(--page-pad);
+    height: 120px;
+    padding: 0 var(--page-pad);
     background: #fff;
     box-sizing: border-box;
 }
@@ -334,8 +335,15 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 38px;
+    height: 27px;
     padding: 0;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.nav-link--stacked:hover,
+.nav-link--stacked:focus-visible {
+    height: 38px;
 }
 
 .nav-link--stacked > span:first-child {
@@ -351,20 +359,22 @@ export default {
     border-radius: 8px 8px 0 0;
     background: var(--brand);
     opacity: 0;
-    transform: rotate(-180deg);
-    transition: opacity 0.2s ease;
+    transform: rotate(-180deg) scaleY(0);
+    transform-origin: top center;
+    transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
 .nav-link--stacked:hover .nav-indicator,
 .nav-link--stacked:focus-visible .nav-indicator {
     opacity: 1;
+    transform: rotate(-180deg) scaleY(1);
 }
 
 .portfolio-main {
     position: relative;
     max-width: var(--page-max);
     margin: 0 auto;
-    padding: 138px var(--page-pad) 0;
+    padding: 120px var(--page-pad) 0;
     box-sizing: border-box;
 }
 
@@ -839,7 +849,7 @@ export default {
         flex-direction: column;
         gap: 32px;
         position: fixed;
-        top: 79px;
+        top: 120px;
         right: 80px;
         z-index: 110;
         padding: 0;
@@ -992,7 +1002,8 @@ export default {
 
 @media (max-width: 480px) {
     .top-bar {
-        padding: 24px;
+        height: 120px;
+        padding: 0 24px;
     }
 
     .portfolio-main {
