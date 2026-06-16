@@ -421,11 +421,12 @@ export default {
 .hero-intro {
     max-width: 877px;
     margin: 100px 0 0 371px;
+    color: var(--muted, #757575);
     font-family: 'Fira Code', monospace;
     font-size: 24px;
+    /* font-style: normal; */
     font-weight: 400;
     line-height: 40px;
-    color: var(--muted);
 }
 
 .hero-intro-em {
