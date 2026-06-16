@@ -84,18 +84,18 @@
                         <img
                             class="project-image"
                             :src="dashboardHero"
-                            alt="Improving medication adherence: Dashboard Design"
+                            alt="IoT Adherence Analytics for Caregivers: Dashboard Design"
                         />
                     </router-link>
                     <div class="project-caption">
                         <h2 class="project-title">
                             <router-link to="/project/MedicationDashboard" class="project-title-link">
-                                Improving medication adherence: Dashboard Design
+                                IoT Adherence Analytics for Caregivers: Dashboard Design
                             </router-link>
                         </h2>
                         <p class="project-description">
-                            0-to-1 design of a caregiver-facing dashboard to help users better understand
-                            and assist their clients
+                            0‑to‑1 design of a caregiver‑facing dashboard for a primary user's account,
+                            helping caregivers better understand their client's needs
                         </p>
                         <span class="project-year">2026</span>
                     </div>
@@ -106,18 +106,18 @@
                         <img
                             class="project-image"
                             :src="kinThumbnail"
-                            alt="Home Medication Solution: Multiplatform Design"
+                            alt="Home Medication Solution: IoT Multiplatform Design"
                         />
                     </router-link>
                     <div class="project-caption">
                         <h2 class="project-title">
                             <router-link to="/project/MultiplatformSolution" class="project-title-link">
-                                Home Medication Solution: Multiplatform Design
+                                Home Medication Solution: IoT Multiplatform Design
                             </router-link>
                         </h2>
                         <p class="project-description">
-                            Redesign of human-machine interface, web and mobile app features of an IoT
-                            healthtech platform that helps improve mediation adherence
+                            Redesigned workflows, human-machine interface, web + mobile app features of an IoT
+                            medication adherence platform
                         </p>
                         <span class="project-year">2024</span>
                     </div>
@@ -138,8 +138,7 @@
                             </router-link>
                         </h2>
                         <p class="project-description">
-                            0-to-1 design of a mobile-first peer-to-peer marketplace where users can curate,
-                            buy and sell artworks
+                            0-to-1 design of a mobile-first peer-to-peer marketplace where users can curate, buy and sell artworks
                         </p>
                         <span class="project-year">2019</span>
                     </div>
@@ -175,7 +174,7 @@
                         real world. Started as a curious child, ended up a very curious adult. Trained to
                         solve problems with no precedent.
                         <br><br>
-                        At work, value a good team. Like to understand
+                        At work, value a good team. Understand
                         context, metrics and specs before jumping in. UX-focused. Very comfortable with data.
                         Interrogate LLMs.
                         <br><br>
@@ -310,9 +309,9 @@ export default {
 
 .logo-name {
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 30px;
+    line-height: 27px;
     color: var(--brand);
 }
 
@@ -324,9 +323,9 @@ export default {
 
 .nav-link {
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 30px;
+    line-height: 27px;
     color: var(--brand);
     text-decoration: none;
 }
@@ -341,8 +340,8 @@ export default {
 
 .nav-link--stacked > span:first-child {
     flex: none;
-    height: 30px;
-    line-height: 30px;
+    height: 27px;
+    line-height: 27px;
 }
 
 .nav-indicator {
@@ -421,12 +420,12 @@ export default {
 .hero-intro {
     max-width: 877px;
     margin: 100px 0 0 371px;
-    color: var(--muted, #757575);
     font-family: 'Fira Code', monospace;
-    font-size: 24px;
-    /* font-style: normal; */
+    font-size: 22px;
+    font-style: normal;
     font-weight: 400;
-    line-height: 40px;
+    line-height: 33px;
+    color: var(--muted);
 }
 
 .hero-intro-em {
@@ -447,9 +446,9 @@ export default {
     border-radius: 100px;
     background: var(--brand);
     font-family: 'Fira Code', monospace;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
-    line-height: 36px;
+    line-height: 33px;
     color: #fff;
     text-decoration: none;
     box-sizing: border-box;
@@ -485,7 +484,7 @@ export default {
 
 .project--offset {
     max-width: 941px;
-    transform: translate3d(353px, 0, 0);
+    transform: translate3d(452px, 0, 0);
 }
 
 .project-image-link {
@@ -520,9 +519,9 @@ export default {
 .project-title {
     margin: 0;
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
-    line-height: 33px;
+    line-height: 30px;
     color: var(--title);
     transition: color 0.25s ease;
 }
@@ -552,9 +551,9 @@ export default {
     top: 0;
     right: 0;
     font-family: 'Fira Code', monospace;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 500;
-    line-height: 33px;
+    line-height: 30px;
     color: var(--muted);
 }
 
@@ -586,7 +585,7 @@ export default {
 
 .about-line {
     position: absolute;
-    left: calc((100vw - min(100vw, var(--page-max))) / 2 + var(--page-pad) - 32px);
+    left: calc((100vw - min(100vw, var(--page-max))) / 2 + 128px);
     top: -274px;
     z-index: 1;
     display: block;
@@ -618,8 +617,8 @@ export default {
     gap: 4px;
     margin: 30px 0 0;
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 18px;
+    line-height: 27px;
     color: var(--about-muted);
 }
 
@@ -634,9 +633,9 @@ export default {
 .about-heading {
     margin: 0 0 64px 32px;
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 40px;
+    line-height: 27px;
     letter-spacing: -0.02em;
     color: var(--about-muted);
 }
@@ -645,9 +644,9 @@ export default {
     margin: 0 0 0 64px;
     max-width: 601px;
     font-family: 'Fira Code', monospace;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 30px;
+    line-height: 26px;
     color: var(--text);
 }
 
@@ -673,9 +672,9 @@ export default {
 .footer-email,
 .footer-copy {
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 300;
-    line-height: 30px;
+    line-height: 21px;
     color: var(--muted);
 }
 
@@ -693,6 +692,108 @@ export default {
     background: var(--muted);
 }
 
+/* ≥1454px: Final content artboard spacing (1454×4309) */
+@media (min-width: 1454px) {
+    .hero-decor {
+        left: 273px;
+        top: 109px;
+    }
+
+    .hero-intro {
+        margin: 111px 0 0 371px;
+    }
+
+    .hero {
+        min-height: 357px;
+        margin-bottom: 231px;
+    }
+
+    .cta-button {
+        top: 300px;
+        left: 883px;
+        right: auto;
+        width: 233px;
+        min-width: 0;
+        height: 57px;
+    }
+
+    .work {
+        gap: 0;
+    }
+
+    .project--featured {
+        max-width: 842px;
+    }
+
+    .project--offset {
+        max-width: 842px;
+        margin-top: 140px;
+        transform: translate3d(452px, 0, 0);
+    }
+
+    .project:last-child {
+        max-width: 1110px;
+        margin-top: 144px;
+    }
+
+    .project-caption {
+        margin-top: 32px;
+    }
+
+    .project-description {
+        margin-top: 20px;
+    }
+
+    .about {
+        margin-top: 394px;
+        padding: 80px 0 180px;
+    }
+
+    .about-inner {
+        grid-template-columns: 373px 1fr;
+    }
+
+    .about-photo-column {
+        margin-left: 0;
+        padding-left: 80px;
+        box-sizing: border-box;
+    }
+
+    .about-photo,
+    .about-photo--placeholder {
+        width: 293px;
+        height: 420px;
+    }
+
+    .about-text-column {
+        padding-top: 100px;
+    }
+
+    .about-heading {
+        margin: 0 0 64px 64px;
+    }
+
+    .about-bio {
+        max-width: 566px;
+        margin-left: 64px;
+    }
+
+    .about-location {
+        margin-top: 64px;
+        margin-left: -33.5px;
+    }
+
+    .site-footer {
+        align-items: flex-start;
+        padding-top: 54px;
+        padding-bottom: 63px;
+    }
+
+    .footer-divider {
+        height: 21px;
+    }
+}
+
 /* Below 1447px: lose 1px of stagger margin per 1px of viewport width lost */
 @media (max-width: 1447px) {
     .hero-intro {
@@ -700,7 +801,7 @@ export default {
     }
 
     .project--offset {
-        transform: translate3d(max(0px, calc(353px - (1447px - 100vw))), 0, 0);
+        transform: translate3d(max(0px, calc(452px - (1447px - 100vw))), 0, 0);
     }
 }
 
@@ -756,9 +857,9 @@ export default {
 
     .mobile-nav-link {
         font-family: 'Be Vietnam Pro', sans-serif;
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 500;
-        line-height: 16px;
+        line-height: 27px;
         letter-spacing: -0.02em;
         color: var(--brand);
         text-decoration: none;
@@ -804,8 +905,6 @@ export default {
 
     .hero-intro {
         margin: 80px 0 0;
-        font-size: 22px;
-        line-height: 33px;
         max-width: 629px;
     }
 
@@ -815,8 +914,6 @@ export default {
         min-width: 233px;
         width: fit-content;
         height: 57px;
-        font-size: 22px;
-        line-height: 33px;
     }
 
     .work {
@@ -848,20 +945,11 @@ export default {
 
     .about-heading {
         margin: 0 0 32px;
-        font-size: 18px;
-        line-height: 40px;
     }
 
     .about-bio {
         margin-left: 0;
         max-width: none;
-        font-size: 18px;
-        line-height: 27px;
-    }
-
-    .about-location {
-        font-size: 18px;
-        line-height: 23px;
     }
 
     .about-actions {
@@ -881,9 +969,9 @@ export default {
         border-radius: 60px;
         background: var(--brand);
         font-family: 'Be Vietnam Pro', sans-serif;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 500;
-        line-height: 30px;
+        line-height: 27px;
         color: #fff;
         text-decoration: none;
         box-sizing: border-box;
