@@ -1,42 +1,44 @@
 <template>
     <div class="portfolio-page">
         <header class="top-bar">
-            <router-link to="/" class="logo-block">
-                <img class="logo" :src="logo" alt="" />
-                <span class="logo-name">TIM JUSTINA YEUNG</span>
-            </router-link>
-            <button
-                type="button"
-                class="menu-toggle"
-                aria-label="Open menu"
-                :aria-expanded="menuOpen"
-                @click="menuOpen = !menuOpen"
-            >
-                <span /><span /><span />
-            </button>
-            <nav class="nav">
-                <a href="#work" class="nav-link nav-link--stacked nav-link--work">
-                    <span>Work</span>
-                    <span class="nav-indicator" aria-hidden="true" />
-                </a>
-                <a href="#about" class="nav-link nav-link--stacked nav-link--about">
-                    <span>About</span>
-                    <span class="nav-indicator" aria-hidden="true" />
-                </a>
-                <a
-                    href="https://www.linkedin.com/in/timjustinayeung"
-                    class="nav-link nav-link--stacked"
-                    target="_blank"
-                    rel="noopener noreferrer"
+            <div class="top-bar-inner">
+                <router-link to="/" class="logo-block">
+                    <img class="logo" :src="logo" alt="" />
+                    <span class="logo-name">TIM JUSTINA YEUNG</span>
+                </router-link>
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    aria-label="Open menu"
+                    :aria-expanded="menuOpen"
+                    @click="menuOpen = !menuOpen"
                 >
-                    <span>Linkedin</span>
-                    <span class="nav-indicator" aria-hidden="true" />
-                </a>
-                <a href="#" class="nav-link nav-link--stacked">
-                    <span>CV</span>
-                    <span class="nav-indicator" aria-hidden="true" />
-                </a>
-            </nav>
+                    <span /><span /><span />
+                </button>
+                <nav class="nav">
+                    <a href="#work" class="nav-link nav-link--stacked nav-link--work">
+                        <span>Work</span>
+                        <span class="nav-indicator" aria-hidden="true" />
+                    </a>
+                    <a href="#about" class="nav-link nav-link--stacked nav-link--about">
+                        <span>About</span>
+                        <span class="nav-indicator" aria-hidden="true" />
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/timjustinayeung"
+                        class="nav-link nav-link--stacked"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span>Linkedin</span>
+                        <span class="nav-indicator" aria-hidden="true" />
+                    </a>
+                    <a href="#" class="nav-link nav-link--stacked">
+                        <span>CV</span>
+                        <span class="nav-indicator" aria-hidden="true" />
+                    </a>
+                </nav>
+            </div>
         </header>
 
         <nav
@@ -240,7 +242,7 @@ export default {
     --about-muted: #928a81;
     --about-bg: #f4f2f1;
     --page-max: 1454px;
-    --page-pad: 80px;
+    --page-pad: 140px;
 
     position: relative;
     width: 100%;
@@ -255,14 +257,20 @@ export default {
     left: 0;
     right: 0;
     z-index: 100;
+    width: 100%;
+    background: #fff;
+}
+
+.top-bar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 40px;
     width: 100%;
+    max-width: var(--page-max);
     height: 120px;
+    margin: 0 auto;
     padding: 0 var(--page-pad);
-    background: #fff;
     box-sizing: border-box;
 }
 
@@ -318,7 +326,7 @@ export default {
 
 .nav {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 40px;
 }
 
@@ -332,9 +340,8 @@ export default {
 }
 
 .nav-link--stacked {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
+    display: block;
     height: 27px;
     padding: 0;
     overflow: hidden;
@@ -343,23 +350,25 @@ export default {
 
 .nav-link--stacked:hover,
 .nav-link--stacked:focus-visible {
-    height: 38px;
+    height: 45px;
 }
 
 .nav-link--stacked > span:first-child {
-    flex: none;
+    display: block;
     height: 27px;
     line-height: 27px;
 }
 
 .nav-indicator {
+    position: absolute;
+    top: 35px;
+    left: 50%;
     width: 16px;
     height: 8px;
-    flex: none;
-    border-radius: 8px 8px 0 0;
+    border-radius: 0 0 8px 8px;
     background: var(--brand);
     opacity: 0;
-    transform: rotate(-180deg) scaleY(0);
+    transform: translateX(-50%) scaleY(0);
     transform-origin: top center;
     transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
@@ -367,7 +376,7 @@ export default {
 .nav-link--stacked:hover .nav-indicator,
 .nav-link--stacked:focus-visible .nav-indicator {
     opacity: 1;
-    transform: rotate(-180deg) scaleY(1);
+    transform: translateX(-50%) scaleY(1);
 }
 
 .portfolio-main {
@@ -760,12 +769,12 @@ export default {
     }
 
     .about-inner {
-        grid-template-columns: 373px 1fr;
+        grid-template-columns: 313px 1fr;
     }
 
     .about-photo-column {
         margin-left: 0;
-        padding-left: 80px;
+        padding-left: 20px;
         box-sizing: border-box;
     }
 
@@ -850,7 +859,7 @@ export default {
         gap: 32px;
         position: fixed;
         top: 120px;
-        right: 80px;
+        right: var(--page-pad);
         z-index: 110;
         padding: 0;
         opacity: 0;
@@ -1001,8 +1010,7 @@ export default {
 }
 
 @media (max-width: 480px) {
-    .top-bar {
-        height: 120px;
+    .top-bar-inner {
         padding: 0 24px;
     }
 
