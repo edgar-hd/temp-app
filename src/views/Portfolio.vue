@@ -18,11 +18,11 @@
                 <nav class="nav">
                     <a href="#work" class="nav-link nav-link--stacked nav-link--work">
                         <span>Work</span>
-                        <span class="nav-indicator" aria-hidden="true" />
+                        <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
                     </a>
                     <a href="#about" class="nav-link nav-link--stacked nav-link--about">
                         <span>About</span>
-                        <span class="nav-indicator" aria-hidden="true" />
+                        <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
                     </a>
                     <a
                         href="https://www.linkedin.com/in/timjustinayeung"
@@ -31,11 +31,11 @@
                         rel="noopener noreferrer"
                     >
                         <span>Linkedin</span>
-                        <span class="nav-indicator" aria-hidden="true" />
+                        <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
                     </a>
                     <a href="#" class="nav-link nav-link--stacked">
                         <span>CV</span>
-                        <span class="nav-indicator" aria-hidden="true" />
+                        <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
                     </a>
                 </nav>
             </div>
@@ -215,6 +215,8 @@ import logo from '../assets/TjyCutoutLogo.svg'
 import dashboardHero from '../assets/medication-dashboard/0_dashboard_hero.jpg'
 import kinThumbnail from '../assets/shot1.png'
 import artThumbnail from '../assets/shot1.png'
+import aboutPhoto from '../assets/portrait.jpg'
+import menuHover from '../assets/menu_hover.svg'
 
 export default {
     name: 'Portfolio',
@@ -224,7 +226,8 @@ export default {
             dashboardHero,
             kinThumbnail,
             artThumbnail,
-            aboutPhoto: null,
+            aboutPhoto,
+            menuHover,
             menuOpen: false,
         }
     },
@@ -242,7 +245,7 @@ export default {
     --about-muted: #928a81;
     --about-bg: #f4f2f1;
     --page-max: 1454px;
-    --page-pad: 140px;
+    --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
 
     position: relative;
     width: 100%;
@@ -326,8 +329,9 @@ export default {
 
 .nav {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 40px;
+    height: 45px;
 }
 
 .nav-link {
@@ -345,12 +349,14 @@ export default {
     height: 27px;
     padding: 0;
     overflow: hidden;
-    transition: height 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
+    transform-origin: bottom center;
+    transition: height 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .nav-link--stacked:hover,
 .nav-link--stacked:focus-visible {
     height: 45px;
+    overflow: visible;
 }
 
 .nav-link--stacked > span:first-child {
@@ -363,14 +369,15 @@ export default {
     position: absolute;
     top: 35px;
     left: 50%;
+    display: block;
     width: 16px;
     height: 8px;
-    border-radius: 0 0 8px 8px;
-    background: var(--brand);
     opacity: 0;
     transform: translateX(-50%) scaleY(0);
     transform-origin: top center;
-    transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.4, 0.64, 1);
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .nav-link--stacked:hover .nav-indicator,
@@ -390,17 +397,16 @@ export default {
 .hero {
     position: relative;
     z-index: 1;
-    min-height: 320px;
-    margin-bottom: 120px;
+    margin-bottom: clamp(231px, calc(238px - (100vw - 997px) * 7 / 457), 238px);
 }
 
 .hero-decor {
     position: absolute;
-    left: 273px;
-    top: 238px;
+    left: clamp(222px, calc(222px + (100vw - 997px) * 108 / 457), 330px);
+    top: clamp(240px, calc(422px - (100vw - 997px) * 182 / 457), 422px);
     z-index: 0;
     width: 56px;
-    height: 487px;
+    height: 532px;
     pointer-events: none;
 }
 
@@ -409,7 +415,7 @@ export default {
     left: 35px;
     top: 0;
     width: 2px;
-    height: 488px;
+    height: clamp(302px, calc(302px + (100vw - 997px) * 186 / 457), 488px);
     background: var(--brand);
     transition: height 0.45s ease, top 0.45s ease;
 }
@@ -417,7 +423,8 @@ export default {
 .hero-decor-arrow {
     position: absolute;
     left: 1px;
-    bottom: 0;
+    top: clamp(295px, calc(295px + (100vw - 997px) * 186 / 457), 481px);
+    bottom: auto;
     width: 54px;
     height: 43px;
     border-left: 2px solid var(--brand);
@@ -428,17 +435,17 @@ export default {
 .portfolio-main:has(.project--featured:hover) .hero-decor-line,
 .portfolio-main:has(.project--featured:focus-within) .hero-decor-line {
     top: 0;
-    height: 455px;
+    height: clamp(269px, calc(269px + (100vw - 997px) * 186 / 457), 455px);
 }
 
 .portfolio-main:has(.project--featured:hover) .hero-decor-arrow,
 .portfolio-main:has(.project--featured:focus-within) .hero-decor-arrow {
-    bottom: 41px;
+    top: clamp(262px, calc(262px + (100vw - 997px) * 186 / 457), 448px);
 }
 
 .hero-intro {
-    max-width: 877px;
-    margin: 100px 0 0 371px;
+    max-width: clamp(754px, calc(798px - (100vw - 997px) * 44 / 457), 798px);
+    margin: clamp(98px, calc(98px + (100vw - 997px) * 24 / 457), 122px) 0 0 clamp(0px, calc((100vw - 997px) * 288 / 457), 288px);
     font-family: 'Fira Code', monospace;
     font-size: 22px;
     font-style: normal;
@@ -453,15 +460,15 @@ export default {
 }
 
 .cta-button {
-    position: absolute;
-    right: 0;
-    top: 200px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    margin-top: 90px;
+    margin-left: clamp(565px, calc(565px + (100vw - 997px) * 192 / 457), 757px);
     padding: 12px 24px;
-    min-width: 250px;
-    height: 60px;
+    width: 233px;
+    min-width: 0;
+    height: 57px;
     border-radius: 100px;
     background: var(--brand);
     font-family: 'Fira Code', monospace;
@@ -487,23 +494,29 @@ export default {
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 120px;
+    gap: 0;
 }
 
 .project {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 842px;
+    max-width: 798px;
 }
 
 .project--featured {
-    max-width: 842px;
+    max-width: 798px;
 }
 
 .project--offset {
-    max-width: 842px;
-    transform: translate3d(452px, 0, 0);
+    max-width: 798px;
+    margin-top: clamp(120px, calc(120px + (100vw - 997px) * 20 / 457), 140px);
+    transform: translate3d(clamp(0px, calc((100vw - 997px) * 376 / 457), 376px), 0, 0);
+}
+
+.project:last-child {
+    max-width: clamp(798px, calc(798px + (100vw - 997px) * 80 / 457), 878px);
+    margin-top: clamp(120px, calc(120px + (100vw - 997px) * 88 / 457), 208px);
 }
 
 .project-image-link {
@@ -517,11 +530,23 @@ export default {
     position: relative;
     z-index: 1;
     width: 100%;
-    height: auto;
     display: block;
     border-radius: 12px;
     background: #fff;
+    object-fit: cover;
     transition: border-radius 0.45s ease;
+}
+
+.project--featured .project-image {
+    height: clamp(449px, calc(450px - (100vw - 997px) * 1 / 457), 450px);
+}
+
+.project--offset .project-image {
+    height: 510px;
+}
+
+.project:last-child .project-image {
+    height: clamp(403px, calc(403px + (100vw - 997px) * 41 / 457), 444px);
 }
 
 .project:hover .project-image,
@@ -531,8 +556,8 @@ export default {
 
 .project-caption {
     position: relative;
-    margin-top: 12px;
-    padding-right: 72px;
+    margin-top: clamp(28px, calc(32px - (100vw - 997px) * 4 / 457), 32px);
+    padding-right: 0;
 }
 
 .project-title {
@@ -557,11 +582,11 @@ export default {
 }
 
 .project-description {
-    margin: 16px 0 0;
+    margin: 20px 0 0;
     font-family: 'Fira Code', monospace;
     font-size: 16px;
     font-weight: 400;
-    line-height: 26px;
+    line-height: clamp(25px, calc(25px + (100vw - 997px) / 457), 26px);
     color: var(--muted);
 }
 
@@ -579,8 +604,8 @@ export default {
 .about {
     position: relative;
     width: 100%;
-    margin-top: 414px;
-    padding: 80px 0 138px;
+    margin-top: clamp(350px, calc(350px + (100vw - 997px) * 64 / 457), 414px);
+    padding: 80px 0 clamp(90px, calc(90px + (100vw - 997px) * 90 / 457), 180px);
     background: var(--about-bg);
     box-sizing: border-box;
     overflow: visible;
@@ -588,11 +613,11 @@ export default {
 
 .about-inner {
     display: grid;
-    grid-template-columns: 348px 1fr;
+    grid-template-columns: clamp(345px, calc(345px + (100vw - 997px) * 46 / 457), 391px) 1fr;
     gap: 0;
-    max-width: var(--page-max);
+    max-width: clamp(800px, calc(800px + (100vw - 997px) * 157 / 457), 957px);
     margin: 0 auto;
-    padding: 0 var(--page-pad);
+    padding: 0;
     box-sizing: border-box;
     align-items: start;
 }
@@ -600,16 +625,18 @@ export default {
 .about-photo-column {
     display: flex;
     flex-direction: column;
+    padding-left: clamp(32px, calc(32px + (100vw - 997px) * 2 / 457), 34px);
+    box-sizing: border-box;
 }
 
 .about-line {
     position: absolute;
-    left: calc((100vw - min(100vw, var(--page-max))) / 2 + 128px);
-    top: -274px;
+    left: calc((100vw - clamp(800px, calc(800px + (100vw - 997px) * 157 / 457), 957px)) / 2 + clamp(0px, calc((100vw - 997px) * 2 / 457), 2px));
+    top: clamp(-274px, calc(-219px - (100vw - 997px) * 55 / 457), -219px);
     z-index: 1;
     display: block;
     width: 0;
-    height: 477px;
+    height: clamp(421px, calc(421px + (100vw - 997px) * 56 / 457), 477px);
     border-left: 2px solid var(--brand);
     pointer-events: none;
 }
@@ -617,8 +644,8 @@ export default {
 .about-photo {
     position: relative;
     z-index: 1;
-    width: 348px;
-    height: 498px;
+    width: clamp(281px, calc(281px + (100vw - 997px) * 12 / 457), 293px);
+    height: clamp(402px, calc(402px + (100vw - 997px) * 18 / 457), 420px);
     border-radius: 12px;
     object-fit: cover;
     display: block;
@@ -634,7 +661,7 @@ export default {
     display: flex;
     align-items: center;
     gap: 4px;
-    margin: 30px 0 0;
+    margin: 64px 0 0 clamp(-20px, calc(-20px - (100vw - 997px) * 12 / 457), -32px);
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 18px;
     line-height: 27px;
@@ -646,11 +673,11 @@ export default {
 }
 
 .about-text-column {
-    padding-top: 72px;
+    padding-top: 100px;
 }
 
 .about-heading {
-    margin: 0 0 64px 32px;
+    margin: 0 0 64px;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -660,12 +687,12 @@ export default {
 }
 
 .about-bio {
-    margin: 0 0 0 64px;
-    max-width: 601px;
+    margin: 0;
+    max-width: clamp(455px, calc(455px + (100vw - 997px) * 111 / 457), 566px);
     font-family: 'Fira Code', monospace;
     font-size: 16px;
     font-weight: 400;
-    line-height: 26px;
+    line-height: clamp(25px, calc(25px + (100vw - 997px) / 457), 26px);
     color: var(--text);
 }
 
@@ -679,11 +706,12 @@ export default {
 
 .site-footer {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: center;
     gap: 20px;
-    height: 138px;
-    padding-bottom: 54px;
+    height: 120px;
+    padding-top: 54px;
+    padding-bottom: 0;
     box-sizing: border-box;
     background: #fff;
 }
@@ -707,30 +735,47 @@ export default {
 
 .footer-divider {
     width: 1px;
-    height: 30px;
+    height: 21px;
     background: var(--muted);
 }
 
-/* ≥1454px: Final content artboard spacing (1454×4309) */
+/* ≥1454px: Final content artboard spacing */
 @media (min-width: 1454px) {
     .hero-decor {
-        left: 273px;
-        top: 109px;
+        left: 330px;
+        top: 240px;
+    }
+
+    .hero-decor-line {
+        height: 488px;
+    }
+
+    .hero-decor-arrow {
+        top: 481px;
+    }
+
+    .portfolio-main:has(.project--featured:hover) .hero-decor-line,
+    .portfolio-main:has(.project--featured:focus-within) .hero-decor-line {
+        height: 455px;
+    }
+
+    .portfolio-main:has(.project--featured:hover) .hero-decor-arrow,
+    .portfolio-main:has(.project--featured:focus-within) .hero-decor-arrow {
+        top: 448px;
     }
 
     .hero-intro {
-        margin: 111px 0 0 371px;
+        max-width: 754px;
+        margin: 122px 0 0 288px;
     }
 
     .hero {
-        min-height: 357px;
         margin-bottom: 231px;
     }
 
     .cta-button {
-        top: 300px;
-        left: 883px;
-        right: auto;
+        margin-top: 90px;
+        margin-left: 757px;
         width: 233px;
         min-width: 0;
         height: 57px;
@@ -740,23 +785,36 @@ export default {
         gap: 0;
     }
 
+    .project,
     .project--featured {
-        max-width: 842px;
+        max-width: 798px;
     }
 
     .project--offset {
-        max-width: 842px;
+        max-width: 798px;
         margin-top: 140px;
-        transform: translate3d(452px, 0, 0);
+        transform: translate3d(376px, 0, 0);
     }
 
     .project:last-child {
-        max-width: 842px;
-        margin-top: 144px;
+        max-width: 878px;
+        margin-top: 208px;
+    }
+
+    .project--featured .project-image {
+        height: 449px;
+    }
+
+    .project--offset .project-image {
+        height: 510px;
+    }
+
+    .project:last-child .project-image {
+        height: 444px;
     }
 
     .project-caption {
-        margin-top: 32px;
+        margin-top: 28px;
     }
 
     .project-description {
@@ -764,17 +822,17 @@ export default {
     }
 
     .about {
-        margin-top: 394px;
+        margin-top: 414px;
         padding: 80px 0 180px;
     }
 
     .about-inner {
-        grid-template-columns: 313px 1fr;
+        grid-template-columns: 391px 1fr;
+        max-width: 957px;
     }
 
     .about-photo-column {
-        margin-left: 0;
-        padding-left: 20px;
+        padding-left: 34px;
         box-sizing: border-box;
     }
 
@@ -789,23 +847,23 @@ export default {
     }
 
     .about-heading {
-        margin: 0 0 64px 64px;
+        margin: 0 0 64px;
     }
 
     .about-bio {
         max-width: 566px;
-        margin-left: 64px;
+        margin-left: 0;
     }
 
     .about-location {
         margin-top: 64px;
-        margin-left: -33.5px;
+        margin-left: -32px;
     }
 
     .site-footer {
         align-items: flex-start;
         padding-top: 54px;
-        padding-bottom: 63px;
+        padding-bottom: 0;
     }
 
     .footer-divider {
@@ -813,33 +871,129 @@ export default {
     }
 }
 
-/* Below 1447px: lose 1px of stagger margin per 1px of viewport width lost */
-@media (max-width: 1447px) {
-    .hero-intro {
-        margin-left: max(0px, calc(371px - (1447px - 100vw)));
-    }
-
-    .project--offset {
-        transform: translate3d(max(0px, calc(452px - (1447px - 100vw))), 0, 0);
-    }
-}
-
-/* ≤997px: nav trims; about photo shrinks 348→201 as viewport narrows to 768 */
+/* ≤997px: 997px artboard lock before tablet layout */
 @media (max-width: 997px) {
     .nav-link--work,
     .nav-link--about {
         display: none;
     }
 
+    .hero-decor {
+        left: 222px;
+        top: 422px;
+    }
+
+    .hero-decor-line {
+        height: 302px;
+    }
+
+    .hero-decor-arrow {
+        top: 295px;
+    }
+
+    .portfolio-main:has(.project--featured:hover) .hero-decor-line,
+    .portfolio-main:has(.project--featured:focus-within) .hero-decor-line {
+        height: 269px;
+    }
+
+    .portfolio-main:has(.project--featured:hover) .hero-decor-arrow,
+    .portfolio-main:has(.project--featured:focus-within) .hero-decor-arrow {
+        top: 262px;
+    }
+
+    .hero {
+        margin-bottom: 238px;
+    }
+
+    .hero-intro {
+        max-width: 798px;
+        margin: 98px 0 0;
+    }
+
+    .cta-button {
+        margin-top: 90px;
+        margin-left: 565px;
+    }
+
+    .project,
+    .project--featured,
+    .project--offset,
+    .project:last-child {
+        max-width: 798px;
+    }
+
+    .project--offset {
+        margin-top: 120px;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .project:last-child {
+        margin-top: 120px;
+    }
+
+    .project--featured .project-image {
+        height: 450px;
+    }
+
+    .project--offset .project-image {
+        height: 510px;
+    }
+
+    .project:last-child .project-image {
+        height: 403px;
+    }
+
+    .project-caption {
+        margin-top: 32px;
+    }
+
+    .project-description {
+        line-height: 25px;
+    }
+
+    .about {
+        margin-top: 350px;
+        padding: 80px 0 90px;
+    }
+
     .about-inner {
-        grid-template-columns: clamp(201px, calc(348px - (997px - 100vw) * 147 / 229), 348px) 1fr;
+        grid-template-columns: 345px 1fr;
+        max-width: 800px;
+        padding: 0;
+    }
+
+    .about-photo-column {
+        padding-left: 32px;
+    }
+
+    .about-line {
+        left: calc((100vw - 800px) / 2);
+        top: -219px;
+        height: 421px;
     }
 
     .about-photo,
     .about-photo--placeholder {
-        width: clamp(201px, calc(348px - (997px - 100vw) * 147 / 229), 348px);
-        height: auto;
-        aspect-ratio: 348 / 498;
+        width: 281px;
+        height: 402px;
+    }
+
+    .about-location {
+        margin: 64px 0 0 -20px;
+    }
+
+    .about-text-column {
+        padding-top: 100px;
+    }
+
+    .about-heading {
+        margin: 0 0 64px;
+    }
+
+    .about-bio {
+        max-width: 455px;
+        margin-left: 0;
+        line-height: 25px;
     }
 }
 
@@ -928,8 +1082,8 @@ export default {
     }
 
     .cta-button {
-        position: static;
-        margin-top: 32px;
+        margin-top: 90px;
+        margin-left: 0;
         min-width: 233px;
         width: fit-content;
         height: 57px;
@@ -937,6 +1091,26 @@ export default {
 
     .work {
         gap: 80px;
+    }
+
+    .project,
+    .project--featured,
+    .project--offset,
+    .project:last-child {
+        max-width: 100%;
+    }
+
+    .project--offset,
+    .project:last-child {
+        margin-top: 0;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .project-image,
+    .project--featured .project-image,
+    .project--offset .project-image,
+    .project:last-child .project-image {
+        height: auto;
     }
 
     .about {
@@ -952,6 +1126,14 @@ export default {
 
     .about-photo-column {
         align-items: flex-start;
+        padding-left: 0;
+    }
+
+    .about-photo,
+    .about-photo--placeholder {
+        width: 201px;
+        height: auto;
+        aspect-ratio: 348 / 498;
     }
 
     .about-line {
