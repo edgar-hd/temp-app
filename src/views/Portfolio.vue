@@ -2,10 +2,10 @@
     <div class="portfolio-page">
         <header class="top-bar">
             <div class="top-bar-inner">
-                <div class="top-bar-content">
+                <div ref="topBarContent" class="top-bar-content">
                     <router-link to="/" class="logo-block">
                         <img class="logo" :src="logo" alt="" />
-                        <span class="logo-name">TIM JUSTINA YEUNG</span>
+                        <span ref="logoName" class="logo-name">TIM JUSTINA YEUNG</span>
                     </router-link>
                     <button
                         type="button"
@@ -16,7 +16,7 @@
                     >
                         <span /><span /><span />
                     </button>
-                    <nav class="nav">
+                    <nav ref="nav" class="nav" :class="{ 'nav--compact': navCompact }">
                         <a href="#work" class="nav-link nav-link--stacked nav-link--work">
                             <span>Work</span>
                             <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
@@ -237,7 +237,43 @@ export default {
             aboutPhoto,
             menuHover,
             menuOpen: false,
+            navCompact: false,
+            fullNavWidth: null,
+            navGapObserver: null,
         }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            this.updateNavCompact()
+            if (this.$refs.topBarContent) {
+                this.navGapObserver = new ResizeObserver(() => this.updateNavCompact())
+                this.navGapObserver.observe(this.$refs.topBarContent)
+            }
+            document.fonts?.ready?.then(() => this.updateNavCompact())
+        })
+    },
+    beforeUnmount() {
+        this.navGapObserver?.disconnect()
+    },
+    methods: {
+        updateNavCompact() {
+            const content = this.$refs.topBarContent
+            const name = this.$refs.logoName
+            const nav = this.$refs.nav
+            if (!content || !name || !nav) return
+
+            if (!this.navCompact) {
+                this.fullNavWidth = nav.offsetWidth
+            }
+
+            const fullWidth = this.fullNavWidth ?? nav.offsetWidth
+            const contentRect = content.getBoundingClientRect()
+            const nameRect = name.getBoundingClientRect()
+            const gapIfFull =
+                contentRect.width - fullWidth - (nameRect.right - contentRect.left)
+
+            this.navCompact = gapIfFull < 312
+        },
     },
 }
 </script>
@@ -260,16 +296,6 @@ export default {
         var(--project-w),
         calc((798px + (100vw - 997px) * 80 / 457) * var(--project-scale)),
         calc(878px * var(--project-scale))
-    );
-    --project-offset: clamp(
-        0px,
-        calc((100vw - 997px) * 376 / 457 * var(--project-scale)),
-        calc(376px * var(--project-scale))
-    );
-    --work-span: max(
-        var(--project-w),
-        calc(var(--project-w) + var(--project-offset)),
-        var(--project-w-last)
     );
     --project-stack-gap: clamp(120px, calc(120px + (100vw - 997px) * 20 / 457), 140px);
 
@@ -307,7 +333,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     gap: 40px;
-    width: min(100%, var(--work-span));
+    width: 100%;
 }
 
 .menu-toggle {
@@ -417,6 +443,11 @@ export default {
 .nav-link--stacked:focus-visible .nav-indicator {
     opacity: 1;
     transform: translateX(-50%) scaleY(1);
+}
+
+.nav--compact .nav-link--work,
+.nav--compact .nav-link--about {
+    display: none;
 }
 
 .portfolio-main {
@@ -531,9 +562,6 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    width: min(100%, var(--work-span));
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .project {
@@ -552,7 +580,7 @@ export default {
     width: var(--project-w);
     max-width: 100%;
     margin-top: var(--project-stack-gap);
-    margin-left: var(--project-offset);
+    margin-left: auto;
 }
 
 .project:last-child {
@@ -917,11 +945,6 @@ export default {
 
 /* ≤997px: 997px artboard lock before tablet layout */
 @media (max-width: 997px) {
-    .nav-link--work,
-    .nav-link--about {
-        display: none;
-    }
-
     .hero-decor {
         left: 222px;
         top: 422px;
@@ -959,13 +982,8 @@ export default {
         margin-left: 565px;
     }
 
-    .work {
-        --project-offset: 0px;
-        width: min(100%, var(--work-span));
-    }
-
     .top-bar-content {
-        width: min(100%, var(--work-span));
+        width: 100%;
     }
 
     .project--offset {
@@ -1136,8 +1154,6 @@ export default {
     }
 
     .work {
-        --project-offset: 0px;
-        width: 100%;
         gap: 80px;
     }
 
@@ -1247,10 +1263,6 @@ export default {
 @media (max-width: 480px) {
     .top-bar-inner {
         padding: 0 24px;
-    }
-
-    .top-bar-content {
-        width: 100%;
     }
 
     .portfolio-main {
