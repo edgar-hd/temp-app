@@ -1,6 +1,6 @@
 <template>
     <div class="portfolio-page">
-        <header class="top-bar">
+        <header class="top-bar" :class="{ 'top-bar--hidden': topBarHidden }">
             <div class="top-bar-inner">
                 <div ref="topBarContent" class="top-bar-content">
                     <router-link to="/" class="logo-block">
@@ -240,9 +240,15 @@ export default {
             navCompact: false,
             fullNavWidth: null,
             navGapObserver: null,
+            topBarHidden: false,
+            lastScrollY: 0,
+            scrollTicking: false,
         }
     },
     mounted() {
+        this.lastScrollY = window.scrollY
+        window.addEventListener('scroll', this.onScroll, { passive: true })
+
         this.$nextTick(() => {
             this.updateNavCompact()
             if (this.$refs.topBarContent) {
@@ -253,9 +259,31 @@ export default {
         })
     },
     beforeUnmount() {
+        window.removeEventListener('scroll', this.onScroll)
         this.navGapObserver?.disconnect()
     },
     methods: {
+        onScroll() {
+            if (this.scrollTicking) return
+            this.scrollTicking = true
+
+            requestAnimationFrame(() => {
+                const y = window.scrollY
+                const delta = y - this.lastScrollY
+
+                if (y <= 0) {
+                    this.topBarHidden = false
+                } else if (delta > 5 && y > 120) {
+                    this.topBarHidden = true
+                    this.menuOpen = false
+                } else if (delta < -5) {
+                    this.topBarHidden = false
+                }
+
+                this.lastScrollY = y
+                this.scrollTicking = false
+            })
+        },
         updateNavCompact() {
             const content = this.$refs.topBarContent
             const name = this.$refs.logoName
@@ -290,13 +318,7 @@ export default {
     --about-bg: #f4f2f1;
     --page-max: 1454px;
     --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
-    --project-scale: 0.75;
-    --project-w: calc(798px * var(--project-scale));
-    --project-w-last: clamp(
-        var(--project-w),
-        calc((798px + (100vw - 997px) * 80 / 457) * var(--project-scale)),
-        calc(878px * var(--project-scale))
-    );
+    --project-w: 680px;
     --project-stack-gap: clamp(120px, calc(120px + (100vw - 997px) * 20 / 457), 140px);
 
     position: relative;
@@ -314,6 +336,12 @@ export default {
     z-index: 100;
     width: 100%;
     background: #fff;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.top-bar--hidden {
+    transform: translateY(-100%);
 }
 
 .top-bar-inner {
@@ -584,7 +612,7 @@ export default {
 }
 
 .project:last-child {
-    width: var(--project-w-last);
+    width: var(--project-w);
     max-width: 100%;
     margin-top: var(--project-stack-gap);
 }
@@ -599,32 +627,13 @@ export default {
 .project-image {
     position: relative;
     z-index: 1;
-    width: 100%;
+    width: var(--project-w);
+    max-width: 100%;
+    height: auto;
     display: block;
     border-radius: 12px;
     background: #fff;
-    object-fit: cover;
     transition: border-radius 0.45s ease;
-}
-
-.project--featured .project-image {
-    height: clamp(
-        calc(449px * var(--project-scale)),
-        calc((450px - (100vw - 997px) * 1 / 457) * var(--project-scale)),
-        calc(450px * var(--project-scale))
-    );
-}
-
-.project--offset .project-image {
-    height: calc(510px * var(--project-scale));
-}
-
-.project:last-child .project-image {
-    height: clamp(
-        calc(403px * var(--project-scale)),
-        calc((403px + (100vw - 997px) * 41 / 457) * var(--project-scale)),
-        calc(444px * var(--project-scale))
-    );
 }
 
 .project:hover .project-image,
@@ -648,9 +657,9 @@ export default {
     min-width: 0;
     margin: 0;
     font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
-    line-height: 30px;
+    line-height: 27px;
     color: var(--title);
     transition: color 0.25s ease;
 }
@@ -873,18 +882,6 @@ export default {
         margin-top: 140px;
     }
 
-    .project--featured .project-image {
-        height: calc(449px * var(--project-scale));
-    }
-
-    .project--offset .project-image {
-        height: calc(510px * var(--project-scale));
-    }
-
-    .project:last-child .project-image {
-        height: calc(444px * var(--project-scale));
-    }
-
     .project-caption {
         margin-top: 28px;
     }
@@ -993,18 +990,6 @@ export default {
 
     .project:last-child {
         margin-top: 120px;
-    }
-
-    .project--featured .project-image {
-        height: calc(450px * var(--project-scale));
-    }
-
-    .project--offset .project-image {
-        height: calc(510px * var(--project-scale));
-    }
-
-    .project:last-child .project-image {
-        height: calc(403px * var(--project-scale));
     }
 
     .project-caption {
