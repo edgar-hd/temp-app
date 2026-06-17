@@ -2,42 +2,44 @@
     <div class="portfolio-page">
         <header class="top-bar">
             <div class="top-bar-inner">
-                <router-link to="/" class="logo-block">
-                    <img class="logo" :src="logo" alt="" />
-                    <span class="logo-name">TIM JUSTINA YEUNG</span>
-                </router-link>
-                <button
-                    type="button"
-                    class="menu-toggle"
-                    aria-label="Open menu"
-                    :aria-expanded="menuOpen"
-                    @click="menuOpen = !menuOpen"
-                >
-                    <span /><span /><span />
-                </button>
-                <nav class="nav">
-                    <a href="#work" class="nav-link nav-link--stacked nav-link--work">
-                        <span>Work</span>
-                        <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
-                    </a>
-                    <a href="#about" class="nav-link nav-link--stacked nav-link--about">
-                        <span>About</span>
-                        <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/in/timjustinayeung"
-                        class="nav-link nav-link--stacked"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                <div class="top-bar-content">
+                    <router-link to="/" class="logo-block">
+                        <img class="logo" :src="logo" alt="" />
+                        <span class="logo-name">TIM JUSTINA YEUNG</span>
+                    </router-link>
+                    <button
+                        type="button"
+                        class="menu-toggle"
+                        aria-label="Open menu"
+                        :aria-expanded="menuOpen"
+                        @click="menuOpen = !menuOpen"
                     >
-                        <span>Linkedin</span>
-                        <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
-                    </a>
-                    <a href="#" class="nav-link nav-link--stacked">
-                        <span>CV</span>
-                        <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
-                    </a>
-                </nav>
+                        <span /><span /><span />
+                    </button>
+                    <nav class="nav">
+                        <a href="#work" class="nav-link nav-link--stacked nav-link--work">
+                            <span>Work</span>
+                            <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
+                        </a>
+                        <a href="#about" class="nav-link nav-link--stacked nav-link--about">
+                            <span>About</span>
+                            <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/timjustinayeung"
+                            class="nav-link nav-link--stacked"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span>Linkedin</span>
+                            <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
+                        </a>
+                        <a href="#" class="nav-link nav-link--stacked">
+                            <span>CV</span>
+                            <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
+                        </a>
+                    </nav>
+                </div>
             </div>
         </header>
 
@@ -90,16 +92,18 @@
                         />
                     </router-link>
                     <div class="project-caption">
-                        <h2 class="project-title">
-                            <router-link to="/project/MedicationDashboard" class="project-title-link">
-                                IoT Adherence Analytics for Caregivers: Dashboard Design
-                            </router-link>
-                        </h2>
+                        <div class="project-caption-header">
+                            <h2 class="project-title">
+                                <router-link to="/project/MedicationDashboard" class="project-title-link">
+                                    IoT Adherence Analytics for Caregivers: Dashboard Design
+                                </router-link>
+                            </h2>
+                            <span class="project-year">2026</span>
+                        </div>
                         <p class="project-description">
                             0‑to‑1 design of a caregiver‑facing dashboard for a primary user's account,
                             helping caregivers better understand their client's needs
                         </p>
-                        <span class="project-year">2026</span>
                     </div>
                 </article>
 
@@ -112,16 +116,18 @@
                         />
                     </router-link>
                     <div class="project-caption">
-                        <h2 class="project-title">
-                            <router-link to="/project/MultiplatformSolution" class="project-title-link">
-                                Home Medication Solution: IoT Multiplatform Design
-                            </router-link>
-                        </h2>
+                        <div class="project-caption-header">
+                            <h2 class="project-title">
+                                <router-link to="/project/MultiplatformSolution" class="project-title-link">
+                                    Home Medication Solution: IoT Multiplatform Design
+                                </router-link>
+                            </h2>
+                            <span class="project-year">2024</span>
+                        </div>
                         <p class="project-description">
                             Redesigned workflows, human-machine interface, web + mobile app features of an IoT
                             medication adherence platform
                         </p>
-                        <span class="project-year">2024</span>
                     </div>
                 </article>
 
@@ -134,15 +140,17 @@
                         />
                     </router-link>
                     <div class="project-caption">
-                        <h2 class="project-title">
-                            <router-link to="/project/art-curation" class="project-title-link">
-                                Art Curation and Marketplace: Mobile App Design
-                            </router-link>
-                        </h2>
+                        <div class="project-caption-header">
+                            <h2 class="project-title">
+                                <router-link to="/project/art-curation" class="project-title-link">
+                                    Art Curation and Marketplace: Mobile App Design
+                                </router-link>
+                            </h2>
+                            <span class="project-year">2019</span>
+                        </div>
                         <p class="project-description">
                             0-to-1 design of a mobile-first peer-to-peer marketplace where users can curate, buy and sell artworks
                         </p>
-                        <span class="project-year">2019</span>
                     </div>
                 </article>
             </section>
@@ -246,6 +254,24 @@ export default {
     --about-bg: #f4f2f1;
     --page-max: 1454px;
     --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
+    --project-scale: 0.75;
+    --project-w: calc(798px * var(--project-scale));
+    --project-w-last: clamp(
+        var(--project-w),
+        calc((798px + (100vw - 997px) * 80 / 457) * var(--project-scale)),
+        calc(878px * var(--project-scale))
+    );
+    --project-offset: clamp(
+        0px,
+        calc((100vw - 997px) * 376 / 457 * var(--project-scale)),
+        calc(376px * var(--project-scale))
+    );
+    --work-span: max(
+        var(--project-w),
+        calc(var(--project-w) + var(--project-offset)),
+        var(--project-w-last)
+    );
+    --project-stack-gap: clamp(120px, calc(120px + (100vw - 997px) * 20 / 457), 140px);
 
     position: relative;
     width: 100%;
@@ -267,14 +293,21 @@ export default {
 .top-bar-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+    justify-content: center;
     width: 100%;
     max-width: var(--page-max);
     height: 120px;
     margin: 0 auto;
     padding: 0 var(--page-pad);
     box-sizing: border-box;
+}
+
+.top-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: min(100%, var(--work-span));
 }
 
 .menu-toggle {
@@ -355,7 +388,7 @@ export default {
 
 .nav-link--stacked:hover,
 .nav-link--stacked:focus-visible {
-    height: 45px;
+    height: 35px;
     overflow: visible;
 }
 
@@ -367,7 +400,7 @@ export default {
 
 .nav-indicator {
     position: absolute;
-    top: 35px;
+    top: 25px;
     left: 50%;
     display: block;
     width: 16px;
@@ -451,7 +484,9 @@ export default {
     font-style: normal;
     font-weight: 400;
     line-height: 33px;
+    letter-spacing: 0;
     color: var(--muted);
+    font-synthesis: none;
 }
 
 .hero-intro-em {
@@ -494,29 +529,36 @@ export default {
     z-index: 1;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 0;
+    width: min(100%, var(--work-span));
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .project {
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: 798px;
+    width: var(--project-w);
+    max-width: 100%;
 }
 
 .project--featured {
-    max-width: 798px;
+    width: var(--project-w);
+    max-width: 100%;
 }
 
 .project--offset {
-    max-width: 798px;
-    margin-top: clamp(120px, calc(120px + (100vw - 997px) * 20 / 457), 140px);
-    transform: translate3d(clamp(0px, calc((100vw - 997px) * 376 / 457), 376px), 0, 0);
+    width: var(--project-w);
+    max-width: 100%;
+    margin-top: var(--project-stack-gap);
+    margin-left: var(--project-offset);
 }
 
 .project:last-child {
-    max-width: clamp(798px, calc(798px + (100vw - 997px) * 80 / 457), 878px);
-    margin-top: clamp(120px, calc(120px + (100vw - 997px) * 88 / 457), 208px);
+    width: var(--project-w-last);
+    max-width: 100%;
+    margin-top: var(--project-stack-gap);
 }
 
 .project-image-link {
@@ -538,15 +580,23 @@ export default {
 }
 
 .project--featured .project-image {
-    height: clamp(449px, calc(450px - (100vw - 997px) * 1 / 457), 450px);
+    height: clamp(
+        calc(449px * var(--project-scale)),
+        calc((450px - (100vw - 997px) * 1 / 457) * var(--project-scale)),
+        calc(450px * var(--project-scale))
+    );
 }
 
 .project--offset .project-image {
-    height: 510px;
+    height: calc(510px * var(--project-scale));
 }
 
 .project:last-child .project-image {
-    height: clamp(403px, calc(403px + (100vw - 997px) * 41 / 457), 444px);
+    height: clamp(
+        calc(403px * var(--project-scale)),
+        calc((403px + (100vw - 997px) * 41 / 457) * var(--project-scale)),
+        calc(444px * var(--project-scale))
+    );
 }
 
 .project:hover .project-image,
@@ -557,10 +607,17 @@ export default {
 .project-caption {
     position: relative;
     margin-top: clamp(28px, calc(32px - (100vw - 997px) * 4 / 457), 32px);
-    padding-right: 0;
+}
+
+.project-caption-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
 }
 
 .project-title {
+    flex: 1;
+    min-width: 0;
     margin: 0;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 20px;
@@ -591,9 +648,7 @@ export default {
 }
 
 .project-year {
-    position: absolute;
-    top: 0;
-    right: 0;
+    flex-shrink: 0;
     font-family: 'Fira Code', monospace;
     font-size: 20px;
     font-weight: 500;
@@ -785,32 +840,21 @@ export default {
         gap: 0;
     }
 
-    .project,
-    .project--featured {
-        max-width: 798px;
-    }
-
-    .project--offset {
-        max-width: 798px;
-        margin-top: 140px;
-        transform: translate3d(376px, 0, 0);
-    }
-
+    .project--offset,
     .project:last-child {
-        max-width: 878px;
-        margin-top: 208px;
+        margin-top: 140px;
     }
 
     .project--featured .project-image {
-        height: 449px;
+        height: calc(449px * var(--project-scale));
     }
 
     .project--offset .project-image {
-        height: 510px;
+        height: calc(510px * var(--project-scale));
     }
 
     .project:last-child .project-image {
-        height: 444px;
+        height: calc(444px * var(--project-scale));
     }
 
     .project-caption {
@@ -915,16 +959,18 @@ export default {
         margin-left: 565px;
     }
 
-    .project,
-    .project--featured,
-    .project--offset,
-    .project:last-child {
-        max-width: 798px;
+    .work {
+        --project-offset: 0px;
+        width: min(100%, var(--work-span));
+    }
+
+    .top-bar-content {
+        width: min(100%, var(--work-span));
     }
 
     .project--offset {
         margin-top: 120px;
-        transform: translate3d(0, 0, 0);
+        margin-left: 0;
     }
 
     .project:last-child {
@@ -932,15 +978,15 @@ export default {
     }
 
     .project--featured .project-image {
-        height: 450px;
+        height: calc(450px * var(--project-scale));
     }
 
     .project--offset .project-image {
-        height: 510px;
+        height: calc(510px * var(--project-scale));
     }
 
     .project:last-child .project-image {
-        height: 403px;
+        height: calc(403px * var(--project-scale));
     }
 
     .project-caption {
@@ -1090,20 +1136,27 @@ export default {
     }
 
     .work {
+        --project-offset: 0px;
+        width: 100%;
         gap: 80px;
+    }
+
+    .top-bar-content {
+        width: 100%;
     }
 
     .project,
     .project--featured,
     .project--offset,
     .project:last-child {
+        width: 100%;
         max-width: 100%;
     }
 
     .project--offset,
     .project:last-child {
         margin-top: 0;
-        transform: translate3d(0, 0, 0);
+        margin-left: 0;
     }
 
     .project-image,
@@ -1194,6 +1247,10 @@ export default {
 @media (max-width: 480px) {
     .top-bar-inner {
         padding: 0 24px;
+    }
+
+    .top-bar-content {
+        width: 100%;
     }
 
     .portfolio-main {
