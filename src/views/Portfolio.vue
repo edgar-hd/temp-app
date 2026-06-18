@@ -1,71 +1,6 @@
 <template>
     <div class="portfolio-page">
-        <header class="top-bar" :class="{ 'top-bar--hidden': topBarHidden }">
-            <div class="top-bar-inner">
-                <div ref="topBarContent" class="top-bar-content">
-                    <router-link to="/" class="logo-block">
-                        <img class="logo" :src="logo" alt="" />
-                        <span ref="logoName" class="logo-name">TIM JUSTINA YEUNG</span>
-                    </router-link>
-                    <button
-                        type="button"
-                        class="menu-toggle"
-                        aria-label="Open menu"
-                        :aria-expanded="menuOpen"
-                        @click="menuOpen = !menuOpen"
-                    >
-                        <span /><span /><span />
-                    </button>
-                    <nav ref="nav" class="nav" :class="{ 'nav--compact': navCompact }">
-                        <a href="#work" class="nav-link nav-link--stacked nav-link--work">
-                            <span>Work</span>
-                            <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
-                        </a>
-                        <a href="#about" class="nav-link nav-link--stacked nav-link--about">
-                            <span>About</span>
-                            <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/timjustinayeung"
-                            class="nav-link nav-link--stacked"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <span>Linkedin</span>
-                            <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
-                        </a>
-                        <a href="#" class="nav-link nav-link--stacked">
-                            <span>CV</span>
-                            <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
-                        </a>
-                    </nav>
-                </div>
-            </div>
-        </header>
-
-        <nav
-            class="mobile-nav"
-            :class="{ 'mobile-nav--open': menuOpen }"
-            aria-label="Mobile navigation"
-        >
-            <a href="#work" class="mobile-nav-link" @click="menuOpen = false">Work</a>
-            <a href="#about" class="mobile-nav-link" @click="menuOpen = false">About</a>
-            <a
-                href="https://www.linkedin.com/in/timjustinayeung"
-                class="mobile-nav-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                @click="menuOpen = false"
-            >Linkedin</a>
-            <a href="#" class="mobile-nav-link" @click="menuOpen = false">CV</a>
-        </nav>
-
-        <div
-            v-if="menuOpen"
-            class="mobile-nav-backdrop"
-            aria-hidden="true"
-            @click="menuOpen = false"
-        />
+        <PortfolioTopBar />
 
         <main class="portfolio-main">
             <div class="hero-decor" aria-hidden="true">
@@ -83,7 +18,7 @@
             </section>
 
             <section id="work" class="work">
-                <article class="project project--featured">
+                <article id="work-first" class="project project--featured">
                     <router-link to="/project/MedicationDashboard" class="project-image-link">
                         <img
                             class="project-image"
@@ -168,13 +103,15 @@
                     />
                     <div v-else class="about-photo about-photo--placeholder" />
                     <p class="about-location">
-                        <svg class="about-location-icon" width="13" height="20" viewBox="0 0 13 20" fill="none" aria-hidden="true">
-                            <path
-                                d="M6.5 0C2.91 0 0 2.91 0 6.5C0 11.38 6.5 20 6.5 20S13 11.38 13 6.5C13 2.91 10.09 0 6.5 0ZM6.5 8.75C5.26 8.75 4.25 7.74 4.25 6.5C4.25 5.26 5.26 4.25 6.5 4.25C7.74 4.25 8.75 5.26 8.75 6.5C8.75 7.74 7.74 8.75 6.5 8.75Z"
-                                fill="#928A81"
-                            />
-                        </svg>
-                        London / Barcelona
+                        <span class="about-location-icon-wrap" aria-hidden="true">
+                            <svg class="about-location-icon" width="13" height="20" viewBox="0 0 13 20" fill="none">
+                                <path
+                                    d="M6.5 0C2.91 0 0 2.91 0 6.5C0 11.38 6.5 20 6.5 20S13 11.38 13 6.5C13 2.91 10.09 0 6.5 0ZM6.5 8.75C5.26 8.75 4.25 7.74 4.25 6.5C4.25 5.26 5.26 4.25 6.5 4.25C7.74 4.25 8.75 5.26 8.75 6.5C8.75 7.74 7.74 8.75 6.5 8.75Z"
+                                    fill="#928A81"
+                                />
+                            </svg>
+                        </span>
+                        <span class="about-location-text">London / Barcelona</span>
                     </p>
                 </div>
                 <div class="about-text-column">
@@ -219,89 +156,22 @@
 </template>
 
 <script>
-import logo from '../assets/TjyCutoutLogo.svg'
 import dashboardHero from '../assets/medication-dashboard/0_dashboard_hero.jpg'
 import kinThumbnail from '../assets/shot1.png'
 import artThumbnail from '../assets/shot1.png'
 import aboutPhoto from '../assets/portrait.jpg'
-import menuHover from '../assets/menu_hover.svg'
+import PortfolioTopBar from '../components/PortfolioTopBar.vue'
 
 export default {
     name: 'Portfolio',
+    components: { PortfolioTopBar },
     data() {
         return {
-            logo,
             dashboardHero,
             kinThumbnail,
             artThumbnail,
             aboutPhoto,
-            menuHover,
-            menuOpen: false,
-            navCompact: false,
-            fullNavWidth: null,
-            navGapObserver: null,
-            topBarHidden: false,
-            lastScrollY: 0,
-            scrollTicking: false,
         }
-    },
-    mounted() {
-        this.lastScrollY = window.scrollY
-        window.addEventListener('scroll', this.onScroll, { passive: true })
-
-        this.$nextTick(() => {
-            this.updateNavCompact()
-            if (this.$refs.topBarContent) {
-                this.navGapObserver = new ResizeObserver(() => this.updateNavCompact())
-                this.navGapObserver.observe(this.$refs.topBarContent)
-            }
-            document.fonts?.ready?.then(() => this.updateNavCompact())
-        })
-    },
-    beforeUnmount() {
-        window.removeEventListener('scroll', this.onScroll)
-        this.navGapObserver?.disconnect()
-    },
-    methods: {
-        onScroll() {
-            if (this.scrollTicking) return
-            this.scrollTicking = true
-
-            requestAnimationFrame(() => {
-                const y = window.scrollY
-                const delta = y - this.lastScrollY
-
-                if (y <= 0) {
-                    this.topBarHidden = false
-                } else if (delta > 5 && y > 120) {
-                    this.topBarHidden = true
-                    this.menuOpen = false
-                } else if (delta < -5) {
-                    this.topBarHidden = false
-                }
-
-                this.lastScrollY = y
-                this.scrollTicking = false
-            })
-        },
-        updateNavCompact() {
-            const content = this.$refs.topBarContent
-            const name = this.$refs.logoName
-            const nav = this.$refs.nav
-            if (!content || !name || !nav) return
-
-            if (!this.navCompact) {
-                this.fullNavWidth = nav.offsetWidth
-            }
-
-            const fullWidth = this.fullNavWidth ?? nav.offsetWidth
-            const contentRect = content.getBoundingClientRect()
-            const nameRect = name.getBoundingClientRect()
-            const gapIfFull =
-                contentRect.width - fullWidth - (nameRect.right - contentRect.left)
-
-            this.navCompact = gapIfFull < 312
-        },
     },
 }
 </script>
@@ -316,6 +186,7 @@ export default {
     --title: #4d4d4d;
     --about-muted: #928a81;
     --about-bg: #f4f2f1;
+    --font-weight-scale: 0.98;
     --page-max: 1454px;
     --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
     --project-w: 680px;
@@ -326,156 +197,6 @@ export default {
     min-height: 100vh;
     background: #fff;
     color: var(--text);
-}
-
-.top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    width: 100%;
-    background: #fff;
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-}
-
-.top-bar--hidden {
-    transform: translateY(-100%);
-}
-
-.top-bar-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: var(--page-max);
-    height: 120px;
-    margin: 0 auto;
-    padding: 0 var(--page-pad);
-    box-sizing: border-box;
-}
-
-.top-bar-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    width: 100%;
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    width: 31px;
-    height: 27px;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 31px;
-    height: 2px;
-    background: var(--brand);
-}
-
-.mobile-nav {
-    display: none;
-}
-
-.mobile-nav-backdrop {
-    display: none;
-}
-
-.logo-block {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    text-decoration: none;
-    color: inherit;
-}
-
-.logo {
-    width: 87px;
-    height: 46px;
-    flex-shrink: 0;
-}
-
-.logo-name {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 27px;
-    color: var(--brand);
-}
-
-.nav {
-    display: flex;
-    align-items: flex-end;
-    gap: 40px;
-    height: 45px;
-}
-
-.nav-link {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 27px;
-    color: var(--brand);
-    text-decoration: none;
-}
-
-.nav-link--stacked {
-    position: relative;
-    display: block;
-    height: 27px;
-    padding: 0;
-    overflow: hidden;
-    transform-origin: bottom center;
-    transition: height 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.nav-link--stacked:hover,
-.nav-link--stacked:focus-visible {
-    height: 35px;
-    overflow: visible;
-}
-
-.nav-link--stacked > span:first-child {
-    display: block;
-    height: 27px;
-    line-height: 27px;
-}
-
-.nav-indicator {
-    position: absolute;
-    top: 25px;
-    left: 50%;
-    display: block;
-    width: 16px;
-    height: 8px;
-    opacity: 0;
-    transform: translateX(-50%) scaleY(0);
-    transform-origin: top center;
-    transition:
-        opacity 0.22s ease,
-        transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.nav-link--stacked:hover .nav-indicator,
-.nav-link--stacked:focus-visible .nav-indicator {
-    opacity: 1;
-    transform: translateX(-50%) scaleY(1);
-}
-
-.nav--compact .nav-link--work,
-.nav--compact .nav-link--about {
-    display: none;
 }
 
 .portfolio-main {
@@ -541,7 +262,7 @@ export default {
     font-family: 'Fira Code', monospace;
     font-size: 22px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: calc(400 * var(--font-weight-scale));
     line-height: 33px;
     letter-spacing: 0;
     color: var(--muted);
@@ -550,7 +271,7 @@ export default {
 
 .hero-intro-em {
     color: var(--brand);
-    font-weight: 600;
+    font-weight: calc(600 * var(--font-weight-scale));
 }
 
 .cta-button {
@@ -567,7 +288,7 @@ export default {
     background: var(--brand);
     font-family: 'Fira Code', monospace;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: calc(500 * var(--font-weight-scale));
     line-height: 33px;
     color: #fff;
     text-decoration: none;
@@ -602,6 +323,7 @@ export default {
 .project--featured {
     width: var(--project-w);
     max-width: 100%;
+    scroll-margin-top: 120px;
 }
 
 .project--offset {
@@ -658,7 +380,7 @@ export default {
     margin: 0;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: calc(500 * var(--font-weight-scale));
     line-height: 27px;
     color: var(--title);
     transition: color 0.25s ease;
@@ -679,7 +401,7 @@ export default {
     margin: 20px 0 0;
     font-family: 'Fira Code', monospace;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: calc(400 * var(--font-weight-scale));
     line-height: clamp(25px, calc(25px + (100vw - 997px) / 457), 26px);
     color: var(--muted);
 }
@@ -688,7 +410,7 @@ export default {
     flex-shrink: 0;
     font-family: 'Fira Code', monospace;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: calc(500 * var(--font-weight-scale));
     line-height: 30px;
     color: var(--muted);
 }
@@ -751,17 +473,44 @@ export default {
     position: relative;
     z-index: 1;
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 4px;
-    margin: 64px 0 0 clamp(-20px, calc(-20px - (100vw - 997px) * 12 / 457), -32px);
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 18px;
-    line-height: 27px;
-    color: var(--about-muted);
+    width: 208px;
+    height: 30px;
+    margin: 64px 0 0 clamp(-20px, calc(-20px - (100vw - 997px) * 14 / 457), -34px);
+    padding: 0;
+    box-sizing: border-box;
+    flex: none;
+}
+
+.about-location-icon-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    flex: none;
 }
 
 .about-location-icon {
-    flex-shrink: 0;
+    display: block;
+    width: 13px;
+    height: 20px;
+    flex: none;
+}
+
+.about-location-text {
+    width: 174px;
+    height: 27px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-style: normal;
+    font-weight: calc(400 * var(--font-weight-scale));
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--about-muted);
+    flex: none;
 }
 
 .about-text-column {
@@ -772,7 +521,7 @@ export default {
     margin: 0 0 64px;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: calc(400 * var(--font-weight-scale));
     line-height: 27px;
     letter-spacing: -0.02em;
     color: var(--about-muted);
@@ -783,7 +532,7 @@ export default {
     max-width: clamp(455px, calc(455px + (100vw - 997px) * 111 / 457), 566px);
     font-family: 'Fira Code', monospace;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: calc(400 * var(--font-weight-scale));
     line-height: clamp(25px, calc(25px + (100vw - 997px) / 457), 26px);
     color: var(--text);
 }
@@ -812,7 +561,7 @@ export default {
 .footer-copy {
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: calc(300 * var(--font-weight-scale));
     line-height: 21px;
     color: var(--muted);
 }
@@ -926,7 +675,7 @@ export default {
 
     .about-location {
         margin-top: 64px;
-        margin-left: -32px;
+        margin-left: -34px;
     }
 
     .site-footer {
@@ -977,10 +726,6 @@ export default {
     .cta-button {
         margin-top: 90px;
         margin-left: 565px;
-    }
-
-    .top-bar-content {
-        width: 100%;
     }
 
     .project--offset {
@@ -1048,53 +793,6 @@ export default {
 
 /* Tablet: ≤767px (768px artboard) */
 @media (max-width: 767px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav {
-        display: none;
-    }
-
-    .mobile-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-        position: fixed;
-        top: 120px;
-        right: var(--page-pad);
-        z-index: 110;
-        padding: 0;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-8px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .mobile-nav--open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-
-    .mobile-nav-link {
-        font-family: 'Be Vietnam Pro', sans-serif;
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 27px;
-        letter-spacing: -0.02em;
-        color: var(--brand);
-        text-decoration: none;
-    }
-
-    .mobile-nav-backdrop {
-        display: block;
-        position: fixed;
-        inset: 0;
-        z-index: 105;
-        background: transparent;
-    }
-
     .hero-decor {
         left: 459px;
         top: 258px;
@@ -1140,10 +838,6 @@ export default {
 
     .work {
         gap: 80px;
-    }
-
-    .top-bar-content {
-        width: 100%;
     }
 
     .project,
@@ -1225,7 +919,7 @@ export default {
         background: var(--brand);
         font-family: 'Be Vietnam Pro', sans-serif;
         font-size: 18px;
-        font-weight: 500;
+        font-weight: calc(500 * var(--font-weight-scale));
         line-height: 27px;
         color: #fff;
         text-decoration: none;
@@ -1246,16 +940,8 @@ export default {
 }
 
 @media (max-width: 480px) {
-    .top-bar-inner {
-        padding: 0 24px;
-    }
-
     .portfolio-main {
         padding: 120px 24px 0;
-    }
-
-    .mobile-nav {
-        right: 24px;
     }
 
     .hero-decor {
