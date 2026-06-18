@@ -3,16 +3,17 @@
         <PortfolioTopBar />
 
         <main class="portfolio-main">
-            <div class="hero-decor" aria-hidden="true">
-                <img class="hero-decor-line" :src="lineAnimation" alt="" />
-            </div>
-
             <section class="hero">
-                <p class="hero-intro">
-                    <strong class="hero-intro-em">Product Designer</strong> with a background in Neuroscience and research.
-                    Deeply enjoy understanding complex problems and providing creative solutions
-                    <strong class="hero-intro-em">for people :)</strong>
-                </p>
+                <div class="hero-intro-wrap">
+                    <div class="hero-decor" aria-hidden="true">
+                        <img class="hero-decor-line" :src="lineAnimation" alt="" />
+                    </div>
+                    <p class="hero-intro">
+                        <strong class="hero-intro-em">Product Designer</strong> with a background in Neuroscience and research.
+                        Deeply enjoy understanding complex problems and providing creative solutions
+                        <strong class="hero-intro-em">for people :)</strong>
+                    </p>
+                </div>
                 <a class="cta-button" href="mailto:design@timjustina.com">Drop me a line</a>
             </section>
 
@@ -214,11 +215,17 @@ export default {
     margin-bottom: clamp(231px, calc(238px - (100vw - 997px) * 7 / 457), 238px);
 }
 
+.hero-intro-wrap {
+    position: relative;
+    max-width: min(754px, calc(100% - 288px));
+    margin: clamp(98px, calc(98px + (100vw - 997px) * 24 / 457), 122px) 0 0 288px;
+}
+
 .hero-decor {
     --hero-line-lift: 33px;
     position: absolute;
-    left: clamp(222px, calc(222px + (100vw - 997px) * 108 / 457), 330px);
-    top: clamp(250px, calc(432px - (100vw - 997px) * 182 / 457), 432px);
+    top: 6px;
+    right: calc(100% + 42px);
     z-index: 0;
     width: 56px;
     height: 532px;
@@ -239,8 +246,9 @@ export default {
 }
 
 .hero-intro {
-    max-width: clamp(754px, calc(798px - (100vw - 997px) * 44 / 457), 798px);
-    margin: clamp(98px, calc(98px + (100vw - 997px) * 24 / 457), 122px) 0 0 clamp(0px, calc((100vw - 997px) * 288 / 457), 288px);
+    position: relative;
+    z-index: 1;
+    margin: 0;
     font-family: 'Fira Code', monospace;
     font-size: 22px;
     font-style: normal;
@@ -576,13 +584,8 @@ export default {
 
 /* ≥1454px: Final content artboard spacing */
 @media (min-width: 1454px) {
-    .hero-decor {
-        left: 330px;
-        top: 250px;
-    }
-
-    .hero-intro {
-        max-width: 754px;
+    .hero-intro-wrap {
+        max-width: min(754px, calc(100% - 288px));
         margin: 122px 0 0 288px;
     }
 
@@ -664,18 +667,19 @@ export default {
 
 /* ≤997px: 997px artboard lock before tablet layout */
 @media (max-width: 997px) {
-    .hero-decor {
-        left: 222px;
-        top: 432px;
-    }
-
     .hero {
         margin-bottom: 238px;
     }
 
-    .hero-intro {
-        max-width: 798px;
+    .hero-intro-wrap {
+        max-width: 100%;
         margin: 98px 0 0;
+    }
+
+    .hero-decor {
+        top: calc(100% + 84px);
+        right: auto;
+        left: 122px;
     }
 
     .cta-button {
@@ -743,21 +747,19 @@ export default {
 
 /* Tablet: ≤767px (768px artboard) */
 @media (max-width: 767px) {
+    .hero-intro-wrap {
+        max-width: min(629px, 100%);
+        margin: 80px 0 0;
+    }
+
     .hero-decor {
         --hero-line-lift: 31px;
-        left: 459px;
-        top: 268px;
         height: 318px;
     }
 
     .hero {
         min-height: 0;
         margin-bottom: 80px;
-    }
-
-    .hero-intro {
-        margin: 80px 0 0;
-        max-width: 629px;
     }
 
     .cta-button {
