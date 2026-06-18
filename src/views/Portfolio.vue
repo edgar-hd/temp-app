@@ -589,6 +589,10 @@ export default {
         margin: 122px 0 0 288px;
     }
 
+    .hero-decor {
+        top: 9px;
+    }
+
     .hero {
         margin-bottom: 231px;
     }
@@ -754,6 +758,13 @@ export default {
 
     .hero-decor {
         --hero-line-lift: 31px;
+        --hero-squiggle-cta-gap: 125px;
+        top: calc(100% + 42px);
+        right: auto;
+        left: max(
+            calc(233px + var(--hero-squiggle-cta-gap)),
+            calc(100% - 114px - 56px)
+        );
         height: 318px;
     }
 
