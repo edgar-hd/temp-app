@@ -27,6 +27,7 @@
                         <router-link
                             :to="{ path: '/', hash: '#about' }"
                             class="nav-link nav-link--stacked nav-link--about"
+                            @click="onAboutClick"
                         >
                             <span>About</span>
                             <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
@@ -62,7 +63,7 @@
             <router-link
                 :to="{ path: '/', hash: '#about' }"
                 class="mobile-nav-link"
-                @click="menuOpen = false"
+                @click="onAboutClick"
             >About</router-link>
             <a
                 href="https://www.linkedin.com/in/timjustinayeung"
@@ -86,6 +87,7 @@
 <script>
 import logo from '../assets/TjyCutoutLogo.svg'
 import menuHover from '../assets/menu_hover.svg'
+import { scrollToAbout } from '../utils/scrollToAbout.js'
 
 export default {
     name: 'PortfolioTopBar',
@@ -139,6 +141,19 @@ export default {
 
                 this.lastScrollY = y
                 this.scrollTicking = false
+            })
+        },
+        onAboutClick(event) {
+            this.menuOpen = false
+
+            if (this.$route.path !== '/') return
+
+            if (this.$route.hash === '#about') {
+                event.preventDefault()
+            }
+
+            this.$nextTick(() => {
+                requestAnimationFrame(() => scrollToAbout())
             })
         },
         updateNavCompact() {
@@ -250,6 +265,7 @@ export default {
 }
 
 .logo-name {
+    margin-bottom: 5px;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 18px;
     font-weight: calc(500 * var(--font-weight-scale));

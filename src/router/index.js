@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Portfolio from '../views/Portfolio.vue'
+import { getAboutScrollTop } from '../utils/scrollToAbout.js'
 
 const routes = [
     {
@@ -30,9 +31,19 @@ const router = createRouter({
         if (to.hash) {
             return new Promise((resolve) => {
                 requestAnimationFrame(() => {
-                    resolve({
-                        el: to.hash,
-                        top: 120,
+                    requestAnimationFrame(() => {
+                        if (to.hash === '#about') {
+                            const top = getAboutScrollTop()
+                            if (top !== null) {
+                                resolve({ top })
+                                return
+                            }
+                        }
+
+                        resolve({
+                            el: to.hash,
+                            top: 120,
+                        })
                     })
                 })
             })

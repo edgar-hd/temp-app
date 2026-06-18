@@ -114,7 +114,7 @@
                         <span class="about-location-text">London / Barcelona</span>
                     </p>
                 </div>
-                <div class="about-text-column">
+                <div id="about-bio" class="about-text-column">
                     <h2 class="about-heading">About Tim ( 湉 )</h2>
                     <p class="about-bio">
                         Started in the east, ended up in the west. Started in academia, ended up in the
@@ -189,7 +189,7 @@ export default {
     --font-weight-scale: 0.98;
     --page-max: 1454px;
     --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
-    --project-w: 680px;
+    --project-w: min(798px, 100%);
     --project-stack-gap: clamp(120px, calc(120px + (100vw - 997px) * 20 / 457), 140px);
 
     position: relative;
@@ -353,29 +353,30 @@ export default {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px;
+    border-radius: 12px 12px 12px 12px;
     background: #fff;
     transition: border-radius 0.45s ease;
 }
 
 .project:hover .project-image,
 .project:focus-within .project-image {
-    border-radius: 700px 700px 12px 12px;
+    border-radius: 700px 700px 20px 20px;
 }
 
 .project-caption {
     position: relative;
-    margin-top: clamp(28px, calc(32px - (100vw - 997px) * 4 / 457), 32px);
+    margin-top: 28px;
 }
 
 .project-caption-header {
     display: flex;
     align-items: flex-start;
-    gap: 32px;
+    gap: 0;
+    padding-top: 2px;
 }
 
 .project-title {
-    flex: 1;
+    flex: 0 1 520px;
     min-width: 0;
     margin: 0;
     font-family: 'Be Vietnam Pro', sans-serif;
@@ -398,7 +399,7 @@ export default {
 }
 
 .project-description {
-    margin: 20px 0 0;
+    margin: 17px 0 0;
     font-family: 'Fira Code', monospace;
     font-size: 16px;
     font-weight: calc(400 * var(--font-weight-scale));
@@ -408,6 +409,7 @@ export default {
 
 .project-year {
     flex-shrink: 0;
+    margin-left: auto;
     font-family: 'Fira Code', monospace;
     font-size: 20px;
     font-weight: calc(500 * var(--font-weight-scale));
@@ -418,11 +420,17 @@ export default {
 .about {
     position: relative;
     width: 100%;
-    margin-top: clamp(350px, calc(350px + (100vw - 997px) * 64 / 457), 414px);
+    --about-gap: 340px;
+    margin-top: var(--about-gap);
     padding: 80px 0 clamp(90px, calc(90px + (100vw - 997px) * 90 / 457), 180px);
     background: var(--about-bg);
     box-sizing: border-box;
     overflow: visible;
+    scroll-margin-top: 120px;
+}
+
+#about-bio {
+    scroll-margin-top: 120px;
 }
 
 .about-inner {
@@ -446,11 +454,11 @@ export default {
 .about-line {
     position: absolute;
     left: calc((100vw - clamp(800px, calc(800px + (100vw - 997px) * 157 / 457), 957px)) / 2 + clamp(0px, calc((100vw - 997px) * 2 / 457), 2px));
-    top: clamp(-274px, calc(-219px - (100vw - 997px) * 55 / 457), -219px);
+    top: calc(140px - var(--about-gap));
     z-index: 1;
     display: block;
     width: 0;
-    height: clamp(421px, calc(421px + (100vw - 997px) * 56 / 457), 477px);
+    height: 400px;
     border-left: 2px solid var(--brand);
     pointer-events: none;
 }
@@ -631,16 +639,13 @@ export default {
         margin-top: 140px;
     }
 
-    .project-caption {
-        margin-top: 28px;
-    }
-
     .project-description {
-        margin-top: 20px;
+        margin-top: 17px;
     }
 
     .about {
-        margin-top: 414px;
+        --about-gap: 340px;
+        margin-top: 340px;
         padding: 80px 0 180px;
     }
 
@@ -737,16 +742,13 @@ export default {
         margin-top: 120px;
     }
 
-    .project-caption {
-        margin-top: 32px;
-    }
-
     .project-description {
         line-height: 25px;
     }
 
     .about {
-        margin-top: 350px;
+        --about-gap: 340px;
+        margin-top: 340px;
         padding: 80px 0 90px;
     }
 
@@ -762,8 +764,6 @@ export default {
 
     .about-line {
         left: calc((100vw - 800px) / 2);
-        top: -219px;
-        height: 421px;
     }
 
     .about-photo,
