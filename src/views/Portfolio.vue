@@ -4,8 +4,7 @@
 
         <main class="portfolio-main">
             <div class="hero-decor" aria-hidden="true">
-                <span class="hero-decor-line" />
-                <span class="hero-decor-arrow" />
+                <img class="hero-decor-line" :src="lineAnimation" alt="" />
             </div>
 
             <section class="hero">
@@ -160,6 +159,7 @@ import dashboardHero from '../assets/medication-dashboard/0_dashboard_hero.jpg'
 import kinThumbnail from '../assets/shot1.png'
 import artThumbnail from '../assets/shot1.png'
 import aboutPhoto from '../assets/portrait.jpg'
+import lineAnimation from '../assets/line_animation.svg'
 import PortfolioTopBar from '../components/PortfolioTopBar.vue'
 
 export default {
@@ -171,6 +171,7 @@ export default {
             kinThumbnail,
             artThumbnail,
             aboutPhoto,
+            lineAnimation,
         }
     },
 }
@@ -214,46 +215,27 @@ export default {
 }
 
 .hero-decor {
+    --hero-line-lift: 33px;
     position: absolute;
     left: clamp(222px, calc(222px + (100vw - 997px) * 108 / 457), 330px);
-    top: clamp(240px, calc(422px - (100vw - 997px) * 182 / 457), 422px);
+    top: clamp(250px, calc(432px - (100vw - 997px) * 182 / 457), 432px);
     z-index: 0;
     width: 56px;
     height: 532px;
+    overflow: hidden;
     pointer-events: none;
 }
 
 .hero-decor-line {
-    position: absolute;
-    left: 35px;
-    top: 0;
-    width: 2px;
-    height: clamp(302px, calc(302px + (100vw - 997px) * 186 / 457), 488px);
-    background: var(--brand);
-    transition: height 0.45s ease, top 0.45s ease;
-}
-
-.hero-decor-arrow {
-    position: absolute;
-    left: 1px;
-    top: clamp(295px, calc(295px + (100vw - 997px) * 186 / 457), 481px);
-    bottom: auto;
-    width: 54px;
-    height: 43px;
-    border-left: 2px solid var(--brand);
-    border-bottom: 2px solid var(--brand);
-    transition: bottom 0.45s ease;
+    display: block;
+    width: 56px;
+    height: 518px;
+    transition: transform 0.45s ease;
 }
 
 .portfolio-main:has(.project--featured:hover) .hero-decor-line,
 .portfolio-main:has(.project--featured:focus-within) .hero-decor-line {
-    top: 0;
-    height: clamp(269px, calc(269px + (100vw - 997px) * 186 / 457), 455px);
-}
-
-.portfolio-main:has(.project--featured:hover) .hero-decor-arrow,
-.portfolio-main:has(.project--featured:focus-within) .hero-decor-arrow {
-    top: clamp(262px, calc(262px + (100vw - 997px) * 186 / 457), 448px);
+    transform: translateY(calc(-1 * var(--hero-line-lift)));
 }
 
 .hero-intro {
@@ -279,9 +261,13 @@ export default {
     align-items: center;
     justify-content: center;
     margin-top: 90px;
-    margin-left: clamp(565px, calc(565px + (100vw - 997px) * 192 / 457), 757px);
+    margin-left: min(
+        clamp(565px, calc(565px + (100vw - 997px) * 192 / 457), 757px),
+        max(0px, calc(100% - 233px))
+    );
     padding: 12px 24px;
     width: 233px;
+    max-width: 100%;
     min-width: 0;
     height: 57px;
     border-radius: 100px;
@@ -592,25 +578,7 @@ export default {
 @media (min-width: 1454px) {
     .hero-decor {
         left: 330px;
-        top: 240px;
-    }
-
-    .hero-decor-line {
-        height: 488px;
-    }
-
-    .hero-decor-arrow {
-        top: 481px;
-    }
-
-    .portfolio-main:has(.project--featured:hover) .hero-decor-line,
-    .portfolio-main:has(.project--featured:focus-within) .hero-decor-line {
-        height: 455px;
-    }
-
-    .portfolio-main:has(.project--featured:hover) .hero-decor-arrow,
-    .portfolio-main:has(.project--featured:focus-within) .hero-decor-arrow {
-        top: 448px;
+        top: 250px;
     }
 
     .hero-intro {
@@ -624,7 +592,7 @@ export default {
 
     .cta-button {
         margin-top: 90px;
-        margin-left: 757px;
+        margin-left: min(757px, max(0px, calc(100% - 233px)));
         width: 233px;
         min-width: 0;
         height: 57px;
@@ -698,25 +666,7 @@ export default {
 @media (max-width: 997px) {
     .hero-decor {
         left: 222px;
-        top: 422px;
-    }
-
-    .hero-decor-line {
-        height: 302px;
-    }
-
-    .hero-decor-arrow {
-        top: 295px;
-    }
-
-    .portfolio-main:has(.project--featured:hover) .hero-decor-line,
-    .portfolio-main:has(.project--featured:focus-within) .hero-decor-line {
-        height: 269px;
-    }
-
-    .portfolio-main:has(.project--featured:hover) .hero-decor-arrow,
-    .portfolio-main:has(.project--featured:focus-within) .hero-decor-arrow {
-        top: 262px;
+        top: 432px;
     }
 
     .hero {
@@ -730,7 +680,7 @@ export default {
 
     .cta-button {
         margin-top: 90px;
-        margin-left: 565px;
+        margin-left: min(565px, max(0px, calc(100% - 233px)));
     }
 
     .project--offset {
@@ -794,28 +744,10 @@ export default {
 /* Tablet: ≤767px (768px artboard) */
 @media (max-width: 767px) {
     .hero-decor {
+        --hero-line-lift: 31px;
         left: 459px;
-        top: 258px;
+        top: 268px;
         height: 318px;
-    }
-
-    .hero-decor-line {
-        height: 241px;
-        top: 14px;
-    }
-
-    .hero-decor-arrow {
-        top: 239px;
-    }
-
-    .portfolio-main:has(.project--featured:hover) .hero-decor-line,
-    .portfolio-main:has(.project--featured:focus-within) .hero-decor-line {
-        height: 210px;
-    }
-
-    .portfolio-main:has(.project--featured:hover) .hero-decor-arrow,
-    .portfolio-main:has(.project--featured:focus-within) .hero-decor-arrow {
-        top: 208px;
     }
 
     .hero {
