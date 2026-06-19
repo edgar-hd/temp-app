@@ -46,7 +46,7 @@
                     <router-link to="/project/MultiplatformSolution" class="project-image-link">
                         <img
                             class="project-image"
-                            :src="kinThumbnail"
+                            :src="multiplatformHero"
                             alt="Home Medication Solution: IoT Multiplatform Design"
                         />
                     </router-link>
@@ -70,7 +70,7 @@
                     <router-link to="/project/art-curation" class="project-image-link">
                         <img
                             class="project-image"
-                            :src="artThumbnail"
+                            :src="marketplaceHero"
                             alt="Art Curation and Marketplace: Mobile App Design"
                         />
                     </router-link>
@@ -156,9 +156,9 @@
 </template>
 
 <script>
-import dashboardHero from '../assets/medication-dashboard/0_dashboard_hero.jpg'
-import kinThumbnail from '../assets/shot1.png'
-import artThumbnail from '../assets/shot1.png'
+import dashboardHero from '../assets/0_dashboard_hero.svg'
+import multiplatformHero from '../assets/0_multiplateform_hero.svg'
+import marketplaceHero from '../assets/0_marketplace_hero.svg'
 import aboutPhoto from '../assets/portrait.jpg'
 import lineAnimation from '../assets/line_animation.svg'
 import PortfolioTopBar from '../components/PortfolioTopBar.vue'
@@ -169,8 +169,8 @@ export default {
     data() {
         return {
             dashboardHero,
-            kinThumbnail,
-            artThumbnail,
+            multiplatformHero,
+            marketplaceHero,
             aboutPhoto,
             lineAnimation,
         }
