@@ -157,8 +157,8 @@
 
 <script>
 import dashboardHero from '../assets/0_dashboard_hero.svg'
-import multiplatformHero from '../assets/0_multiplateform_hero.svg'
-import marketplaceHero from '../assets/0_marketplace_hero.svg'
+import multiplatformHero from '../assets/0_multiplateform_hero.jpg'
+import marketplaceHero from '../assets/0_marketplace_hero.jpg'
 import aboutPhoto from '../assets/portrait.jpg'
 import lineAnimation from '../assets/line_animation.svg'
 import PortfolioTopBar from '../components/PortfolioTopBar.vue'
