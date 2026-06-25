@@ -23,21 +23,20 @@
                         <img
                             class="project-image"
                             :src="dashboardHero"
-                            alt="IoT Adherence Analytics for Caregivers: Dashboard Design"
+                            alt="Improving medication adherence: Dashboard Design"
                         />
                     </router-link>
                     <div class="project-caption">
                         <div class="project-caption-header">
                             <h2 class="project-title">
                                 <router-link to="/project/MedicationDashboard" class="project-title-link">
-                                    IoT Adherence Analytics for Caregivers: Dashboard Design
+                                    Improving medication adherence: Dashboard Design
                                 </router-link>
                             </h2>
                             <span class="project-year">2026</span>
                         </div>
                         <p class="project-description">
-                            0‑to‑1 design of a caregiver‑facing dashboard for a primary user's account,
-                            helping caregivers better understand their client's needs
+                            0-to-1 design of a caregiver-facing dashboard to help users better understand client needs
                         </p>
                     </div>
                 </article>
@@ -47,21 +46,21 @@
                         <img
                             class="project-image"
                             :src="multiplatformHero"
-                            alt="Home Medication Solution: IoT Multiplatform Design"
+                            alt="Home Medication Solution: Multiplatform Design"
                         />
                     </router-link>
                     <div class="project-caption">
                         <div class="project-caption-header">
                             <h2 class="project-title">
                                 <router-link to="/project/MultiplatformSolution" class="project-title-link">
-                                    Home Medication Solution: IoT Multiplatform Design
+                                    Home Medication Solution: Multiplatform Design
                                 </router-link>
                             </h2>
                             <span class="project-year">2024</span>
                         </div>
                         <p class="project-description">
                             Redesigned workflows, human-machine interface, web + mobile app features of an IoT
-                            medication adherence platform
+                            medication adherence platform.
                         </p>
                     </div>
                 </article>
@@ -222,7 +221,7 @@ export default {
 }
 
 .hero-decor {
-    --hero-line-lift: 120px;
+    --hero-line-lift: 100px;
     --hero-line-bounce-1: 2.2*40px;
     --hero-line-bounce-2: 2.2*17px;
     --hero-line-bounce-3: 2.2*7px;
@@ -465,8 +464,9 @@ export default {
     position: relative;
     width: 100%;
     --about-gap: 340px;
+    --about-bottom-pad: clamp(180px, calc(180px + (100vw - 997px) * 180 / 457), 360px);
     margin-top: var(--about-gap);
-    padding: 80px 0 clamp(90px, calc(90px + (100vw - 997px) * 90 / 457), 180px);
+    padding: 80px 0 var(--about-bottom-pad);
     background: var(--about-bg);
     box-sizing: border-box;
     overflow: visible;
@@ -670,8 +670,9 @@ export default {
 
     .about {
         --about-gap: 340px;
+        --about-bottom-pad: 360px;
         margin-top: 340px;
-        padding: 80px 0 180px;
+        padding: 80px 0 var(--about-bottom-pad);
     }
 
     .about-inner {
@@ -756,8 +757,9 @@ export default {
 
     .about {
         --about-gap: 340px;
+        --about-bottom-pad: 180px;
         margin-top: 340px;
-        padding: 80px 0 90px;
+        padding: 80px 0 var(--about-bottom-pad);
     }
 
     .about-inner {
@@ -858,7 +860,8 @@ export default {
 
     .about {
         margin-top: 80px;
-        padding: 80px 0 138px;
+        --about-bottom-pad: 276px;
+        padding: 80px 0 var(--about-bottom-pad);
     }
 
     .about-inner {

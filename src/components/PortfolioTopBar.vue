@@ -278,6 +278,7 @@ export default {
     align-items: flex-end;
     gap: 40px;
     height: 45px;
+    margin-bottom: 5px;
 }
 
 .nav-link {

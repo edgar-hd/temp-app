@@ -24,6 +24,8 @@ export default {
 
 <style module>
 .page {
+  --page-max: 1454px;
+  --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
   background: #fff;
   color: #2c2c2c;
   font-family: 'Maven Pro', sans-serif;
@@ -116,9 +118,11 @@ export default {
   max-width: 100vw;
 }
 
-.mainFullWidthImages :global(.full-image) {
-  width: 100vw;
-  max-width: 100vw;
+.mainFullWidthImages :global(.full-image:not(.hero-image)) {
+  width: min(calc(var(--page-max) - 2 * var(--page-pad)), calc(100vw - 2 * var(--page-pad)));
+  max-width: calc(var(--page-max) - 2 * var(--page-pad));
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .main :global(.full-image img),
@@ -137,5 +141,11 @@ export default {
 
 .main :global(.highlight) {
   color: #f20606;
+}
+
+@media (max-width: 480px) {
+  .page {
+    --page-pad: 24px;
+  }
 }
 </style>
