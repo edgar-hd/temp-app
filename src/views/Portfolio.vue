@@ -222,7 +222,13 @@ export default {
 }
 
 .hero-decor {
-    --hero-line-lift: 33px;
+    --hero-line-lift: 120px;
+    --hero-line-bounce-1: 2.5*40px;
+    --hero-line-bounce-2: 2.5*17px;
+    --hero-line-bounce-3: 2.5*7px;
+    --hero-line-bounce-4: 2.5*3px;
+    --hero-line-bounce-duration: 1.2s;
+    --hero-line-return-duration: 0.35s;
     position: absolute;
     top: 6px;
     right: calc(100% + 42px);
@@ -237,12 +243,51 @@ export default {
     display: block;
     width: 56px;
     height: 518px;
-    transition: transform 0.45s ease;
+    transition: transform var(--hero-line-return-duration) ease-out;
 }
 
 .portfolio-main:has(.project--featured:hover) .hero-decor-line,
 .portfolio-main:has(.project--featured:focus-within) .hero-decor-line {
-    transform: translateY(calc(-1 * var(--hero-line-lift)));
+    transition: none;
+    animation: hero-line-bounce-up var(--hero-line-bounce-duration) forwards;
+}
+
+@keyframes hero-line-bounce-up {
+    0% {
+        transform: translateY(0);
+    }
+
+    22% {
+        transform: translateY(calc(-1 * var(--hero-line-lift) - var(--hero-line-bounce-1)));
+    }
+
+    38% {
+        transform: translateY(calc(-1 * var(--hero-line-lift)));
+    }
+
+    49% {
+        transform: translateY(calc(-1 * var(--hero-line-lift) - var(--hero-line-bounce-2)));
+    }
+
+    60% {
+        transform: translateY(calc(-1 * var(--hero-line-lift)));
+    }
+
+    67% {
+        transform: translateY(calc(-1 * var(--hero-line-lift) - var(--hero-line-bounce-3)));
+    }
+
+    73% {
+        transform: translateY(calc(-1 * var(--hero-line-lift)));
+    }
+
+    78% {
+        transform: translateY(calc(-1 * var(--hero-line-lift) - var(--hero-line-bounce-4)));
+    }
+
+    100% {
+        transform: translateY(calc(-1 * var(--hero-line-lift)));
+    }
 }
 
 .hero-intro {
