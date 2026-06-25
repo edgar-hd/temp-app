@@ -223,10 +223,10 @@ export default {
 
 .hero-decor {
     --hero-line-lift: 120px;
-    --hero-line-bounce-1: 2.5*40px;
-    --hero-line-bounce-2: 2.5*17px;
-    --hero-line-bounce-3: 2.5*7px;
-    --hero-line-bounce-4: 2.5*3px;
+    --hero-line-bounce-1: 2.2*40px;
+    --hero-line-bounce-2: 2.2*17px;
+    --hero-line-bounce-3: 2.2*7px;
+    --hero-line-bounce-4: 2.2*3px;
     --hero-line-bounce-duration: 1.2s;
     --hero-line-return-duration: 0.35s;
     position: absolute;
