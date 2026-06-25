@@ -156,9 +156,9 @@
 </template>
 
 <script>
-import dashboardHero from '../assets/0_dashboard_hero.svg'
-import multiplatformHero from '../assets/0_multiplateform_hero.jpg'
-import marketplaceHero from '../assets/0_marketplace_hero.jpg'
+import dashboardHero from '../assets/1_dashboard/0_dashboard_hero.svg'
+import multiplatformHero from '../assets/2_multiplatform/0_multiplatform_hero.jpg'
+import marketplaceHero from '../assets/3_marketplace/0_marketplace_hero.jpg'
 import aboutPhoto from '../assets/portrait.jpg'
 import lineAnimation from '../assets/line_animation.svg'
 import PortfolioTopBar from '../components/PortfolioTopBar.vue'
@@ -355,6 +355,11 @@ export default {
 .project:hover .project-image,
 .project:focus-within .project-image {
     border-radius: 700px 700px 20px 20px;
+}
+
+.project:last-child:hover .project-image,
+.project:last-child:focus-within .project-image {
+    border-radius: 10000px 10000px 300px 300px;
 }
 
 .project-caption {

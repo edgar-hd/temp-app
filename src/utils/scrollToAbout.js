@@ -1,4 +1,5 @@
 const HEADER_OFFSET = 120
+const ABOUT_EXTRA_OFFSET = 85
 const SMALL_SCREEN_QUERY = '(max-width: 767px)'
 
 export function getAboutScrollTop() {
@@ -15,7 +16,7 @@ export function getAboutScrollTop() {
     const bioTopAligned = bioTop - HEADER_OFFSET
 
     const top = isSmall ? colorTop : bioTopAligned
-    return Math.max(0, top)
+    return Math.max(0, top + ABOUT_EXTRA_OFFSET)
 }
 
 export function scrollToAbout({ behavior = 'smooth' } = {}) {

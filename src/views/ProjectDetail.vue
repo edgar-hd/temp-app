@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.page">
     <PortfolioTopBar />
-    <main :class="$style.main">
+    <main :class="[$style.main, fullWidthImages && $style.mainFullWidthImages]">
       <slot />
     </main>
   </div>
@@ -13,6 +13,12 @@ import PortfolioTopBar from '../components/PortfolioTopBar.vue'
 export default {
   name: 'ProjectDetail',
   components: { PortfolioTopBar },
+  props: {
+    fullWidthImages: {
+      type: Boolean,
+      default: false,
+    },
+  },
 }
 </script>
 
@@ -110,7 +116,13 @@ export default {
   max-width: 100vw;
 }
 
-.main :global(.full-image img) {
+.mainFullWidthImages :global(.full-image) {
+  width: 100vw;
+  max-width: 100vw;
+}
+
+.main :global(.full-image img),
+.main :global(.full-image video) {
   width: 100%;
   display: block;
   margin: 0 auto;

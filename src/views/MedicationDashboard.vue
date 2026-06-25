@@ -1,5 +1,5 @@
 <template>
-    <ProjectDetail>
+    <ProjectDetail full-width-images>
         <h1>Improving medication adherence: Dashboard Design</h1>
         <div class="meta">
             <span>Kin Technology</span>
@@ -56,7 +56,8 @@
             </p>
 
             <ZoomableImage
-                :src="svg1"
+                :src="svg1Cover"
+                :zoom-src="svg1"
                 alt="Affinity-Interrelationship Diagram"
                 caption="Affinity-Interrelationship Diagram based on user research findings"
             />
@@ -177,7 +178,9 @@
                 summarises all the variables at a specific time point is another important way to help users make
                 sense of the axes of the graph.</p>
 
-            <VideoPoster :poster="img5" :video-src="vid5" alt="Adherence trend" />
+            <div class="full-image">
+                <video :src="vid5" autoplay loop muted playsinline />
+            </div>
 
             <h3>Design for accessibility</h3>
             <p>Consistent with the rest of the product, conscious efforts have been made to optimise the design
@@ -217,12 +220,10 @@
                 not to overshadow the functions of other relevant features where more detailed information can be
                 found.</p>
 
-            <VideoPoster
-                :poster="img6"
-                :video-src="vid6"
-                alt="Missed Dose Insights"
-                caption="Prototype of Missed Dose Insights"
-            />
+            <div class="full-image">
+                <video :src="vid6" autoplay loop muted playsinline />
+                <p class="caption">Prototype of Missed Dose Insights</p>
+            </div>
 
             <VideoPoster :poster="img7" :video-src="vid7" alt="Caregiver dashboard" />
         </section>
@@ -254,23 +255,22 @@
 import ProjectDetail from './ProjectDetail.vue'
 import ZoomableImage from '../components/ZoomableImage.vue'
 import VideoPoster from '../components/VideoPoster.vue'
-import img0 from '../assets/medication-dashboard/0_dashboard_hero.jpg'
-import svg1 from '../assets/medication-dashboard/1_affinity_interrelation_large_margin_portfolio.svg'
-import img2 from '../assets/medication-dashboard/2_primary_user_vs_caregiver_dashboard_portfolio.jpg'
-import img3 from '../assets/medication-dashboard/3_colour_system_portfolio.jpg'
-import img4 from '../assets/medication-dashboard/4_dispense_summary_portfolio.jpg'
-import img5 from '../assets/medication-dashboard/5_adherence_trend_portfolio.jpg'
-import img6 from '../assets/medication-dashboard/6_missed_dose_insights_portfolio.jpg'
-import img7 from '../assets/medication-dashboard/7_caregiver_dashboard_portfolio.jpg'
-import vid5 from '../assets/medication-dashboard/5_adherence_trend.mov'
-import vid6 from '../assets/medication-dashboard/6_missed_dose_insights.mov'
-import vid7 from '../assets/medication-dashboard/7_caregiver_dashboard.mov'
+import img0 from '../assets/1_dashboard/0_dashboard_hero.svg'
+import svg1Cover from '../assets/1_dashboard/1_affinity_interrelation_diagram_cover.svg'
+import svg1 from '../assets/1_dashboard/1_affinity_interrelation_large_margin.svg'
+import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.svg'
+import img3 from '../assets/1_dashboard/3_colour_system_portfolio.svg'
+import img4 from '../assets/1_dashboard/4_dispense_summary_portfolio.svg'
+import img7 from '../assets/1_dashboard/7_caregiver_dashboard_portfolio.jpg'
+import vid5 from '../assets/1_dashboard/5_adherence_trend.mov'
+import vid6 from '../assets/1_dashboard/6_missed_dose_insights.mov'
+import vid7 from '../assets/1_dashboard/7_caregiver_dashboard.mov'
 
 export default {
     name: 'MedicationDashboard',
     components: { ProjectDetail, ZoomableImage, VideoPoster },
     data() {
-        return { img0, svg1, img2, img3, img4, img5, img6, img7, vid5, vid6, vid7 }
+        return { img0, svg1Cover, svg1, img2, img3, img4, vid5, vid6, img7, vid7 }
     },
 }
 </script>
