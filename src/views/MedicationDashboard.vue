@@ -228,7 +228,9 @@
                 not to overshadow the functions of other relevant features where more detailed information can be
                 found.</p>
 
-            <VideoPoster :poster="img7" :video-src="vid7" alt="Caregiver dashboard" />
+            <div class="full-image">
+                <video :src="vid7" autoplay loop muted playsinline />
+            </div>
         </section>
 
         <section>
@@ -257,23 +259,21 @@
 <script>
 import ProjectDetail from './ProjectDetail.vue'
 import ZoomableImage from '../components/ZoomableImage.vue'
-import VideoPoster from '../components/VideoPoster.vue'
 import img0 from '../assets/1_dashboard/0_dashboard_hero.svg'
 import svg1Cover from '../assets/1_dashboard/1_affinity_interrelation_diagram_cover.svg'
 import svg1 from '../assets/1_dashboard/1_affinity_interrelation_large_margin.svg'
 import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.svg'
 import img3 from '../assets/1_dashboard/3_colour_system_portfolio.svg'
 import img4 from '../assets/1_dashboard/4_dispense_summary_portfolio.svg'
-import img7 from '../assets/1_dashboard/7_caregiver_dashboard_portfolio.jpg'
 import vid5 from '../assets/1_dashboard/5_adherence_trend_width.mov'
 import vid6 from '../assets/1_dashboard/6_missed_dose_insights_width.mov'
 import vid7 from '../assets/1_dashboard/7_caregiver_dashboard.mov'
 
 export default {
     name: 'MedicationDashboard',
-    components: { ProjectDetail, ZoomableImage, VideoPoster },
+    components: { ProjectDetail, ZoomableImage },
     data() {
-        return { img0, svg1Cover, svg1, img2, img3, img4, vid5, vid6, img7, vid7 }
+        return { img0, svg1Cover, svg1, img2, img3, img4, vid5, vid6, vid7 }
     },
 }
 </script>

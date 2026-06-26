@@ -6,7 +6,17 @@
             <section class="hero">
                 <div class="hero-intro-wrap">
                     <div class="hero-decor" aria-hidden="true">
-                        <img class="hero-decor-line" :src="lineAnimation" alt="" />
+                        <picture>
+                            <source
+                                media="(min-width: 998px)"
+                                :srcset="lineAnimationTall"
+                            />
+                            <source
+                                media="(max-width: 997px)"
+                                :srcset="lineAnimationTall"
+                            />
+                            <img class="hero-decor-line" :src="lineAnimation" alt="" />
+                        </picture>
                     </div>
                     <p class="hero-intro">
                         <strong class="hero-intro-em">Product Designer</strong> with a background in Neuroscience and research.
@@ -160,6 +170,7 @@ import multiplatformHero from '../assets/2_multiplatform/0_multiplatform_hero.jp
 import marketplaceHero from '../assets/3_marketplace/0_marketplace_hero.jpg'
 import aboutPhoto from '../assets/portrait.jpg'
 import lineAnimation from '../assets/line_animation.svg'
+import lineAnimationTall from '../assets/line_animation_tall.svg'
 import PortfolioTopBar from '../components/PortfolioTopBar.vue'
 
 export default {
@@ -172,7 +183,77 @@ export default {
             marketplaceHero,
             aboutPhoto,
             lineAnimation,
+            lineAnimationTall,
         }
+    },
+    mounted() {
+        this.heroDecorObserver = new ResizeObserver(() => {
+            requestAnimationFrame(() => this.syncHeroDecorHeight())
+        })
+
+        const main = this.$el?.querySelector('.portfolio-main')
+        const workFirst = this.$el?.querySelector('#work-first')
+        const heroIntro = this.$el?.querySelector('.hero-intro')
+        if (main) {
+            this.heroDecorObserver.observe(main)
+        }
+        if (workFirst) {
+            this.heroDecorObserver.observe(workFirst)
+        }
+        if (heroIntro) {
+            this.heroDecorObserver.observe(heroIntro)
+        }
+
+        const heroImage = workFirst?.querySelector('.project-image')
+        if (heroImage && !heroImage.complete) {
+            heroImage.addEventListener('load', () => this.syncHeroDecorHeight(), { once: true })
+        }
+
+        this.syncHeroDecorHeight()
+        window.addEventListener('resize', this.onHeroDecorResize, { passive: true })
+        document.fonts?.ready?.then(() => this.syncHeroDecorHeight())
+    },
+    beforeUnmount() {
+        this.heroDecorObserver?.disconnect()
+        window.removeEventListener('resize', this.onHeroDecorResize)
+    },
+    methods: {
+        onHeroDecorResize() {
+            requestAnimationFrame(() => this.syncHeroDecorHeight())
+        },
+        syncHeroDecorHeight() {
+            const decor = this.$el?.querySelector('.hero-decor')
+            const heroIntro = this.$el?.querySelector('.hero-intro')
+            const workFirstImage = this.$el?.querySelector('#work-first .project-image-link')
+            if (!decor || !heroIntro || !workFirstImage) return
+
+            if (window.getComputedStyle(decor).display === 'none') return
+
+            const isWide = window.matchMedia('(min-width: 998px)').matches
+            const wrap = decor.parentElement
+            const imageTop = workFirstImage.getBoundingClientRect().top
+            const offset =
+                parseFloat(getComputedStyle(decor).getPropertyValue('--hero-decor-bottom-offset')) || 0
+
+            let clipTop
+
+            if (isWide) {
+                const introAnchor = heroIntro.querySelector('.hero-intro-em') ?? heroIntro
+                const introTop = introAnchor.getBoundingClientRect().top
+                const wrapTop = wrap.getBoundingClientRect().top
+                clipTop = introTop
+                decor.style.top = `${Math.round(introTop - wrapTop)}px`
+            } else {
+                decor.style.removeProperty('top')
+                clipTop = decor.getBoundingClientRect().top
+            }
+
+            const height = Math.round(imageTop - clipTop) + offset
+
+            if (height > 0) {
+                decor.style.setProperty('--hero-decor-height', `${height}px`)
+            }
+        },
     },
 }
 </script>
@@ -228,21 +309,55 @@ export default {
     --hero-line-bounce-4: 2.2*3px;
     --hero-line-bounce-duration: 1.2s;
     --hero-line-return-duration: 0.35s;
+    --hero-decor-height: 532px;
+    --hero-decor-bottom-offset: 50px;
+    --hero-decor-line-natural-height: 518px;
     position: absolute;
     top: 6px;
     right: calc(100% + 42px);
     z-index: 0;
     width: 56px;
-    height: 532px;
+    height: var(--hero-decor-height);
     overflow: hidden;
     pointer-events: none;
+    container-type: size;
+}
+
+.hero-decor picture {
+    display: contents;
 }
 
 .hero-decor-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: block;
     width: 56px;
-    height: 518px;
+    height: max(100%, var(--hero-decor-line-natural-height));
+    object-fit: none;
+    object-position: left bottom;
     transition: transform var(--hero-line-return-duration) ease-out;
+}
+
+/* Wide: clip at hero text top, stretch line to fill container height */
+@media (min-width: 998px) {
+    .hero-decor {
+        --hero-decor-line-natural-height: 818px;
+    }
+
+    .hero-decor-line {
+        height: max(100%, var(--hero-decor-line-natural-height));
+        object-fit: none;
+        object-position: left bottom;
+    }
+
+    @container (min-height: 519px) {
+        .hero-decor-line {
+            height: 100%;
+            object-fit: fill;
+            object-position: left bottom;
+        }
+    }
 }
 
 .portfolio-main:has(.project--featured:hover) .hero-decor-line,
@@ -735,6 +850,7 @@ export default {
         top: calc(100% + 84px);
         right: auto;
         left: 122px;
+        --hero-decor-line-natural-height: 818px;
     }
 
     .cta-button {
@@ -817,7 +933,6 @@ export default {
             calc(233px + var(--hero-squiggle-cta-gap)),
             calc(100% - 114px - 56px)
         );
-        height: 318px;
     }
 
     .hero {
