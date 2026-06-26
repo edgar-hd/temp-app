@@ -178,8 +178,16 @@
                 summarises all the variables at a specific time point is another important way to help users make
                 sense of the axes of the graph.</p>
 
-            <div class="full-image">
-                <video :src="vid5" autoplay loop muted playsinline />
+            <div class="video-pair">
+                <div class="video-pair-videos">
+                    <div class="video-pair-media">
+                        <video :src="vid5" autoplay loop muted playsinline />
+                    </div>
+                    <div class="video-pair-media">
+                        <video :src="vid6" autoplay loop muted playsinline />
+                    </div>
+                </div>
+                <p class="caption">Prototype of Missed Dose Insights</p>
             </div>
 
             <h3>Design for accessibility</h3>
@@ -220,11 +228,6 @@
                 not to overshadow the functions of other relevant features where more detailed information can be
                 found.</p>
 
-            <div class="full-image">
-                <video :src="vid6" autoplay loop muted playsinline />
-                <p class="caption">Prototype of Missed Dose Insights</p>
-            </div>
-
             <VideoPoster :poster="img7" :video-src="vid7" alt="Caregiver dashboard" />
         </section>
 
@@ -262,8 +265,8 @@ import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.sv
 import img3 from '../assets/1_dashboard/3_colour_system_portfolio.svg'
 import img4 from '../assets/1_dashboard/4_dispense_summary_portfolio.svg'
 import img7 from '../assets/1_dashboard/7_caregiver_dashboard_portfolio.jpg'
-import vid5 from '../assets/1_dashboard/5_adherence_trend.mov'
-import vid6 from '../assets/1_dashboard/6_missed_dose_insights.mov'
+import vid5 from '../assets/1_dashboard/5_adherence_trend_width.mov'
+import vid6 from '../assets/1_dashboard/6_missed_dose_insights_width.mov'
 import vid7 from '../assets/1_dashboard/7_caregiver_dashboard.mov'
 
 export default {

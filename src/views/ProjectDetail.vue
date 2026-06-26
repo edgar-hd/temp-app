@@ -125,6 +125,53 @@ export default {
   transform: translateX(-50%);
 }
 
+.mainFullWidthImages :global(.video-pair) {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(var(--page-max) - 2 * var(--page-pad)), calc(100vw - 2 * var(--page-pad)));
+  max-width: calc(var(--page-max) - 2 * var(--page-pad));
+  margin: 48px 0;
+}
+
+.mainFullWidthImages :global(.video-pair-videos) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+.mainFullWidthImages :global(.video-pair-media) {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.mainFullWidthImages :global(.video-pair-media video) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .mainFullWidthImages :global(.video-pair-videos) {
+    grid-template-columns: 1fr;
+  }
+
+  .mainFullWidthImages :global(.video-pair-media) {
+    aspect-ratio: auto;
+  }
+
+  .mainFullWidthImages :global(.video-pair-media video) {
+    position: static;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
 .main :global(.full-image img),
 .main :global(.full-image video) {
   width: 100%;
