@@ -273,6 +273,7 @@ export default {
     --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
     --project-w: min(798px, 100%);
     --project-stack-gap: clamp(120px, calc(120px + (100vw - 997px) * 20 / 457), 140px);
+    --top-bar-height: 120px;
 
     position: relative;
     width: 100%;
@@ -285,7 +286,7 @@ export default {
     position: relative;
     max-width: var(--page-max);
     margin: 0 auto;
-    padding: 120px var(--page-pad) 0;
+    padding: var(--top-bar-height) var(--page-pad) 0;
     box-sizing: border-box;
 }
 
@@ -457,7 +458,7 @@ export default {
 .project--featured {
     width: var(--project-w);
     max-width: 100%;
-    scroll-margin-top: 120px;
+    scroll-margin-top: var(--top-bar-height);
 }
 
 .project--offset {
@@ -566,11 +567,11 @@ export default {
     background: var(--about-bg);
     box-sizing: border-box;
     overflow: visible;
-    scroll-margin-top: 120px;
+    scroll-margin-top: var(--top-bar-height);
 }
 
 #about-bio {
-    scroll-margin-top: 120px;
+    scroll-margin-top: var(--top-bar-height);
 }
 
 .about-inner {
@@ -1019,11 +1020,12 @@ export default {
 
 @media (max-width: 560px) {
     .portfolio-page {
-        --page-pad: 30px;
+        --page-pad: 20px;
+        --top-bar-height: 100px;
     }
 
     .portfolio-main {
-        padding: 120px 30px 0;
+        padding: var(--top-bar-height) 20px 0;
     }
 
     .hero-intro-wrap {
@@ -1102,7 +1104,7 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 0 30px;
+        padding: 0 20px;
     }
 
     .about-photo-column,

@@ -90,7 +90,7 @@ export default {
 
                 if (y <= 0) {
                     this.topBarHidden = false
-                } else if (delta > 5 && y > 120) {
+                } else if (delta > 5 && y > this.getTopBarHeight()) {
                     this.topBarHidden = true
                 } else if (delta < -5) {
                     this.topBarHidden = false
@@ -129,6 +129,9 @@ export default {
 
             this.navCompact = gapIfFull < 312
         },
+        getTopBarHeight() {
+            return this.$el?.querySelector('.top-bar-inner')?.offsetHeight ?? 120
+        },
     },
 }
 </script>
@@ -139,6 +142,7 @@ export default {
     --font-weight-scale: 0.95;
     --page-max: 1454px;
     --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
+    --top-bar-height: 120px;
 }
 
 .top-bar {
@@ -163,7 +167,7 @@ export default {
     justify-content: center;
     width: 100%;
     max-width: var(--page-max);
-    height: 120px;
+    height: var(--top-bar-height);
     margin: 0 auto;
     padding: 0 var(--page-pad);
     box-sizing: border-box;
@@ -273,8 +277,22 @@ export default {
 }
 
 @media (max-width: 560px) {
+    .portfolio-top-bar {
+        --top-bar-height: 100px;
+    }
+
     .top-bar-inner {
-        padding: 0 30px;
+        align-items: stretch;
+        padding: 0 20px;
+    }
+
+    .top-bar-content {
+        align-items: flex-end;
+    }
+
+    .logo-block {
+        align-self: flex-start;
+        margin-top: 20px;
     }
 
     .logo-name {
