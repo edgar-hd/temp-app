@@ -274,7 +274,7 @@ export default {
 
 @media (max-width: 560px) {
     .top-bar-inner {
-        padding: 0 40px;
+        padding: 0 30px;
     }
 
     .logo-name {

@@ -1019,20 +1019,20 @@ export default {
 
 @media (max-width: 560px) {
     .portfolio-page {
-        --page-pad: 40px;
+        --page-pad: 30px;
     }
 
     .portfolio-main {
-        padding: 120px 40px 0;
+        padding: 120px 30px 0;
     }
 
     .hero-intro-wrap {
-        max-width: 480px;
+        max-width: 100%;
         margin: 60px 0 0;
     }
 
     .hero-intro {
-        max-width: 480px;
+        max-width: 100%;
         font-size: 22px;
         line-height: 33px;
     }
@@ -1102,7 +1102,7 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 0 40px;
+        padding: 0 30px;
     }
 
     .about-photo-column,
@@ -1138,7 +1138,7 @@ export default {
     .about-bio {
         order: 4;
         margin-top: 32px;
-        max-width: 480px;
+        max-width: 100%;
         font-size: 16px;
         line-height: 25px;
     }
