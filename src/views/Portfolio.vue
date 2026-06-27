@@ -30,23 +30,36 @@
             <section id="work" class="work">
                 <article id="work-first" class="project project--featured">
                     <router-link to="/project/MedicationDashboard" class="project-image-link">
-                        <img
-                            class="project-image"
-                            :src="dashboardHero"
-                            alt="Improving medication adherence: Dashboard Design"
-                        />
+                        <picture>
+                            <source
+                                type="image/webp"
+                                :srcset="`${dashboardHeroWebp960} 960w, ${dashboardHeroWebp1600} 1600w`"
+                                sizes="(max-width: 560px) calc(100vw - 40px), min(798px, 100vw)"
+                            />
+                            <img
+                                class="project-image"
+                                :src="dashboardHeroJpg1600"
+                                :srcset="`${dashboardHeroJpg960} 960w, ${dashboardHeroJpg1600} 1600w`"
+                                sizes="(max-width: 560px) calc(100vw - 40px), min(798px, 100vw)"
+                                width="1600"
+                                height="902"
+                                decoding="async"
+                                fetchpriority="high"
+                                alt="IoT Adherence Analytics for Caregivers: Dashboard Design"
+                            />
+                        </picture>
                     </router-link>
                     <div class="project-caption">
                         <div class="project-caption-header">
                             <h2 class="project-title">
                                 <router-link to="/project/MedicationDashboard" class="project-title-link">
-                                    Improving medication adherence: Dashboard Design
+                                    IoT Adherence Analytics for Caregivers: Dashboard Design
                                 </router-link>
                             </h2>
                             <span class="project-year">2026</span>
                         </div>
                         <p class="project-description">
-                            0-to-1 design of a caregiver-facing dashboard to help users better understand client needs
+                            0‑to‑1 design of a caregiver‑facing dashboard for a primary user's account, helping caregivers better understand their client's needs
                         </p>
                     </div>
                 </article>
@@ -56,21 +69,20 @@
                         <img
                             class="project-image"
                             :src="multiplatformHero"
-                            alt="Home Medication Solution: Multiplatform Design"
+                            alt="Home Medication Solution: IoT Multiplatform Design"
                         />
                     </router-link>
                     <div class="project-caption">
                         <div class="project-caption-header">
                             <h2 class="project-title">
                                 <router-link to="/project/MultiplatformSolution" class="project-title-link">
-                                    Home Medication Solution: Multiplatform Design
+                                    Home Medication Solution: IoT Multiplatform Design
                                 </router-link>
                             </h2>
                             <span class="project-year">2024</span>
                         </div>
                         <p class="project-description">
-                            Redesigned workflows, human-machine interface, web + mobile app features of an IoT
-                            medication adherence platform.
+                            Redesigned workflows, human-machine interface, web + mobile app features of an IoT medication adherence platform
                         </p>
                     </div>
                 </article>
@@ -165,7 +177,10 @@
 </template>
 
 <script>
-import dashboardHero from '../assets/1_dashboard/0_dashboard_hero.svg'
+import dashboardHeroWebp960 from '../assets/1_dashboard/0_dashboard_hero_portfolio-960.webp'
+import dashboardHeroWebp1600 from '../assets/1_dashboard/0_dashboard_hero_portfolio-1600.webp'
+import dashboardHeroJpg960 from '../assets/1_dashboard/0_dashboard_hero_portfolio-960.jpg'
+import dashboardHeroJpg1600 from '../assets/1_dashboard/0_dashboard_hero_portfolio-1600.jpg'
 import multiplatformHero from '../assets/2_multiplatform/0_multiplatform_hero.jpg'
 import marketplaceHero from '../assets/3_marketplace/0_marketplace_hero.jpg'
 import aboutPhoto from '../assets/portrait.jpg'
@@ -178,7 +193,10 @@ export default {
     components: { PortfolioTopBar },
     data() {
         return {
-            dashboardHero,
+            dashboardHeroWebp960,
+            dashboardHeroWebp1600,
+            dashboardHeroJpg960,
+            dashboardHeroJpg1600,
             multiplatformHero,
             marketplaceHero,
             aboutPhoto,
@@ -487,6 +505,11 @@ export default {
     z-index: 1;
     display: block;
     text-decoration: none;
+}
+
+.project-image-link picture {
+    display: block;
+    width: 100%;
 }
 
 .project-image {
@@ -1063,7 +1086,7 @@ export default {
         width: 225px;
         height: 49px;
         min-height: 49px;
-        margin-top: 40px;
+        margin-top: 60px;
         margin-left: 0;
         padding: 8px 20px;
         font-size: 22px;
@@ -1108,7 +1131,8 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 0 20px;
+        --about-side-pad: 20px;
+        padding: 0 var(--about-side-pad);
     }
 
     .about-photo-column,
@@ -1132,8 +1156,17 @@ export default {
 
     .about-location {
         order: 3;
-        margin: 64px 0 0;
-        align-self: auto;
+        box-sizing: border-box;
+        width: calc(100% + 2 * var(--about-side-pad));
+        max-width: 100vw;
+        margin: 64px 0 0 calc(-1 * var(--about-side-pad));
+        padding-left: var(--about-side-pad);
+    }
+
+    .about-location-icon-wrap {
+        width: 13px;
+        height: 20px;
+        justify-content: flex-start;
     }
 
     .about-location-text {
@@ -1164,8 +1197,30 @@ export default {
         line-height: 30px;
     }
 
-    .footer-email,
+    .site-footer {
+        position: relative;
+        display: block;
+        height: 120px;
+        min-height: 120px;
+        padding: 0;
+    }
+
+    .footer-divider {
+        display: none;
+    }
+
+    .footer-email {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 14px;
+        line-height: 21px;
+    }
+
     .footer-copy {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
         font-size: 14px;
         line-height: 21px;
     }

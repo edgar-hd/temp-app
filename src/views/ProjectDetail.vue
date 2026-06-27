@@ -172,11 +172,25 @@ export default {
   }
 }
 
+.main :global(.full-image picture) {
+  display: block;
+  width: 100%;
+}
+
 .main :global(.full-image img),
 .main :global(.full-image video) {
   width: 100%;
+  height: auto;
   display: block;
   margin: 0 auto;
+  object-fit: contain;
+}
+
+.main :global(.hero-image img) {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4096 / 2307;
+  object-fit: contain;
 }
 
 .main :global(.caption) {

@@ -25,7 +25,17 @@
         </section>
 
         <div class="full-image hero-image">
-            <img :src="img0" alt="Dashboard hero" />
+            <picture>
+                <source type="image/webp" :srcset="dashboardHeroWebp" />
+                <img
+                    :src="dashboardHeroJpg"
+                    alt="Dashboard hero"
+                    width="4096"
+                    height="2307"
+                    decoding="async"
+                    fetchpriority="high"
+                />
+            </picture>
         </div>
 
         <section>
@@ -259,7 +269,8 @@
 <script>
 import ProjectDetail from './ProjectDetail.vue'
 import ZoomableImage from '../components/ZoomableImage.vue'
-import img0 from '../assets/1_dashboard/0_dashboard_hero.svg'
+import dashboardHeroWebp from '../assets/1_dashboard/0_dashboard_hero_detail-2400.webp'
+import dashboardHeroJpg from '../assets/1_dashboard/0_dashboard_hero_detail-2400.jpg'
 import svg1Cover from '../assets/1_dashboard/1_affinity_interrelation_diagram_cover.svg'
 import svg1 from '../assets/1_dashboard/1_affinity_interrelation_large_margin.svg'
 import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.svg'
@@ -273,7 +284,18 @@ export default {
     name: 'MedicationDashboard',
     components: { ProjectDetail, ZoomableImage },
     data() {
-        return { img0, svg1Cover, svg1, img2, img3, img4, vid5, vid6, vid7 }
+        return {
+            dashboardHeroWebp,
+            dashboardHeroJpg,
+            svg1Cover,
+            svg1,
+            img2,
+            img3,
+            img4,
+            vid5,
+            vid6,
+            vid7,
+        }
     },
 }
 </script>
