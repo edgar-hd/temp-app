@@ -19,9 +19,9 @@
                         </picture>
                     </div>
                     <p class="hero-intro">
-                        <strong class="hero-intro-em">Product Designer</strong> with a background in Neuroscience and research.
+                        <span class="hero-intro-lead">Tim Justina Yeung is a </span><strong class="hero-intro-em">Product Designer</strong> with a background in Neuroscience and research.
                         Deeply enjoy understanding complex problems and providing creative solutions
-                        <strong class="hero-intro-em">for people :)</strong>
+                        <strong class="hero-intro-em hero-intro-em--keep">for people :)</strong>
                     </p>
                 </div>
                 <a class="cta-button" href="mailto:design@timjustina.com">Drop me a line</a>
@@ -403,6 +403,14 @@ export default {
 .hero-intro-em {
     color: var(--brand);
     font-weight: calc(600 * var(--font-weight-scale));
+}
+
+.hero-intro-em--keep {
+    white-space: nowrap;
+}
+
+.hero-intro-lead {
+    display: none;
 }
 
 .cta-button {
@@ -1030,7 +1038,7 @@ export default {
 
     .hero-intro-wrap {
         max-width: 100%;
-        margin: 60px 0 0;
+        margin: 22px 0 0;
     }
 
     .hero-intro {
@@ -1039,22 +1047,23 @@ export default {
         line-height: 33px;
     }
 
+    .hero-intro-lead {
+        display: inline;
+    }
+
     .hero-decor {
-        display: block;
-        top: calc(100% + 40px);
-        right: auto;
-        left: calc(100% - 65px);
+        display: none;
     }
 
     .hero {
-        margin-bottom: 142px;
+        margin-bottom: 80px;
     }
 
     .cta-button {
         width: 225px;
         height: 49px;
         min-height: 49px;
-        margin-top: 60px;
+        margin-top: 40px;
         margin-left: 0;
         padding: 8px 20px;
         font-size: 22px;
@@ -1087,11 +1096,6 @@ export default {
     .project-year {
         font-size: 18px;
         line-height: 27px;
-    }
-
-    .project--offset .project-year {
-        font-size: 20px;
-        line-height: 30px;
     }
 
     .about {

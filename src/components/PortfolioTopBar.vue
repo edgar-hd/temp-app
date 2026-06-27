@@ -296,8 +296,7 @@ export default {
     }
 
     .logo-name {
-        font-size: 18px;
-        line-height: 27px;
+        display: none;
     }
 
     .nav-link {
