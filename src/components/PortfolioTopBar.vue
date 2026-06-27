@@ -265,9 +265,24 @@ export default {
     display: none;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
     .top-bar-inner {
-        padding: 0 24px;
+        padding: 0 40px;
+    }
+
+    .logo-name {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .nav-link {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .nav-link--stacked > span:first-child {
+        height: 27px;
+        line-height: 27px;
     }
 }
 </style>

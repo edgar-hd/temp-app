@@ -695,14 +695,18 @@ export default {
 
 .site-footer {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: flex-start;
     justify-content: center;
     gap: 20px;
     height: 120px;
+    min-height: 120px;
     padding-top: 54px;
     padding-bottom: 0;
     box-sizing: border-box;
     background: #fff;
+    white-space: nowrap;
 }
 
 .footer-email,
@@ -712,6 +716,8 @@ export default {
     font-weight: calc(300 * var(--font-weight-scale));
     line-height: 21px;
     color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .footer-email {
@@ -723,6 +729,7 @@ export default {
 }
 
 .footer-divider {
+    flex-shrink: 0;
     width: 1px;
     height: 21px;
     background: var(--muted);
@@ -803,16 +810,6 @@ export default {
     .about-location {
         margin-top: 64px;
         margin-left: -34px;
-    }
-
-    .site-footer {
-        align-items: flex-start;
-        padding-top: 54px;
-        padding-bottom: 0;
-    }
-
-    .footer-divider {
-        height: 21px;
     }
 }
 
@@ -1018,36 +1015,151 @@ export default {
         text-decoration: none;
         box-sizing: border-box;
     }
-
-    .site-footer {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        padding-bottom: 40px;
-    }
-
-    .footer-divider {
-        width: 30px;
-        height: 1px;
-    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+    .portfolio-page {
+        --page-pad: 40px;
+    }
+
     .portfolio-main {
-        padding: 120px 24px 0;
+        padding: 120px 40px 0;
+    }
+
+    .hero-intro-wrap {
+        max-width: 480px;
+        margin: 60px 0 0;
+    }
+
+    .hero-intro {
+        max-width: 480px;
+        font-size: 22px;
+        line-height: 33px;
     }
 
     .hero-decor {
-        display: none;
+        display: block;
+        top: calc(100% + 40px);
+        right: auto;
+        left: calc(100% - 130px);
+    }
+
+    .hero {
+        margin-bottom: 142px;
+    }
+
+    .cta-button {
+        width: 225px;
+        height: 49px;
+        min-height: 49px;
+        margin-top: 60px;
+        margin-left: 0;
+        padding: 8px 20px;
+        font-size: 22px;
+        line-height: 33px;
+    }
+
+    .work {
+        gap: 80px;
+    }
+
+    .project-caption {
+        margin-top: 20px;
+    }
+
+    .project-caption-header {
+        padding-top: 0;
+    }
+
+    .project-title {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .project-description {
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .project-year {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .project--offset .project-year {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .about {
+        margin-top: 80px;
+        --about-bottom-pad: 276px;
+        padding: 80px 0 var(--about-bottom-pad);
     }
 
     .about-inner {
-        padding: 0 24px;
+        padding: 0 40px;
+    }
+
+    .about-photo,
+    .about-photo--placeholder {
+        width: 201px;
+        height: 288px;
+    }
+
+    .about-photo-column {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 32px;
+        max-width: 480px;
+    }
+
+    .about-location {
+        margin: 218px 0 0;
+        align-self: flex-start;
+    }
+
+    .about-location-text {
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    .about-text-column {
+        padding-top: 32px;
+    }
+
+    .about-heading {
+        margin: 0 0 40px;
+        font-size: 18px;
+        line-height: 40px;
+    }
+
+    .about-bio {
+        max-width: 480px;
+        font-size: 16px;
+        line-height: 25px;
     }
 
     .about-actions {
+        display: flex;
+        gap: 31px;
+        margin-top: 48px;
         padding-left: 0;
-        flex-wrap: wrap;
+    }
+
+    .about-action-btn {
+        height: 54px;
+        padding: 12px 24px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .footer-email,
+    .footer-copy {
+        font-size: 14px;
+        line-height: 21px;
     }
 }
 </style>
