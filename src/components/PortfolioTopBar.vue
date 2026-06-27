@@ -25,14 +25,14 @@
                         </router-link>
                         <a
                             href="https://www.linkedin.com/in/timjustinayeung"
-                            class="nav-link nav-link--stacked"
+                            class="nav-link nav-link--stacked nav-link--linkedin"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <span>Linkedin</span>
                             <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
                         </a>
-                        <a href="#" class="nav-link nav-link--stacked">
+                        <a href="#" class="nav-link nav-link--stacked nav-link--cv">
                             <span>CV</span>
                             <img class="nav-indicator" :src="menuHover" alt="" aria-hidden="true" />
                         </a>
@@ -263,6 +263,13 @@ export default {
 .nav--compact .nav-link--work,
 .nav--compact .nav-link--about {
     display: none;
+}
+
+@media (max-width: 767px) {
+    .nav-link--linkedin,
+    .nav-link--cv {
+        display: none;
+    }
 }
 
 @media (max-width: 560px) {

@@ -1041,7 +1041,7 @@ export default {
         display: block;
         top: calc(100% + 40px);
         right: auto;
-        left: calc(100% - 130px);
+        left: calc(100% - 65px);
     }
 
     .hero {
@@ -1099,26 +1099,35 @@ export default {
     }
 
     .about-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 0 40px;
+    }
+
+    .about-photo-column,
+    .about-text-column {
+        display: contents;
+    }
+
+    .about-heading {
+        order: 1;
+        margin: 0 0 32px;
+        font-size: 18px;
+        line-height: 40px;
     }
 
     .about-photo,
     .about-photo--placeholder {
+        order: 2;
         width: 201px;
         height: 288px;
     }
 
-    .about-photo-column {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 32px;
-        max-width: 480px;
-    }
-
     .about-location {
-        margin: 218px 0 0;
-        align-self: flex-start;
+        order: 3;
+        margin: 64px 0 0;
+        align-self: auto;
     }
 
     .about-location-text {
@@ -1126,23 +1135,16 @@ export default {
         line-height: 23px;
     }
 
-    .about-text-column {
-        padding-top: 32px;
-    }
-
-    .about-heading {
-        margin: 0 0 40px;
-        font-size: 18px;
-        line-height: 40px;
-    }
-
     .about-bio {
+        order: 4;
+        margin-top: 32px;
         max-width: 480px;
         font-size: 16px;
         line-height: 25px;
     }
 
     .about-actions {
+        order: 5;
         display: flex;
         gap: 31px;
         margin-top: 48px;
