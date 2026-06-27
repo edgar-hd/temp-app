@@ -7,15 +7,6 @@
                         <img class="logo" :src="logo" alt="" />
                         <span ref="logoName" class="logo-name">TIM JUSTINA YEUNG</span>
                     </router-link>
-                    <button
-                        type="button"
-                        class="menu-toggle"
-                        aria-label="Open menu"
-                        :aria-expanded="menuOpen"
-                        @click="menuOpen = !menuOpen"
-                    >
-                        <span /><span /><span />
-                    </button>
                     <nav ref="nav" class="nav" :class="{ 'nav--compact': navCompact }">
                         <router-link
                             :to="{ path: '/', hash: '#work-first' }"
@@ -49,38 +40,6 @@
                 </div>
             </div>
         </header>
-
-        <nav
-            class="mobile-nav"
-            :class="{ 'mobile-nav--open': menuOpen }"
-            aria-label="Mobile navigation"
-        >
-            <router-link
-                :to="{ path: '/', hash: '#work-first' }"
-                class="mobile-nav-link"
-                @click="menuOpen = false"
-            >Work</router-link>
-            <router-link
-                :to="{ path: '/', hash: '#about' }"
-                class="mobile-nav-link"
-                @click="onAboutClick"
-            >About</router-link>
-            <a
-                href="https://www.linkedin.com/in/timjustinayeung"
-                class="mobile-nav-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                @click="menuOpen = false"
-            >Linkedin</a>
-            <a href="#" class="mobile-nav-link" @click="menuOpen = false">CV</a>
-        </nav>
-
-        <div
-            v-if="menuOpen"
-            class="mobile-nav-backdrop"
-            aria-hidden="true"
-            @click="menuOpen = false"
-        />
     </div>
 </template>
 
@@ -95,7 +54,6 @@ export default {
         return {
             logo,
             menuHover,
-            menuOpen: false,
             navCompact: false,
             fullNavWidth: null,
             navGapObserver: null,
@@ -134,7 +92,6 @@ export default {
                     this.topBarHidden = false
                 } else if (delta > 5 && y > 120) {
                     this.topBarHidden = true
-                    this.menuOpen = false
                 } else if (delta < -5) {
                     this.topBarHidden = false
                 }
@@ -144,8 +101,6 @@ export default {
             })
         },
         onAboutClick(event) {
-            this.menuOpen = false
-
             if (this.$route.path !== '/') return
 
             if (this.$route.hash === '#about') {
@@ -220,34 +175,6 @@ export default {
     justify-content: space-between;
     gap: 40px;
     width: 100%;
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    width: 31px;
-    height: 27px;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 31px;
-    height: 2px;
-    background: var(--brand);
-}
-
-.mobile-nav {
-    display: none;
-}
-
-.mobile-nav-backdrop {
-    display: none;
 }
 
 .logo-block {
@@ -338,62 +265,9 @@ export default {
     display: none;
 }
 
-@media (max-width: 767px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav {
-        display: none;
-    }
-
-    .mobile-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-        position: fixed;
-        top: 120px;
-        right: var(--page-pad);
-        z-index: 110;
-        padding: 0;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-8px);
-        transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .mobile-nav--open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-
-    .mobile-nav-link {
-        font-family: 'Be Vietnam Pro', sans-serif;
-        font-size: 18px;
-        font-weight: calc(500 * var(--font-weight-scale));
-        line-height: 27px;
-        letter-spacing: -0.02em;
-        color: var(--brand);
-        text-decoration: none;
-    }
-
-    .mobile-nav-backdrop {
-        display: block;
-        position: fixed;
-        inset: 0;
-        z-index: 105;
-        background: transparent;
-    }
-}
-
 @media (max-width: 480px) {
     .top-bar-inner {
         padding: 0 24px;
-    }
-
-    .mobile-nav {
-        right: 24px;
     }
 }
 </style>

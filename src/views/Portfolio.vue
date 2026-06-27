@@ -311,7 +311,7 @@ export default {
     --hero-line-return-duration: 0.35s;
     --hero-decor-height: 532px;
     --hero-decor-bottom-offset: 50px;
-    --hero-decor-line-natural-height: 518px;
+    --hero-decor-line-natural-height: 818px;
     position: absolute;
     top: 6px;
     right: calc(100% + 42px);
@@ -320,7 +320,6 @@ export default {
     height: var(--hero-decor-height);
     overflow: hidden;
     pointer-events: none;
-    container-type: size;
 }
 
 .hero-decor picture {
@@ -333,31 +332,13 @@ export default {
     left: 0;
     display: block;
     width: 56px;
-    height: max(100%, var(--hero-decor-line-natural-height));
+    min-width: 56px;
+    max-width: 56px;
+    height: var(--hero-decor-line-natural-height);
+    min-height: var(--hero-decor-line-natural-height);
     object-fit: none;
     object-position: left bottom;
     transition: transform var(--hero-line-return-duration) ease-out;
-}
-
-/* Wide: clip at hero text top, stretch line to fill container height */
-@media (min-width: 998px) {
-    .hero-decor {
-        --hero-decor-line-natural-height: 818px;
-    }
-
-    .hero-decor-line {
-        height: max(100%, var(--hero-decor-line-natural-height));
-        object-fit: none;
-        object-position: left bottom;
-    }
-
-    @container (min-height: 519px) {
-        .hero-decor-line {
-            height: 100%;
-            object-fit: fill;
-            object-position: left bottom;
-        }
-    }
 }
 
 .portfolio-main:has(.project--featured:hover) .hero-decor-line,
@@ -850,7 +831,6 @@ export default {
         top: calc(100% + 84px);
         right: auto;
         left: 122px;
-        --hero-decor-line-natural-height: 818px;
     }
 
     .cta-button {
