@@ -207,10 +207,30 @@
                 <div class="video-pair">
                     <div class="video-pair-videos">
                         <div class="video-pair-media">
-                            <video :src="vid5" autoplay loop muted playsinline />
+                            <video
+                                class="project-video"
+                                :src="vid5"
+                                width="2212"
+                                height="1434"
+                                style="aspect-ratio: 2212 / 1434"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                            />
                         </div>
                         <div class="video-pair-media">
-                            <video :src="vid6" autoplay loop muted playsinline />
+                            <video
+                                class="project-video"
+                                :src="vid6"
+                                width="2212"
+                                height="1432"
+                                style="aspect-ratio: 2212 / 1432"
+                                autoplay
+                                loop
+                                muted
+                                playsinline
+                            />
                         </div>
                     </div>
                     <p class="caption">Prototype of Missed Dose Insights</p>
@@ -263,7 +283,17 @@
                     don't overshadow the main app features where users can find more detailed information.</p>
 
                 <div class="full-image">
-                    <video :src="vid7" autoplay loop muted playsinline />
+                    <video
+                        class="project-video"
+                        :src="vid7"
+                        width="2140"
+                        height="1432"
+                        style="aspect-ratio: 2140 / 1432"
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                    />
                 </div>
             </section>
 
@@ -305,7 +335,7 @@ import dashboardHeroJpg2400 from '../assets/1_dashboard/0_dashboard_hero_detail-
 import dashboardHeroJpg3200 from '../assets/1_dashboard/0_dashboard_hero_detail-3200.jpg'
 import svg1Cover from '../assets/1_dashboard/1_affinity_interrelation_diagram_cover.svg'
 import svg1 from '../assets/1_dashboard/1_affinity_interrelation_large_margin.svg'
-import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.svg'
+import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.webp'
 import img3 from '../assets/1_dashboard/3_colour_system_portfolio.jpg'
 import img4 from '../assets/1_dashboard/4_dispense_summary_portfolio.jpg'
 import vid5 from '../assets/1_dashboard/5_adherence_trend_width.mov'
@@ -313,7 +343,7 @@ import vid6 from '../assets/1_dashboard/6_missed_dose_insights_width.mov'
 import vid7 from '../assets/1_dashboard/7_caregiver_dashboard_width.mov'
 
 export default {
-    name: 'MedicationDashboard',
+    name: 'DashboardDesign',
     components: { ProjectDetail, ProjectDetailHeader, ZoomableImage },
     data() {
         return {

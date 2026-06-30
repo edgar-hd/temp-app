@@ -197,8 +197,8 @@ export default {
 
 .mainFullWidthImages :global(.video-pair) {
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  left: calc(50% - var(--project-content-offset));
+  transform: translate3d(-50%, 0, 0);
   width: min(calc(var(--page-max) - 2 * var(--page-pad)), calc(100vw - 2 * var(--page-pad)));
   max-width: calc(var(--page-max) - 2 * var(--page-pad));
   margin: var(--project-media-gap) 0;
@@ -207,23 +207,18 @@ export default {
 .mainFullWidthImages :global(.video-pair-videos) {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: stretch;
+  align-items: start;
 }
 
 .mainFullWidthImages :global(.video-pair-media) {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  min-height: 0;
+  min-width: 0;
 }
 
-.mainFullWidthImages :global(.video-pair-media video) {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.main :global(.project-video) {
   display: block;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 @media (max-width: 767px) {
@@ -255,16 +250,6 @@ export default {
   .mainFullWidthImages :global(.video-pair-videos) {
     grid-template-columns: 1fr;
   }
-
-  .mainFullWidthImages :global(.video-pair-media) {
-    aspect-ratio: auto;
-  }
-
-  .mainFullWidthImages :global(.video-pair-media video) {
-    position: static;
-    height: auto;
-    object-fit: contain;
-  }
 }
 
 .main :global(.full-image picture) {
@@ -272,8 +257,7 @@ export default {
   width: 100%;
 }
 
-.main :global(.full-image img),
-.main :global(.full-image video) {
+.main :global(.full-image img) {
   width: 100%;
   height: auto;
   display: block;
@@ -287,7 +271,7 @@ export default {
   font-size: 14px;
   color: #757575;
   margin-top: 12px;
-  text-align: center;
+  text-align: left;
 }
 
 .main :global(.highlight) {

@@ -9,9 +9,9 @@ const routes = [
         component: Portfolio
     },
     {
-        path: '/project/MedicationDashboard',
-        name: 'MedicationDashboard',
-        component: () => import('../views/MedicationDashboard.vue')
+        path: '/work/DashboardDesign',
+        name: 'DashboardDesign',
+        component: () => import('../views/DashboardDesign.vue')
     },
     {
         path: '/project/MultiplatformSolution',

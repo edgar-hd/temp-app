@@ -29,7 +29,7 @@
 
             <section id="work" class="work">
                 <article id="work-first" class="project project--featured">
-                    <router-link to="/project/MedicationDashboard" class="project-image-link">
+                    <router-link to="/work/DashboardDesign" class="project-image-link">
                         <picture>
                             <source
                                 type="image/webp"
@@ -52,7 +52,7 @@
                     <div class="project-caption">
                         <div class="project-caption-header">
                             <h2 class="project-title">
-                                <router-link to="/project/MedicationDashboard" class="project-title-link">
+                                <router-link to="/work/DashboardDesign" class="project-title-link">
                                     IoT Adherence Analytics for Caregivers: Dashboard Design
                                 </router-link>
                             </h2>
