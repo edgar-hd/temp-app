@@ -31,7 +31,7 @@
 </template>
 
 <script>
-const MOBILE_QUERY = '(max-width: 767px)'
+const STACK_QUERY = '(max-width: 997px)'
 
 export default {
   name: 'VideoPair',
@@ -55,7 +55,7 @@ export default {
     },
   },
   mounted() {
-    this.mediaQuery = window.matchMedia(MOBILE_QUERY)
+    this.mediaQuery = window.matchMedia(STACK_QUERY)
     this.onMediaChange = () => this.scheduleLayout()
     this.mediaQuery.addEventListener('change', this.onMediaChange)
 
@@ -123,7 +123,7 @@ export default {
   object-fit: contain;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 997px) {
   .video-pair-videos {
     flex-direction: column;
     align-items: flex-start;

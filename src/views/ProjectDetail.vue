@@ -185,26 +185,14 @@ export default {
   transform: translateX(-50%);
 }
 
-.mainFullWidthImages :global(.project-body .full-image) {
+.mainFullWidthImages :global(.project-body .full-image),
+.mainFullWidthImages :global(.project-body .video-pair) {
   width: min(calc(var(--page-max) - 2 * var(--page-pad)), calc(100vw - 2 * var(--page-pad)));
   max-width: calc(var(--page-max) - 2 * var(--page-pad));
   position: relative;
   left: calc(50% - var(--project-content-offset));
   transform: translate3d(-50%, 0, 0);
   margin: var(--project-media-gap) 0;
-}
-
-.mainFullWidthImages :global(.project-body .video-pair) {
-  width: 100vw;
-  max-width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: var(--project-media-gap) 0;
-}
-
-.mainFullWidthImages :global(.video-pair .caption) {
-  padding-inline: var(--page-pad);
 }
 
 .main :global(.full-image video),
@@ -240,10 +228,6 @@ export default {
     padding: 0 20px;
     width: 100%;
     max-width: none;
-  }
-
-  .mainFullWidthImages :global(.video-pair .caption) {
-    padding-inline: 20px;
   }
 }
 
