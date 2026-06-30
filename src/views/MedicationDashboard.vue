@@ -2,12 +2,18 @@
     <ProjectDetail full-width-images>
         <div class="project-hero">
             <picture>
-                <source type="image/webp" :srcset="dashboardHeroWebp" />
+                <source
+                    type="image/webp"
+                    :srcset="`${dashboardHeroWebp2400} 2400w, ${dashboardHeroWebp3200} 3200w`"
+                    sizes="100vw"
+                />
                 <img
-                    :src="dashboardHeroJpg"
+                    :src="dashboardHeroJpg2400"
+                    :srcset="`${dashboardHeroJpg2400} 2400w, ${dashboardHeroJpg3200} 3200w`"
+                    sizes="100vw"
                     alt="Dashboard hero"
-                    width="4096"
-                    height="2307"
+                    width="3200"
+                    height="1803"
                     decoding="async"
                     fetchpriority="high"
                 />
@@ -134,7 +140,14 @@
                     to process colours much faster than words.</p>
 
                 <div class="full-image">
-                    <img :src="img3" alt="Colour system" loading="lazy" decoding="async" />
+                    <img
+                        :src="img3"
+                        alt="Colour system"
+                        width="2882"
+                        height="1623"
+                        loading="lazy"
+                        decoding="async"
+                    />
                     <p class="caption">Colour palettes for the dashboard design with colour contrast audit for WCAG
                         compliance</p>
                 </div>
@@ -166,7 +179,14 @@
                     accurately than areas or angles.</p>
 
                 <div class="full-image">
-                    <img :src="img4" alt="Design iterations" loading="lazy" decoding="async" />
+                    <img
+                        :src="img4"
+                        alt="Design iterations"
+                        width="2617"
+                        height="647"
+                        loading="lazy"
+                        decoding="async"
+                    />
                     <p class="caption">Design iterations of Dispense Summary</p>
                 </div>
 
@@ -279,24 +299,28 @@
 import ProjectDetail from './ProjectDetail.vue'
 import ProjectDetailHeader from '../components/ProjectDetailHeader.vue'
 import ZoomableImage from '../components/ZoomableImage.vue'
-import dashboardHeroWebp from '../assets/1_dashboard/0_dashboard_hero_detail-2400.webp'
-import dashboardHeroJpg from '../assets/1_dashboard/0_dashboard_hero_detail-2400.jpg'
+import dashboardHeroWebp2400 from '../assets/1_dashboard/0_dashboard_hero_detail-2400.webp'
+import dashboardHeroWebp3200 from '../assets/1_dashboard/0_dashboard_hero_detail-3200.webp'
+import dashboardHeroJpg2400 from '../assets/1_dashboard/0_dashboard_hero_detail-2400.jpg'
+import dashboardHeroJpg3200 from '../assets/1_dashboard/0_dashboard_hero_detail-3200.jpg'
 import svg1Cover from '../assets/1_dashboard/1_affinity_interrelation_diagram_cover.svg'
 import svg1 from '../assets/1_dashboard/1_affinity_interrelation_large_margin.svg'
 import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.svg'
-import img3 from '../assets/1_dashboard/3_colour_system_portfolio.svg'
-import img4 from '../assets/1_dashboard/4_dispense_summary_portfolio.svg'
+import img3 from '../assets/1_dashboard/3_colour_system_portfolio.jpg'
+import img4 from '../assets/1_dashboard/4_dispense_summary_portfolio.jpg'
 import vid5 from '../assets/1_dashboard/5_adherence_trend_width.mov'
 import vid6 from '../assets/1_dashboard/6_missed_dose_insights_width.mov'
-import vid7 from '../assets/1_dashboard/7_caregiver_dashboard.mov'
+import vid7 from '../assets/1_dashboard/7_caregiver_dashboard_width.mov'
 
 export default {
     name: 'MedicationDashboard',
     components: { ProjectDetail, ProjectDetailHeader, ZoomableImage },
     data() {
         return {
-            dashboardHeroWebp,
-            dashboardHeroJpg,
+            dashboardHeroWebp2400,
+            dashboardHeroWebp3200,
+            dashboardHeroJpg2400,
+            dashboardHeroJpg3200,
             svg1Cover,
             svg1,
             img2,

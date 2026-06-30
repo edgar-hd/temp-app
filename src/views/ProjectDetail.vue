@@ -28,6 +28,7 @@ export default {
   --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
   --project-content-w: 635px;
   --project-content-offset: 22.5px;
+  --project-media-gap: 118px;
   --top-bar-height: 120px;
   background: #fff;
   color: #3c3f41;
@@ -168,7 +169,7 @@ export default {
   transform: translateX(-50%);
   max-width: 1100px;
   width: min(1100px, calc(100vw - 40px));
-  margin: 48px 0;
+  margin: var(--project-media-gap) 0;
   text-align: center;
 }
 
@@ -190,8 +191,8 @@ export default {
   max-width: calc(var(--page-max) - 2 * var(--page-pad));
   position: relative;
   left: calc(50% - var(--project-content-offset));
-  transform: translateX(-50%);
-  margin: 48px 0;
+  transform: translate3d(-50%, 0, 0);
+  margin: var(--project-media-gap) 0;
 }
 
 .mainFullWidthImages :global(.video-pair) {
@@ -200,7 +201,7 @@ export default {
   transform: translateX(-50%);
   width: min(calc(var(--page-max) - 2 * var(--page-pad)), calc(100vw - 2 * var(--page-pad)));
   max-width: calc(var(--page-max) - 2 * var(--page-pad));
-  margin: 48px 0;
+  margin: var(--project-media-gap) 0;
 }
 
 .mainFullWidthImages :global(.video-pair-videos) {
@@ -278,6 +279,7 @@ export default {
   display: block;
   margin: 0 auto;
   object-fit: contain;
+  image-rendering: auto;
 }
 
 .main :global(.caption) {
