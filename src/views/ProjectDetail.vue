@@ -26,81 +26,140 @@ export default {
 .page {
   --page-max: 1454px;
   --page-pad: clamp(100px, calc(100px + (100vw - 997px) * 40 / 457), 140px);
+  --project-content-w: 635px;
+  --project-content-offset: 22.5px;
+  --top-bar-height: 120px;
   background: #fff;
-  color: #2c2c2c;
-  font-family: 'Maven Pro', sans-serif;
+  color: #3c3f41;
+  font-family: Georgia, 'EB Garamond', 'Times New Roman', Times, serif;
   font-size: 20px;
   min-height: 100vh;
 }
 
 .main {
-  max-width: calc(650px + 6ch);
-  margin: 0 auto;
-  padding: 120px 20px 120px;
-  line-height: 1.5;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 120px;
 }
 
-.main :global(h1) {
-  font-size: 35px;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+.main :global(.project-body) {
+  width: min(var(--project-content-w), calc(100vw - 40px));
+  max-width: var(--project-content-w);
+  margin-left: max(20px, calc(50% - var(--project-content-w) / 2 + var(--project-content-offset)));
+  margin-right: auto;
+  overflow: visible;
+  font-family: Georgia, 'EB Garamond', 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 34px;
+  letter-spacing: 0;
+  color: #3c3f41;
+}
+
+.main :global(.project-header) {
+  margin-top: calc(var(--top-bar-height, 120px) + 48px);
+}
+
+.main :global(.project-body section) {
+  overflow: visible;
+}
+
+.main :global(.project-hero + .project-header) {
+  margin-top: 118px;
+}
+
+.main :global(.project-hero) {
+  width: 100vw;
+  max-width: 100vw;
+  margin: calc(var(--top-bar-height, 120px) + 91px) calc(50% - 50vw) 0;
   text-align: center;
-  margin: 0 0 24px;
 }
 
-.main :global(.meta) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  font-size: 24px;
-  color: #757575;
+.main :global(.project-hero picture) {
+  display: block;
+  width: 100%;
+}
+
+.main :global(.project-hero img) {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.main :global(.project-body section + section) {
+  margin-top: 84px;
+}
+
+.main :global(.project-body section h2 + *) {
+  margin-top: 38px;
+}
+
+.main :global(.project-body .project-role p) {
+  margin: 0;
+}
+
+.main :global(.project-body .project-role h2 + p) {
+  margin-top: 38px;
+}
+
+.main :global(.project-body .project-role ul) {
+  margin: 34px 0 0;
+  padding-left: 1.1em;
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.main :global(.project-body .project-role li) {
+  padding-left: 0.15em;
+}
+
+.main :global(.project-body .project-role li::marker) {
+  color: #3c3f41;
+}
+
+.main :global(.project-body h2) {
+  margin: 0;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 33px;
   letter-spacing: -0.02em;
-  margin-bottom: 48px;
+  color: #3c3f41;
 }
 
-.main :global(.meta span:nth-child(2)) {
-  width: 1px;
-  height: 29px;
-  background: #757575;
+.main :global(.project-body h3) {
+  margin: 48px 0 0;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 39px;
+  letter-spacing: -0.02em;
+  color: #2c2c2c;
+}
+
+.main :global(.project-body h3 + p) {
+  margin-top: 38px;
+}
+
+.main :global(.project-body p) {
+  margin: 0 0 34px;
+}
+
+.main :global(.project-body p:last-child) {
+  margin-bottom: 0;
+}
+
+.main :global(.project-body ul) {
+  margin: 0 0 34px;
   padding: 0;
-  overflow: hidden;
-  text-indent: -999px;
+  list-style: none;
 }
 
-.main :global(.intro) {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.main :global(section) {
-  margin-top: 64px;
-  text-align: left;
-}
-
-.main :global(h2) {
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 24px;
-}
-
-.main :global(h3) {
-  font-size: 29px;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-  margin-bottom: 24px;
-}
-
-.main :global(section p) {
-  font-family: 'EB Garamond', Georgia, serif;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: left;
-  margin-bottom: 32px;
+.main :global(.project-body ul li + li) {
+  margin-top: 0;
 }
 
 .main :global(.full-image) {
@@ -118,11 +177,21 @@ export default {
   max-width: 100vw;
 }
 
-.mainFullWidthImages :global(.full-image:not(.hero-image)) {
+.mainFullWidthImages :global(.full-image:not(.hero-image):not(.project-hero)) {
   width: min(calc(var(--page-max) - 2 * var(--page-pad)), calc(100vw - 2 * var(--page-pad)));
   max-width: calc(var(--page-max) - 2 * var(--page-pad));
   left: 50%;
   transform: translateX(-50%);
+}
+
+.mainFullWidthImages :global(.project-body .full-image),
+.mainFullWidthImages :global(.project-body .video-pair) {
+  width: min(calc(var(--page-max) - 2 * var(--page-pad)), calc(100vw - 2 * var(--page-pad)));
+  max-width: calc(var(--page-max) - 2 * var(--page-pad));
+  position: relative;
+  left: calc(50% - var(--project-content-offset));
+  transform: translateX(-50%);
+  margin: 48px 0;
 }
 
 .mainFullWidthImages :global(.video-pair) {
@@ -157,6 +226,31 @@ export default {
 }
 
 @media (max-width: 767px) {
+  .page {
+    --project-content-offset: 0px;
+    --top-bar-height: 100px;
+  }
+
+  .main :global(.project-hero) {
+    margin-top: calc(var(--top-bar-height, 100px) + 48px);
+  }
+
+  .main :global(.project-hero + .project-header) {
+    margin-top: 64px;
+  }
+
+  .main :global(.project-header) {
+    margin-top: calc(var(--top-bar-height, 100px) + 32px);
+  }
+
+  .main :global(.project-body) {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    width: 100%;
+    max-width: none;
+  }
+
   .mainFullWidthImages :global(.video-pair-videos) {
     grid-template-columns: 1fr;
   }
@@ -186,14 +280,8 @@ export default {
   object-fit: contain;
 }
 
-.main :global(.hero-image img) {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4096 / 2307;
-  object-fit: contain;
-}
-
 .main :global(.caption) {
+  font-family: 'Fira Code', monospace;
   font-size: 14px;
   color: #757575;
   margin-top: 12px;

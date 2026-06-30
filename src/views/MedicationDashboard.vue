@@ -1,30 +1,6 @@
 <template>
     <ProjectDetail full-width-images>
-        <h1>Improving medication adherence: Dashboard Design</h1>
-        <div class="meta">
-            <span>Kin Technology</span>
-            <span>|</span>
-            <span>2025</span>
-        </div>
-
-        <p class="intro">
-            At KIN, we tackle medication adherence using IoT strategies. User data is an integral part of our
-            product. We want to turn
-            <strong>data into information</strong> that drives positive user behaviours. Information is only as
-            meaningful as what is understood by the target audience. Therefore,
-            <strong>information design</strong> is crucial.
-        </p>
-
-        <section>
-            <h2>My role</h2>
-            <p>I'm responsible for the <strong>0 to 1 design</strong> of dashboard components. This includes
-                <strong>stakeholders communication</strong>, <strong>content selection</strong>, <strong>data
-                    visualisation</strong>, <strong>design system</strong> and <strong>high-fidelity
-                    prototypes</strong>.
-            </p>
-        </section>
-
-        <div class="full-image hero-image">
+        <div class="project-hero">
             <picture>
                 <source type="image/webp" :srcset="dashboardHeroWebp" />
                 <img
@@ -38,236 +14,270 @@
             </picture>
         </div>
 
-        <section>
-            <h2>The Challenge</h2>
-            <p>Showcasing the full extent of the digital experience of Kin's product is important for the company to
-                secure future investments and partnerships. One of the objectives is to gain traction with some
-                investors that are interested in the products' application across healthcare providers. It is
-                important for us to demonstrate how <strong>user data</strong> collected from our IoT home
-                medication management platform can be transformed into <strong>easy-to-digest insights</strong> for
-                <strong>caregivers</strong>. The information provided should help them better understand their
-                clients' behavioural patterns and needs, and thus, providing better quality of care with less
-                effort. The task here is to design the <strong>caregiver-facing dashboard</strong> for the primary
-                user's account within the web app.
-            </p>
-        </section>
+        <ProjectDetailHeader
+            title="IoT Adherence Analytics for Caregivers: Dashboard Design"
+            client="Kin Technology"
+            period="2026 - Ongoing"
+        />
 
-        <section>
-            <h2>Discover & Define</h2>
-            <h3>Identify the scope of content</h3>
-            <p>The data that can be collected from our IoT product is abundant; however, not all of it will be
-                useful for generating meaningful information. Therefore, narrowing down the scope of
-                <strong>relevant content</strong> for the dashboard was a crucial step in the discovery phase. I
-                generated a <strong>hybrid affinity-interrelationship diagram</strong> by synthesising user
-                interview insights with product features, encompassing details on <strong>functionality</strong>,
-                primary user <strong>datasets</strong>, <strong>metrics</strong>, and end-user
-                <strong>needs</strong>. The <strong>holistic approach</strong> in exploring the available materials
-                had helped us to identify dashboard contents that are most relevant to our users.
-            </p>
+        <div class="project-body">
+            <section>
+                <h2>The Challenge</h2>
+                <p>Kin needed to showcase the full digital experience of its product to secure future investments
+                    and partnerships, particularly in healthcare sectors. One thing we wanted to demonstrate in
+                    pitches is how user data collected from our IoT medication adherence platform can be transformed
+                    into easy‑to‑digest insights for caregivers – helping them better understand their clients'
+                    behavioural patterns and providing better quality of care with less effort. The task given was
+                    to design a caregiver‑facing dashboard for the primary user's account within the web app that
+                    would help them better understand and assist their client.</p>
+            </section>
 
-            <ZoomableImage
-                :src="svg1Cover"
-                :zoom-src="svg1"
-                alt="Affinity-Interrelationship Diagram"
-                caption="Affinity-Interrelationship Diagram based on user research findings"
-            />
+            <section class="project-role">
+                <h2>My role</h2>
+                <p>Sole designer on this project.<br>Responsible for:</p>
+                <ul>
+                    <li>UX</li>
+                    <li>UI</li>
+                    <li>User research</li>
+                    <li>Product strategy</li>
+                    <li>Problem framing</li>
+                    <li>Stakeholder communication</li>
+                    <li>Data visualisation</li>
+                    <li>Design system</li>
+                    <li>Prototyping</li>
+                </ul>
+            </section>
 
-            <h3>Define the narrative</h3>
-            <p>User-driven exploration is an important aspect of dashboard design, and so is
-                <strong>storytelling</strong>. Indeed, the capacity for interactivity is a key strength of
-                dashboards as well as a necessity of the digital medium for users to attain data comprehension.
-                However, even when the data are clearly segmented for visual search, whether users will exhibit
-                efficient goal-driven information seeking is highly context dependent. If the interactive data
-                exploration in dashboard is not <strong>constrained with strategic narratives</strong>, this can
-                lead to user disengagement or fatigue - a problem that users of data visualisation softwares, such
-                as Tableau or Power BI, can encounter. The lack of <strong>customisation of data
-                    visualisation</strong> to the <strong>context of the product</strong> also represents a missed
-                opportunity in developing and <strong>re-enforcing the values of the company</strong>. Therefore, we
-                need to tell our stories.
-            </p>
+            <section>
+                <h2>Problem framing</h2>
 
-            <p>I have previously prototyped mobile dashboard components and widgets for primary users of the Kindo
-                machine. The narrative of the design placed emphasis on <strong>encouragement</strong>; using clear
-                and simple data presentations that aim to trigger <strong>immediate impression</strong> and
-                <strong>positive actions</strong> for achieving adherence. For example, KPIs were summarised as
-                single values for quick information access. Leveraging the <strong>psychological drive for
-                    completion</strong> (Zeigarnik effect - cognitive tension from unfinished tasks, reinforced
-                visually by Gestalt's Law of Closure), percentage of cumulative adherence was shown with a progress
-                indication graphic. A dispense streak was also designed on the same principles, with the additional
-                psychological motivation of <strong>loss aversion</strong>.
-            </p>
+                <h3>1. Identify the scope of content</h3>
+                <p>The caregiver user group here and their corresponding business context provide an important
+                    constraint on the type of dashboard to aim for – a slightly data‑rich consumer dashboard. User
+                    research was crucial for us in narrowing down the scope of relevant content in the discovery
+                    phase. Taking a holistic approach in exploring the available materials, I summarised the
+                    findings in a hybrid affinity‑interrelationship diagram by synthesising user interview insights
+                    with product features, encompassing details on functionality, primary user datasets, metrics,
+                    and end‑user needs. This helped to identify dashboard contents that are most relevant to our
+                    users.</p>
 
-            <p>For this task, the design narrative places emphasis on the <strong>synopsis</strong>. Based on the
-                user research, the aims are to provide: 1) <strong>insights into primary users' behaviours</strong>
-                that help improve adherence; and 2) <strong>quick access to the key statuses</strong> of the remote
-                device and medication stock for optimal maintenance of its function. Caregiver users are anticipated
-                to have more capacity to explore primary users' data than primary users themselves. Therefore, data
-                can be presented in <strong>multiple dimensions</strong> for users to explore to find patterns.
-                Nonetheless, these users are not specialists in data analysis, nor do they necessarily have the time
-                for data discovery in their line of work. Thus, data visualisation should be
-                <strong>impact-focused</strong>, <strong>highlighting straightforward patterns and trends</strong>
-                in primary users' behaviours and <strong>providing feedback that drives positive behaviours</strong>
-                in both caregivers and primary users.
-            </p>
-        </section>
+                <p>Although the project was set out to mainly show simple adherence‑related analytics for
+                    caregivers, the user research revealed two main expectations on the functionality of the
+                    dashboard:</p>
 
-        <section>
-            <h2>Design</h2>
+                <p>(1) Behavioural insights of primary user<br>
+                    (2) Quick access to the key operational statuses such as the remote device status and medication
+                    stock.</p>
 
-            <div class="full-image">
-                <img :src="img2" alt="Mockups" loading="lazy" decoding="async" />
-                <p class="caption">On the left: mockups of primary user's mobile dashboard. On the right: wireframes
-                    for caregiver-facing dashboard.</p>
-            </div>
+                <p>Point 1 was anticipated. Point 2 makes sense in hindsight – as the dashboard is the home screen,
+                    users would expect to find operational information there also. These two distinct expectations
+                    became both the rationale and the blueprint for a layout that separates components by function.</p>
 
-            <h3>Plot first, compose later</h3>
-            <p>The design process began with creating a range of data visualisation widgets <strong>without getting
-                    constrained by screen layout</strong> considerations. Some charts were discarded early on at the
-                sketching stage, while others were tested later during high-fidelity wireframing or prototyping.
-                This process encompassed exploration and experimentation, <strong>allowing optimal data
-                    visualisation solutions to emerge</strong> before getting bogged down by composition and layout.
-                It also provided materials to garner feedback from stakeholders for efficient design iterations.</p>
+                <ZoomableImage
+                    :src="svg1Cover"
+                    :zoom-src="svg1"
+                    alt="Affinity-Interrelationship Diagram"
+                    caption="Affinity-Interrelationship Diagram based on user research findings"
+                />
 
-            <h3>Optimising visual perception for the narrative</h3>
-            <p>To optimise <strong>comprehension of multivariate data</strong>, often it is best to use charts that
-                have been frequently used and stored in our collective psyche - meaning bar charts, pie charts, line
-                graphs or other <strong>simple derivatives of well-used methods</strong> are excellent templates.
-                Nonetheless, since a dataset can be presented in various ways, choosing the suitable graph for a
-                particular dataset requires <strong>holistic consideration</strong> of product
-                <strong>context/narrative</strong>, <strong>aesthetics</strong> and <strong>practical UX</strong>.
-            </p>
+                <h3>2. Define the narrative</h3>
+                <p>With the framework set, I turned to the narrative. Without a strategic narrative, users can
+                    experience fatigue or miss key insights. It is also an opportunity to highlight and reinforce
+                    features that contribute to the product's value proposition.</p>
 
-            <p>For example, it is feasible to present the summary of the type and punctuality of dispenses, which
-                are made up of distinct data categories, in either bar chart, pie chart or donut chart. The
-                <strong>goal</strong> of this particular data visualisation is to show the proportions of each
-                categories in order to <strong>highlight edge cases</strong>, which some are undesirable behaviour
-                outcomes of primary users. A <strong>priori</strong> is that, with the optimal usage of our product,
-                the dataset is going to be <strong>heavily dominated by one category</strong>. In this case,
-                circular chart type trumps bar chart for two reasons: 1) in the sense of aesthetics and practical
-                UX, the use of <strong>circular chart types</strong> would mean no empty spaces in the chart that
-                may give the impression of incomplete when the dataset is dominated by one category. Thus, it
-                provides a more <strong>intuitive, compact</strong> and <strong>harmonious</strong> visualisation
-                than bar chart; 2) for highlighting edge cases, <strong>elements that disrupt</strong> a circle or
-                continuous ring, in combination with the use of colours with high contrast, is a lot more
-                <strong>visually striking</strong> than looking out for short blocks that rise above the axis in a
-                bar chart. Therefore, it is more effective in conveying the narrative we aimed for. As to whether a
-                pie chart or a <strong>donut chart</strong> is preferred, the latter has the advantage over pie
-                chart in enabling <strong>better perception</strong> of the <strong>proportion</strong> of the
-                wedges - as human brain is bias for reading lengths better than areas or angles.
-            </p>
+                <p>Take the primary user's mobile app that I had previously made as an example. It functions as a
+                    progress hub at the home screen. Its encouragement narrative uses simple data presentation to
+                    trigger immediate impression and action. For instance, cumulative adherence appears as a
+                    heart‑shaped progress graphic leveraging the cognitive tension from unfinished tasks. A dispense
+                    streak leverages loss aversion. Both encourage adherence behaviour.</p>
 
-            <div class="full-image">
-                <img :src="img3" alt="Colour system" loading="lazy" decoding="async" />
-                <p class="caption">Colour palettes for the dashboard design with colour contrast audit for WCAG
-                    compliance</p>
-            </div>
+                <p>Based on user research, the caregiver dashboard needs a synopsis narrative. Caregivers have more
+                    capacity to explore data than primary users, but they are not analysts – nor do they necessarily
+                    have the time for data discovery in their daily work. Therefore, while they can handle
+                    multivariate plots, the data visualisation should be simple and highlight straightforward
+                    patterns and trends. For example, a daily adherence trend that also shows missed doses that were
+                    later compensated by an ad‑hoc dispense; a chart showing when missed doses most often occur.
+                    The aim is data visualisation that provides constructive feedback to drive positive behaviour
+                    for both caregiver and client.</p>
+            </section>
 
-            <div class="full-image">
-                <img :src="img4" alt="Design iterations" loading="lazy" decoding="async" />
-                <p class="caption">Design iterations of Dispense Summary</p>
-            </div>
+            <section>
+                <h2>Design</h2>
 
-            <h3>Integrating multiple variables without losing clarity</h3>
-            <p>Adherence is the most important KPI of the product for users. Although it is an impactful quick
-                overview to display a single number KPI of a cumulative average of adherence, it is also highly
-                informative to display daily adherence as a <strong>trend</strong>. It can serve to keep track of
-                primary user's <strong>performance in real time</strong> with more details, as well as showing
-                potential behaviour patterns. In our product, adherence is not just the result of <strong>primary
-                    users interaction</strong> with the IoT platform, but also that of <strong>caretakers
-                    intervention</strong> through Missed-dose Dispense. Hence, displaying data of Missed-dose
-                Dispense together with adherence acts as a crucial feedback to users by providing an
-                <strong>integrated view of their behavioural patterns</strong>. This, in turn, could facilitate
-                positive adjustments in future user behaviours. Indeed, some of the questions asked by caretakers
-                gathered in the user research sought information that implies such underlying sentiments.
-            </p>
+                <h3>1. Plot first, compose later</h3>
+                <p>I began by sketching a range of data visualisation widgets without worrying about screen layout.
+                    Some charts were discarded early; others moved into high‑fidelity wireframes and prototypes. This
+                    allowed the best solutions to emerge before I committed to composition. It also gave me early
+                    artifacts to share with stakeholders, speeding up iterations.</p>
 
-            <p><strong>Overlaying variables</strong> is doubled-edged in that it can help users to understand the
-                data through visual comparison but also create confusion by <strong>adding complexity</strong> to
-                the graph. Therefore, it is essential to include interactive functions such as <strong>selective
-                    turn off or on</strong> the variables; adding a <strong>data label</strong> feature that
-                summarises all the variables at a specific time point is another important way to help users make
-                sense of the axes of the graph.</p>
-
-            <div class="video-pair">
-                <div class="video-pair-videos">
-                    <div class="video-pair-media">
-                        <video :src="vid5" autoplay loop muted playsinline />
-                    </div>
-                    <div class="video-pair-media">
-                        <video :src="vid6" autoplay loop muted playsinline />
-                    </div>
+                <div class="full-image">
+                    <img :src="img2" alt="Mockups" loading="lazy" decoding="async" />
+                    <p class="caption">On the left: mockups of primary user's mobile dashboard. On the right:
+                        wireframes for caregiver-facing dashboard.</p>
                 </div>
-                <p class="caption">Prototype of Missed Dose Insights</p>
-            </div>
 
-            <h3>Design for accessibility</h3>
-            <p>Consistent with the rest of the product, conscious efforts have been made to optimise the design
-                according to WCAG criteria of accessibility. For example, to improve
-                <strong>distinguishability</strong>, <strong>colour contrast</strong> for text and graphics were
-                audited using WebAIM and adjusted to meet <strong>WCAG 2.1 AA</strong>. <strong>Borders</strong>
-                were used at times to improve accessibility of graphics if the colour contrast deemed insufficient.
-                <strong>Interactive dynamic features</strong> were incorporated in charts to enable dataset
-                isolations for clarity. For <strong>understandability</strong>, <strong>data labels</strong>
-                containing the data point's value were provided alongside chart graphics so that data clarity is not
-                reliant solely on the plotting style. Alongside text labels, it is also ensured that there is a
-                consistent association between <strong>categorical variables</strong> and <strong>distinctive
-                    colours</strong> within the constraints of the colour palette. This not only provides interface
-                consistency but it can also greatly improve the <strong>efficiency of data comprehension</strong>
-                for users. For users without significant colour vision deficiencies, colour can accelerate pattern
-                recognition as it actively exploits human brain's ability to <strong>process colours</strong> much
-                <strong>faster than words</strong>. It is important to note that we find such approach effective in
-                this particular context due to the limited number of categories. Therefore, the upfront cost of
-                cognitive load required to establish colour-concept associations is outweighed by the subsequent
-                benefit. Overall, <strong>multiple graphic and text indicators</strong> were used to present
-                information to improve accessibility.
-            </p>
+                <h3>2. Design for accessibility</h3>
+                <p>I updated the colour system of the product by adding new accent colours to accommodate the
+                    dashboard design. Consistent with the rest of the product, I optimised the design according to
+                    WCAG criteria of accessibility. To improve distinguishability, colour contrast for text and
+                    graphics was audited using WebAIM and adjusted to meet WCAG 2.1 AA. When colour contrast was
+                    deemed insufficient, I used borders to improve accessibility of graphics. Interactive dynamic
+                    features were incorporated in charts to enable isolating datasets for clarity.</p>
 
-            <h3>Chunk by purpose</h3>
-            <p>We realised early on at the discovery stage that the goals users have in mind when engaging dashboard
-                can be divided into two categories of purpose: 1) to gain insights on clients' performances or
-                behaviours; 2) to get updates about users and Kindo for the smooth operation of the IoT platform.
-                Therefore, there was a need to make a clear division of contents to optimise the process of
-                accessing relevant information. This had evolved to the use of a retractable sidebar to contain
-                widgets related to platform updates - a feature that is distinct from the dashboard but can be
-                visually integrated to be a part of it. The enforced perceptual grouping by creating boundaries
-                between the two sets of content makes clear their purposes. Thus, minimising friction in the
-                information seeking process. Furthermore, the sidebar functions allow easy access for quick updates.
-                It also allows for high refresh rate specifically for this section for accessing the latest data;
-                together with auto-refresh with scroll, as well as user directed refresh through a button. Conscious
-                efforts has been made to ensure the content of platform updates only provides important snippets -
-                not to overshadow the functions of other relevant features where more detailed information can be
-                found.</p>
+                <p>For understandability, every chart includes data labels. This ensures comprehension is not
+                    reliant on plotting style alone – supporting both novice users and those with reduced colour
+                    perception.</p>
 
-            <div class="full-image">
-                <video :src="vid7" autoplay loop muted playsinline />
-            </div>
-        </section>
+                <p>Alongside text labels, I also ensured consistent association between categorical variables and
+                    distinctive colours within the constraints of the colour palette. This not only provides
+                    interface consistency but can also improve data comprehension by leveraging the brain's ability
+                    to process colours much faster than words.</p>
 
-        <section>
-            <h2>Result</h2>
-            <p>The product displayed here was a crucial part of the company's pitch to investors. It was very well
-                received, displaying a clear consideration of the <span class="highlight">specifics</span> of the
-                healthcare sector and an attention to the user's needs.</p>
-            <p>Within the test group that we ran, all of the users indicated satisfaction with the UX and visual
-                aspect of the prototype. There was a keenness to explore the dashboards, and they felt that this
-                level of personalisation could only be achieved by <span class="highlight">sector-specific</span>
-                companies such as our own.</p>
-            <p>From an engineering perspective, the prototypes I provided set a clear path for backend and engineers
-                to develop the app, well integrated with the hardware solution. This was made possible by the
-                attention not only to visual aspects, but the full user life cycle as well as data consideration,
-                <span class="highlight">serving practicalities and concrete hardware capabilities</span>.
-            </p>
-        </section>
+                <div class="full-image">
+                    <img :src="img3" alt="Colour system" loading="lazy" decoding="async" />
+                    <p class="caption">Colour palettes for the dashboard design with colour contrast audit for WCAG
+                        compliance</p>
+                </div>
 
-        <section>
-            <h2>Reflection</h2>
-            <p>Analytical plan / rewrite content here</p>
-        </section>
+                <h3>3. Optimising visual perception for the narrative</h3>
+                <p>To optimise comprehension of multivariate data, I prioritised familiar chart types, such as bar,
+                    pie, and line, as they are already stored in our collective psyche. Nonetheless, choosing the
+                    right graph for a particular dataset requires holistic consideration of context, narrative,
+                    aesthetics, and practical UX.</p>
+
+                <p>For example, it is feasible to present the summary of the type and punctuality of dispenses,
+                    which are made up of distinct data categories, in either a bar chart, pie chart, or donut chart.
+                    The goal of this particular data visualisation is to show the proportions of the categories in
+                    order to highlight edge cases, some of which are undesirable behaviour outcomes of primary users.
+                    A priori is that, with optimal usage of our product, the dataset is going to be heavily dominated
+                    by one category. In this case, the circular chart type trumps the bar chart for two reasons:</p>
+
+                <p>(1) In the sense of aesthetics and practical UX, a circular chart leaves no empty spaces that
+                    might give the impression of incompleteness when the dataset is dominated by one category. This
+                    provides a more intuitive, compact, and harmonious visualisation than a bar chart.</p>
+
+                <p>(2) For highlighting edge cases, elements that disrupt a circle or continuous ring, combined
+                    with high‑contrast colours, are far more visually striking than short blocks that rise above the
+                    axis in a bar chart.</p>
+
+                <p>Therefore, it is more effective in conveying the narrative we aimed for. As to whether a pie or
+                    donut chart is preferred, the donut has the advantage of enabling better perception of the
+                    proportions of the wedges: the human brain is biased toward reading lengths (the arc) more
+                    accurately than areas or angles.</p>
+
+                <div class="full-image">
+                    <img :src="img4" alt="Design iterations" loading="lazy" decoding="async" />
+                    <p class="caption">Design iterations of Dispense Summary</p>
+                </div>
+
+                <h3>4. Integrating multiple variables without losing clarity</h3>
+                <p>Adherence is the most important KPI of the product for users. Although a single‑number cumulative
+                    average is an impactful quick overview, a daily trend is highly informative. It helps track the
+                    primary user's performance in real time and reveal behaviour patterns. Crucially, in our product,
+                    adherence is not just the result of the primary user's interaction with the IoT platform.
+                    Caregiver intervention via remote ad‑hoc dispense of missed dose (Missed‑dose Dispense) also
+                    influences the adherence outcome. Showing both together gives users an integrated view of
+                    behaviour which also directly addresses needs that emerged in user research.</p>
+
+                <p>However, overlaying variables is double‑edged. The visual comparison helps users, but the
+                    complexity can be confusing. I addressed this by adding toggles that allow users to select the
+                    variables they wished to display. I also included a hover data label that summarises all
+                    variables at a specific time point, helping users interpret the graph without guesswork.</p>
+
+                <div class="video-pair">
+                    <div class="video-pair-videos">
+                        <div class="video-pair-media">
+                            <video :src="vid5" autoplay loop muted playsinline />
+                        </div>
+                        <div class="video-pair-media">
+                            <video :src="vid6" autoplay loop muted playsinline />
+                        </div>
+                    </div>
+                    <p class="caption">Prototype of Missed Dose Insights</p>
+                </div>
+
+                <h3>5. From logs to insights</h3>
+                <p>Another aspect of the project involved exploring log data that users may not readily recognise
+                    but that offers meaningful insight into client behaviour. For example, users wanted to know more
+                    about missed doses, specifically what time of day they usually happen. This led me to present
+                    the log of when primary users first miss a dose during a previously scheduled dispense
+                    (Scheduled Dispense).</p>
+
+                <p>The timing and quantity of initial missed doses are informative, though they do not always
+                    correspond to final missed doses, as some are later corrected via Missed‑dose Dispense. I
+                    therefore needed to present both datasets in a way that allows users to perceive their
+                    relationship and differences with minimal cognitive effort.</p>
+
+                <p>I explored several approaches. For data visualisation, I implemented the following:</p>
+
+                <p>(1) Division of the day into six time bins, which simplifies presentation and aligns with typical
+                    daily routines.<br>
+                    (2) Inclusion of Scheduled Dispense data as a baseline for comparison with missed doses.<br>
+                    (3) Use of dynamic text labels to highlight key takeaways.</p>
+
+                <p>For interactivity, I added the following features:</p>
+
+                <p>(1) A toggle to show or hide Missed‑dose Dispense data, enabling users to explore the relationship
+                    between datasets.<br>
+                    (2) Expandable tooltips to clarify unfamiliar variables and reduce confusion.<br>
+                    (3) Hover‑activated data labels that provide precise quantitative information on specific data
+                    segments.</p>
+
+                <h3>6. Divide and conquer</h3>
+                <p>Early in discovery, I identified two distinct user goals when engaging with the dashboard: (1)
+                    gaining insights into client behaviour, and (2) checking key operational statuses of the remote
+                    device. These two goals required a clear division of content to minimise friction that users
+                    could experience while seeking for information.</p>
+
+                <p>I addressed this by introducing a retractable sidebar to contain operational status modules – a
+                    feature that is distinct from the dashboard but visually integrated as part of it. The enforced
+                    perceptual grouping, as the result of creating boundaries between the two sets of content, makes
+                    their distinct purposes immediately clear.</p>
+
+                <p>Given the time‑sensitive nature of the sidebar content, this isolated section supports a higher
+                    auto‑refresh rate than the rest of the dashboard, so users always see the latest operational
+                    data. In the edge case of connection lost, a timestamp appears to clarify that the data is not
+                    live, helping instil user confidence in the application's reliability.</p>
+
+                <p>I also took care to keep the sidebar content concise, showing only important snippets so they
+                    don't overshadow the main app features where users can find more detailed information.</p>
+
+                <div class="full-image">
+                    <video :src="vid7" autoplay loop muted playsinline />
+                </div>
+            </section>
+
+            <section>
+                <h2>Results</h2>
+                <p>The dashboard design was a crucial part of the company's investor pitch, demonstrating how IoT
+                    data could be translated into easily digestible and actionable insights for caregivers. It was
+                    well received by investors, who noted clear consideration of the specific context of the
+                    healthcare sector and attention to the target user's needs.</p>
+
+                <p>In a feedback session with 6 caregivers, all participants responded positively to the UX and
+                    visual design, and specifically highlighted the clarity of the data presentation. Most found the
+                    layout intuitive and easy to navigate, while a few found that a simple product tour could be
+                    beneficial given the number of modules present. The design was also successful in highlighting
+                    features that contribute to the IoT product's value proposition, in particular the remote
+                    dispense function, for which caregivers are primary users. In general, the caregivers felt that
+                    the product feature could help improve the quality of care that they can deliver by lowering the
+                    effort required for monitoring and understanding their clients' behaviours.</p>
+
+                <p>From an engineering perspective, the prototypes established a clear path for backend data
+                    structure and integration with the hardware solution. This was made possible by the attention
+                    not only to visual aspects, but to the user lifecycle, data requirements and hardware
+                    constraints.</p>
+
+                <p>Overall, the project succeeded in achieving its 0‑to‑1 objectives and laid the groundwork for
+                    subsequent design and development initiatives.</p>
+            </section>
+        </div>
     </ProjectDetail>
 </template>
 
 <script>
 import ProjectDetail from './ProjectDetail.vue'
+import ProjectDetailHeader from '../components/ProjectDetailHeader.vue'
 import ZoomableImage from '../components/ZoomableImage.vue'
 import dashboardHeroWebp from '../assets/1_dashboard/0_dashboard_hero_detail-2400.webp'
 import dashboardHeroJpg from '../assets/1_dashboard/0_dashboard_hero_detail-2400.jpg'
@@ -282,7 +292,7 @@ import vid7 from '../assets/1_dashboard/7_caregiver_dashboard.mov'
 
 export default {
     name: 'MedicationDashboard',
-    components: { ProjectDetail, ZoomableImage },
+    components: { ProjectDetail, ProjectDetailHeader, ZoomableImage },
     data() {
         return {
             dashboardHeroWebp,
