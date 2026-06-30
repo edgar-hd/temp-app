@@ -1,23 +1,14 @@
 <template>
     <ProjectDetail full-width-images>
         <div class="project-hero">
-            <picture>
-                <source
-                    type="image/webp"
-                    :srcset="`${dashboardHeroWebp2400} 2400w, ${dashboardHeroWebp3200} 3200w`"
-                    sizes="100vw"
-                />
-                <img
-                    :src="dashboardHeroJpg2400"
-                    :srcset="`${dashboardHeroJpg2400} 2400w, ${dashboardHeroJpg3200} 3200w`"
-                    sizes="100vw"
-                    alt="Dashboard hero"
-                    width="3200"
-                    height="1803"
-                    decoding="async"
-                    fetchpriority="high"
-                />
-            </picture>
+            <img
+                :src="dashboardHero"
+                alt="Dashboard hero"
+                width="2400"
+                height="1352"
+                decoding="async"
+                fetchpriority="high"
+            />
         </div>
 
         <ProjectDetailHeader
@@ -117,7 +108,14 @@
                     artifacts to share with stakeholders, speeding up iterations.</p>
 
                 <div class="full-image">
-                    <img :src="img2" alt="Mockups" loading="lazy" decoding="async" />
+                    <img
+                        :src="img2"
+                        alt="Mockups"
+                        width="3014"
+                        height="1697"
+                        loading="lazy"
+                        decoding="async"
+                    />
                     <p class="caption">On the left: mockups of primary user's mobile dashboard. On the right:
                         wireframes for caregiver-facing dashboard.</p>
                 </div>
@@ -204,37 +202,11 @@
                     variables they wished to display. I also included a hover data label that summarises all
                     variables at a specific time point, helping users interpret the graph without guesswork.</p>
 
-                <div class="video-pair">
-                    <div class="video-pair-videos">
-                        <div class="video-pair-media">
-                            <video
-                                class="project-video"
-                                :src="vid5"
-                                width="2212"
-                                height="1434"
-                                style="aspect-ratio: 2212 / 1434"
-                                autoplay
-                                loop
-                                muted
-                                playsinline
-                            />
-                        </div>
-                        <div class="video-pair-media">
-                            <video
-                                class="project-video"
-                                :src="vid6"
-                                width="2212"
-                                height="1432"
-                                style="aspect-ratio: 2212 / 1432"
-                                autoplay
-                                loop
-                                muted
-                                playsinline
-                            />
-                        </div>
-                    </div>
-                    <p class="caption">Prototype of Missed Dose Insights</p>
-                </div>
+                <VideoPair
+                    :left-src="vid5"
+                    :right-src="vid6"
+                    caption="Prototype of Missed Dose Insights"
+                />
 
                 <h3>5. From logs to insights</h3>
                 <p>Another aspect of the project involved exploring log data that users may not readily recognise
@@ -286,9 +258,6 @@
                     <video
                         class="project-video"
                         :src="vid7"
-                        width="2140"
-                        height="1432"
-                        style="aspect-ratio: 2140 / 1432"
                         autoplay
                         loop
                         muted
@@ -329,13 +298,11 @@
 import ProjectDetail from './ProjectDetail.vue'
 import ProjectDetailHeader from '../components/ProjectDetailHeader.vue'
 import ZoomableImage from '../components/ZoomableImage.vue'
-import dashboardHeroWebp2400 from '../assets/1_dashboard/0_dashboard_hero_detail-2400.webp'
-import dashboardHeroWebp3200 from '../assets/1_dashboard/0_dashboard_hero_detail-3200.webp'
-import dashboardHeroJpg2400 from '../assets/1_dashboard/0_dashboard_hero_detail-2400.jpg'
-import dashboardHeroJpg3200 from '../assets/1_dashboard/0_dashboard_hero_detail-3200.jpg'
+import VideoPair from '../components/VideoPair.vue'
+import dashboardHero from '../assets/1_dashboard/0_dashboard_hero_detail-2400.jpg'
 import svg1Cover from '../assets/1_dashboard/1_affinity_interrelation_diagram_cover.svg'
 import svg1 from '../assets/1_dashboard/1_affinity_interrelation_large_margin.svg'
-import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.webp'
+import img2 from '../assets/1_dashboard/2_primary_user_vs_caregiver_dashboard.jpg'
 import img3 from '../assets/1_dashboard/3_colour_system_portfolio.jpg'
 import img4 from '../assets/1_dashboard/4_dispense_summary_portfolio.jpg'
 import vid5 from '../assets/1_dashboard/5_adherence_trend_width.mov'
@@ -344,13 +311,10 @@ import vid7 from '../assets/1_dashboard/7_caregiver_dashboard_width.mov'
 
 export default {
     name: 'DashboardDesign',
-    components: { ProjectDetail, ProjectDetailHeader, ZoomableImage },
+    components: { ProjectDetail, ProjectDetailHeader, ZoomableImage, VideoPair },
     data() {
         return {
-            dashboardHeroWebp2400,
-            dashboardHeroWebp3200,
-            dashboardHeroJpg2400,
-            dashboardHeroJpg3200,
+            dashboardHero,
             svg1Cover,
             svg1,
             img2,

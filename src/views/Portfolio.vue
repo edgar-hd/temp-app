@@ -30,24 +30,15 @@
             <section id="work" class="work">
                 <article id="work-first" class="project project--featured">
                     <router-link to="/work/DashboardDesign" class="project-image-link">
-                        <picture>
-                            <source
-                                type="image/webp"
-                                :srcset="`${dashboardHeroWebp960} 960w, ${dashboardHeroWebp1600} 1600w`"
-                                sizes="(max-width: 560px) calc(100vw - 40px), min(798px, 100vw)"
-                            />
-                            <img
-                                class="project-image"
-                                :src="dashboardHeroJpg1600"
-                                :srcset="`${dashboardHeroJpg960} 960w, ${dashboardHeroJpg1600} 1600w`"
-                                sizes="(max-width: 560px) calc(100vw - 40px), min(798px, 100vw)"
-                                width="1600"
-                                height="902"
-                                decoding="async"
-                                fetchpriority="high"
-                                alt="IoT Adherence Analytics for Caregivers: Dashboard Design"
-                            />
-                        </picture>
+                        <img
+                            class="project-image"
+                            :src="dashboardHero"
+                            width="2400"
+                            height="1352"
+                            decoding="async"
+                            fetchpriority="high"
+                            alt="IoT Adherence Analytics for Caregivers: Dashboard Design"
+                        />
                     </router-link>
                     <div class="project-caption">
                         <div class="project-caption-header">
@@ -177,10 +168,7 @@
 </template>
 
 <script>
-import dashboardHeroWebp960 from '../assets/1_dashboard/0_dashboard_hero_portfolio-960.webp'
-import dashboardHeroWebp1600 from '../assets/1_dashboard/0_dashboard_hero_portfolio-1600.webp'
-import dashboardHeroJpg960 from '../assets/1_dashboard/0_dashboard_hero_portfolio-960.jpg'
-import dashboardHeroJpg1600 from '../assets/1_dashboard/0_dashboard_hero_portfolio-1600.jpg'
+import dashboardHero from '../assets/1_dashboard/0_dashboard_hero_detail-2400.jpg'
 import multiplatformHero from '../assets/2_multiplatform/0_multiplatform_hero.jpg'
 import marketplaceHero from '../assets/3_marketplace/0_marketplace_hero.jpg'
 import aboutPhoto from '../assets/portrait.jpg'
@@ -193,10 +181,7 @@ export default {
     components: { PortfolioTopBar },
     data() {
         return {
-            dashboardHeroWebp960,
-            dashboardHeroWebp1600,
-            dashboardHeroJpg960,
-            dashboardHeroJpg1600,
+            dashboardHero,
             multiplatformHero,
             marketplaceHero,
             aboutPhoto,
