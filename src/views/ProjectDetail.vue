@@ -171,6 +171,9 @@ export default {
   width: min(1100px, calc(100vw - 40px));
   margin: var(--project-media-gap) 0;
   text-align: center;
+}
+
+.main :global(.full-image:has(> video)) {
   line-height: 0;
   overflow: hidden;
 }
@@ -197,8 +200,8 @@ export default {
   margin: var(--project-media-gap) 0;
 }
 
-.main :global(.full-image video),
-.main :global(.full-image .project-video),
+.main :global(.full-image > video),
+.main :global(.full-image > .project-video),
 .main :global(.video-pair .project-video) {
   display: block;
   border: 0;
@@ -209,8 +212,8 @@ export default {
   transform-origin: center center;
 }
 
-.main :global(.full-image video),
-.main :global(.full-image .project-video) {
+.main :global(.full-image > video),
+.main :global(.full-image > .project-video) {
   width: 100%;
   height: auto;
   max-width: 100%;
