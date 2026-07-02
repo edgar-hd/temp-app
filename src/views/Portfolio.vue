@@ -159,11 +159,7 @@
             </div>
         </section>
 
-        <footer class="site-footer">
-            <a href="mailto:design@timjustina.com" class="footer-email">design@timjustina.com</a>
-            <span class="footer-divider" aria-hidden="true" />
-            <span class="footer-copy">© 2026 Tim Justina Yeung</span>
-        </footer>
+        <PortfolioSiteFooter />
     </div>
 </template>
 
@@ -175,10 +171,11 @@ import aboutPhoto from '../assets/portrait.jpg'
 import lineAnimation from '../assets/line_animation.svg'
 import lineAnimationTall from '../assets/line_animation_tall.svg'
 import PortfolioTopBar from '../components/PortfolioTopBar.vue'
+import PortfolioSiteFooter from '../components/PortfolioSiteFooter.vue'
 
 export default {
     name: 'Portfolio',
-    components: { PortfolioTopBar },
+    components: { PortfolioTopBar, PortfolioSiteFooter },
     data() {
         return {
             dashboardHero,
@@ -710,48 +707,6 @@ export default {
     display: none;
 }
 
-.site-footer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 20px;
-    height: 120px;
-    min-height: 120px;
-    padding-top: 54px;
-    padding-bottom: 0;
-    box-sizing: border-box;
-    background: #fff;
-    white-space: nowrap;
-}
-
-.footer-email,
-.footer-copy {
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-size: 14px;
-    font-weight: calc(300 * var(--font-weight-scale));
-    line-height: 21px;
-    color: var(--muted);
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.footer-email {
-    text-decoration: none;
-}
-
-.footer-email:hover {
-    color: var(--brand);
-}
-
-.footer-divider {
-    flex-shrink: 0;
-    width: 1px;
-    height: 21px;
-    background: var(--muted);
-}
-
 /* ≥1454px: Final content artboard spacing */
 @media (min-width: 1454px) {
     .hero-intro-wrap {
@@ -1182,32 +1137,5 @@ export default {
         line-height: 30px;
     }
 
-    .site-footer {
-        position: relative;
-        display: block;
-        height: 120px;
-        min-height: 120px;
-        padding: 0;
-    }
-
-    .footer-divider {
-        display: none;
-    }
-
-    .footer-email {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 14px;
-        line-height: 21px;
-    }
-
-    .footer-copy {
-        position: absolute;
-        right: 20px;
-        bottom: 20px;
-        font-size: 14px;
-        line-height: 21px;
-    }
 }
 </style>

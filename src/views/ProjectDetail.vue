@@ -4,15 +4,17 @@
     <main :class="[$style.main, fullWidthImages && $style.mainFullWidthImages]">
       <slot />
     </main>
+    <PortfolioSiteFooter />
   </div>
 </template>
 
 <script>
 import PortfolioTopBar from '../components/PortfolioTopBar.vue'
+import PortfolioSiteFooter from '../components/PortfolioSiteFooter.vue'
 
 export default {
   name: 'ProjectDetail',
-  components: { PortfolioTopBar },
+  components: { PortfolioTopBar, PortfolioSiteFooter },
   props: {
     fullWidthImages: {
       type: Boolean,
@@ -40,7 +42,7 @@ export default {
 .main {
   max-width: none;
   margin: 0;
-  padding: 0 0 120px;
+  padding: 0;
 }
 
 .main :global(.project-body) {
