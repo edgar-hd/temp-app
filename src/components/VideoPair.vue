@@ -96,7 +96,9 @@ export default {
       const leftAspect = left.videoWidth / left.videoHeight
       const rightAspect = right.videoWidth / right.videoHeight
 
-      this.sharedHeight = (containerWidth - gap) / (leftAspect + rightAspect)
+      this.sharedHeight = Math.round(
+        (containerWidth - gap) / (leftAspect + rightAspect),
+      )
     },
   },
 }
@@ -107,12 +109,14 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  gap: clamp(12px, 1.5vw, 20px);
   width: 100%;
+  line-height: 0;
 }
 
 .video-pair-media {
   flex: 0 0 auto;
+  overflow: hidden;
+  line-height: 0;
 }
 
 .project-video {
@@ -120,13 +124,20 @@ export default {
   height: var(--video-pair-height, auto);
   width: auto;
   max-width: none;
-  object-fit: contain;
+  vertical-align: top;
 }
 
 @media (max-width: 997px) {
   .video-pair-videos {
+    --stack-overlap: 25px;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .video-pair-media + .video-pair-media {
+    margin-top: calc(-1 * var(--stack-overlap));
+    position: relative;
+    z-index: 1;
   }
 
   .project-video {

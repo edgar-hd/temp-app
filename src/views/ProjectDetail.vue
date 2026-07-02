@@ -171,6 +171,8 @@ export default {
   width: min(1100px, calc(100vw - 40px));
   margin: var(--project-media-gap) 0;
   text-align: center;
+  line-height: 0;
+  overflow: hidden;
 }
 
 .main :global(.hero-image) {
@@ -196,12 +198,22 @@ export default {
 }
 
 .main :global(.full-image video),
-.main :global(.project-video) {
+.main :global(.full-image .project-video),
+.main :global(.video-pair .project-video) {
   display: block;
+  border: 0;
+  outline: none;
+  vertical-align: top;
+  backface-visibility: hidden;
+  transform: translateZ(0) scale(1.004);
+  transform-origin: center center;
+}
+
+.main :global(.full-image video),
+.main :global(.full-image .project-video) {
   width: 100%;
   height: auto;
   max-width: 100%;
-  object-fit: contain;
 }
 
 @media (max-width: 767px) {
