@@ -102,7 +102,7 @@
                 <h2>Design</h2>
 
                 <h3>1. Plot first, compose later</h3>
-                <p>I began by sketching a range of data visualisation widgets without worrying about screen layout.
+                <p>I began by sketching a range of data visualisation modules without worrying about screen layout.
                     Some charts were discarded early; others moved into high‑fidelity wireframes and prototypes. This
                     allowed the best solutions to emerge before I committed to composition. It also gave me early
                     artifacts to share with stakeholders, speeding up iterations.</p>
