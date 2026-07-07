@@ -574,6 +574,7 @@ export default {
     position: relative;
     width: 100%;
     --about-gap: 340px;
+    --about-image-text-gap: clamp(32px, calc(32px + (100vw - 997px) * 32 / 457), 64px);
     --about-bottom-pad: clamp(180px, calc(180px + (100vw - 997px) * 180 / 457), 360px);
     margin-top: var(--about-gap);
     padding: 80px 0 var(--about-bottom-pad);
@@ -787,13 +788,19 @@ export default {
 
 /* ≤997px: 997px artboard lock before tablet layout */
 @media (max-width: 997px) {
+    .portfolio-page {
+        --hero-logo-gap: 98px;
+        /* Logo sits above the bar bottom: (120px bar − 50px nav block) / 2 */
+        --top-bar-logo-inset: 35px;
+    }
+
     .hero {
-        margin-bottom: 238px;
+        margin-bottom: calc(var(--hero-logo-gap) + var(--top-bar-logo-inset));
     }
 
     .hero-intro-wrap {
         max-width: 100%;
-        margin: 98px 0 0;
+        margin: var(--hero-logo-gap) 0 0;
     }
 
     .hero-decor {
@@ -853,6 +860,7 @@ export default {
 
     .about-text-column {
         padding-top: 100px;
+        padding-right: var(--about-image-text-gap);
     }
 
     .about-heading {
@@ -868,9 +876,12 @@ export default {
 
 /* Tablet: ≤767px (768px artboard) */
 @media (max-width: 767px) {
+    .portfolio-page {
+        --hero-logo-gap: 80px;
+    }
+
     .hero-intro-wrap {
         max-width: min(629px, 100%);
-        margin: 80px 0 0;
     }
 
     .hero-decor {
@@ -886,7 +897,6 @@ export default {
 
     .hero {
         min-height: 0;
-        margin-bottom: 80px;
     }
 
     .cta-button {
@@ -929,155 +939,20 @@ export default {
     }
 
     .about-inner {
-        grid-template-columns: 1fr;
-        position: relative;
-        padding: 0 var(--page-pad);
-    }
-
-    .about-photo-column {
-        align-items: flex-start;
-        padding-left: 0;
-    }
-
-    .about-photo,
-    .about-photo--placeholder {
-        width: 201px;
-        height: auto;
-        aspect-ratio: 348 / 498;
-    }
-
-    .about-line {
-        display: none;
-    }
-
-    .about-text-column {
-        padding-top: 32px;
-    }
-
-    .about-heading {
-        margin: 0 0 32px;
-    }
-
-    .about-bio {
-        margin-left: 0;
-        max-width: none;
-    }
-
-    .about-actions {
-        display: flex;
-        grid-column: 1 / -1;
-        gap: 40px;
-        margin-top: 48px;
-        padding-left: 57px;
-    }
-
-    .about-action-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 12px 24px;
-        height: 54px;
-        border-radius: 60px;
-        background: var(--brand);
-        font-family: 'Be Vietnam Pro', sans-serif;
-        font-size: 18px;
-        font-weight: calc(500 * var(--font-weight-scale));
-        line-height: 27px;
-        color: #fff;
-        text-decoration: none;
-        box-sizing: border-box;
-    }
-}
-
-@media (max-width: 560px) {
-    .portfolio-page {
-        --page-pad: 20px;
-        --top-bar-height: 100px;
-    }
-
-    .portfolio-main {
-        padding: var(--top-bar-height) 20px 0;
-    }
-
-    .hero-intro-wrap {
-        max-width: 100%;
-        margin: 22px 0 0;
-    }
-
-    .hero-intro {
-        max-width: 100%;
-        font-size: 22px;
-        line-height: 33px;
-    }
-
-    .hero-intro-lead {
-        display: inline;
-    }
-
-    .hero-decor {
-        display: none;
-    }
-
-    .hero {
-        margin-bottom: 80px;
-    }
-
-    .cta-button {
-        width: 225px;
-        height: 49px;
-        min-height: 49px;
-        margin-top: 60px;
-        margin-left: 0;
-        padding: 8px 20px;
-        font-size: 22px;
-        line-height: 33px;
-    }
-
-    .work {
-        gap: 80px;
-    }
-
-    .project-caption {
-        margin-top: 20px;
-    }
-
-    .project-caption-header {
-        padding-top: 0;
-    }
-
-    .project-title {
-        font-size: 18px;
-        line-height: 27px;
-    }
-
-    .project-description {
-        margin-top: 16px;
-        font-size: 16px;
-        line-height: 25px;
-    }
-
-    .project-year {
-        font-size: 18px;
-        line-height: 27px;
-    }
-
-    .about {
-        margin-top: 80px;
-        --about-bottom-pad: 276px;
-        padding: 80px 0 var(--about-bottom-pad);
-    }
-
-    .about-inner {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        --about-side-pad: 20px;
+        --about-side-pad: var(--page-pad);
         padding: 0 var(--about-side-pad);
     }
 
     .about-photo-column,
     .about-text-column {
         display: contents;
+    }
+
+    .about-line {
+        display: none;
     }
 
     .about-heading {
@@ -1126,15 +1001,98 @@ export default {
         order: 5;
         display: flex;
         gap: 31px;
-        margin-top: 48px;
+        margin-top: 96px;
         padding-left: 0;
     }
 
     .about-action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         height: 54px;
         padding: 12px 24px;
+        border-radius: 60px;
+        background: var(--brand);
+        font-family: 'Be Vietnam Pro', sans-serif;
         font-size: 20px;
+        font-weight: calc(500 * var(--font-weight-scale));
         line-height: 30px;
+        color: #fff;
+        text-decoration: none;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 620px) {
+    .hero-decor {
+        display: none;
+    }
+}
+
+@media (max-width: 560px) {
+    .portfolio-page {
+        --page-pad: 20px;
+        --top-bar-height: 100px;
+        --hero-logo-gap: 22px;
+        /* Logo top 20px + 46px tall in the 100px bar */
+        --top-bar-logo-inset: 34px;
+    }
+
+    .portfolio-main {
+        padding: var(--top-bar-height) 20px 0;
+    }
+
+    .hero-intro-wrap {
+        max-width: 100%;
+    }
+
+    .hero-intro {
+        max-width: 100%;
+        font-size: 22px;
+        line-height: 33px;
+    }
+
+    .hero-intro-lead {
+        display: inline;
+    }
+
+    .cta-button {
+        width: 225px;
+        height: 49px;
+        min-height: 49px;
+        margin-top: 60px;
+        margin-left: 0;
+        padding: 8px 20px;
+        font-size: 22px;
+        line-height: 33px;
+    }
+
+    .work {
+        gap: 80px;
+    }
+
+    .project-caption {
+        margin-top: 20px;
+    }
+
+    .project-caption-header {
+        padding-top: 0;
+    }
+
+    .project-title {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    .project-description {
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .project-year {
+        font-size: 18px;
+        line-height: 27px;
     }
 
 }
