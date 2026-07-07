@@ -114,20 +114,20 @@
                         alt="Tim Justina Yeung"
                     />
                     <div v-else class="about-photo about-photo--placeholder" />
+                </div>
+                <div id="about-bio" class="about-text-column">
+                    <h2 class="about-heading">About Tim ( 湉 )</h2>
                     <p class="about-location">
                         <span class="about-location-icon-wrap" aria-hidden="true">
-                            <svg class="about-location-icon" width="13" height="20" viewBox="0 0 13 20" fill="none">
+                            <svg class="about-location-icon" width="13" height="20" viewBox="0 0 13 20" fill="none" aria-hidden="true">
                                 <path
                                     d="M6.5 0C2.91 0 0 2.91 0 6.5C0 11.38 6.5 20 6.5 20S13 11.38 13 6.5C13 2.91 10.09 0 6.5 0ZM6.5 8.75C5.26 8.75 4.25 7.74 4.25 6.5C4.25 5.26 5.26 4.25 6.5 4.25C7.74 4.25 8.75 5.26 8.75 6.5C8.75 7.74 7.74 8.75 6.5 8.75Z"
-                                    fill="#928A81"
+                                    fill="#B9B4AE"
                                 />
                             </svg>
                         </span>
                         <span class="about-location-text">London / Barcelona</span>
                     </p>
-                </div>
-                <div id="about-bio" class="about-text-column">
-                    <h2 class="about-heading">About Tim ( 湉 )</h2>
                     <p class="about-bio">
                         Started in the east, ended up in the west. Started in academia, ended up in the
                         real world. Started as a curious child, ended up a very curious adult. Trained to
@@ -269,6 +269,8 @@ export default {
     --muted: #757575;
     --title: #4d4d4d;
     --about-muted: #928a81;
+    --about-location-color: #928a81;
+    --about-location-icon-fill: #b9b4ae;
     --about-bg: #f4f2f1;
     --font-weight-scale: 0.98;
     --page-max: 1454px;
@@ -643,9 +645,8 @@ export default {
     flex-direction: row;
     align-items: center;
     gap: 4px;
-    width: 208px;
-    height: 30px;
-    margin: 64px 0 0 clamp(-20px, calc(-20px - (100vw - 997px) * 14 / 457), -34px);
+    width: auto;
+    margin: 0 0 32px;
     padding: 0;
     box-sizing: border-box;
     flex: none;
@@ -668,15 +669,19 @@ export default {
     flex: none;
 }
 
+.about-location-icon :deep(path) {
+    fill: var(--about-location-icon-fill);
+}
+
 .about-location-text {
     width: 174px;
     height: 27px;
     font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 16px;
     font-style: normal;
-    font-weight: calc(400 * var(--font-weight-scale));
-    font-size: 18px;
+    font-weight: 400;
     line-height: 27px;
-    color: var(--about-muted);
+    color: var(--about-location-color);
     flex: none;
 }
 
@@ -685,13 +690,14 @@ export default {
 }
 
 .about-heading {
-    margin: 0 0 64px;
+    margin: 0 0 32px;
     font-family: 'Be Vietnam Pro', sans-serif;
     font-size: 18px;
-    font-weight: calc(400 * var(--font-weight-scale));
+    font-style: normal;
+    font-weight: 400;
     line-height: 27px;
-    letter-spacing: -0.02em;
-    color: var(--about-muted);
+    letter-spacing: -0.36px;
+    color: #928a81;
 }
 
 .about-bio {
@@ -776,7 +782,7 @@ export default {
     }
 
     .about-heading {
-        margin: 0 0 64px;
+        margin: 0 0 39px;
     }
 
     .about-bio {
@@ -785,8 +791,7 @@ export default {
     }
 
     .about-location {
-        margin-top: 64px;
-        margin-left: -34px;
+        margin: 0 0 39px;
     }
 }
 
@@ -857,17 +862,13 @@ export default {
         height: 402px;
     }
 
-    .about-location {
-        margin: 64px 0 0 -20px;
-    }
-
     .about-text-column {
         padding-top: 100px;
         padding-right: var(--about-image-text-gap);
     }
 
     .about-heading {
-        margin: 0 0 64px;
+        margin: 0 0 32px;
     }
 
     .about-bio {
@@ -958,15 +959,13 @@ export default {
     }
 
     .about-heading {
-        order: 1;
-        margin: 0 0 32px;
-        font-size: 18px;
-        line-height: 40px;
+        order: 2;
+        margin: 32px 0 32px;
     }
 
     .about-photo,
     .about-photo--placeholder {
-        order: 2;
+        order: 1;
         width: 201px;
         height: 288px;
     }
@@ -976,7 +975,7 @@ export default {
         box-sizing: border-box;
         width: calc(100% + 2 * var(--about-side-pad));
         max-width: 100vw;
-        margin: 64px 0 0 calc(-1 * var(--about-side-pad));
+        margin: 0 0 0 calc(-1 * var(--about-side-pad));
         padding-left: var(--about-side-pad);
     }
 
@@ -987,8 +986,11 @@ export default {
     }
 
     .about-location-text {
-        font-size: 18px;
-        line-height: 23px;
+        color: var(--about-location-color);
+    }
+
+    .about-location-icon :deep(path) {
+        fill: var(--about-location-icon-fill);
     }
 
     .about-bio {
