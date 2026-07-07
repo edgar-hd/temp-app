@@ -241,8 +241,10 @@ export default {
                 const introAnchor = heroIntro.querySelector('.hero-intro-em') ?? heroIntro
                 const introTop = introAnchor.getBoundingClientRect().top
                 const wrapTop = wrap.getBoundingClientRect().top
-                clipTop = introTop
-                decor.style.top = `${Math.round(introTop - wrapTop)}px`
+                const topOffset =
+                    parseFloat(getComputedStyle(decor).getPropertyValue('--hero-decor-top-offset')) || 0
+                clipTop = introTop + topOffset
+                decor.style.top = `${Math.round(clipTop - wrapTop)}px`
             } else {
                 decor.style.removeProperty('top')
                 clipTop = decor.getBoundingClientRect().top
@@ -293,6 +295,7 @@ export default {
 .hero {
     position: relative;
     z-index: 1;
+    --hero-cta-gap: 90px;
     margin-bottom: clamp(231px, calc(238px - (100vw - 997px) * 7 / 457), 238px);
 }
 
@@ -312,6 +315,7 @@ export default {
     --hero-line-return-duration: 0.35s;
     --hero-decor-height: 532px;
     --hero-decor-bottom-offset: 50px;
+    --hero-decor-top-offset: 6px;
     --hero-decor-line-natural-height: 818px;
     position: absolute;
     top: 6px;
@@ -417,7 +421,7 @@ export default {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 90px;
+    margin-top: var(--hero-cta-gap);
     margin-left: min(
         clamp(565px, calc(565px + (100vw - 997px) * 192 / 457), 757px),
         max(0px, calc(100% - 233px))
@@ -724,7 +728,7 @@ export default {
     }
 
     .cta-button {
-        margin-top: 90px;
+        margin-top: var(--hero-cta-gap);
         margin-left: min(757px, max(0px, calc(100% - 233px)));
         width: 233px;
         min-width: 0;
@@ -804,13 +808,12 @@ export default {
     }
 
     .hero-decor {
-        top: calc(100% + 84px);
+        top: calc(100% + var(--hero-cta-gap));
         right: auto;
         left: 122px;
     }
 
     .cta-button {
-        margin-top: 90px;
         margin-left: min(565px, max(0px, calc(100% - 233px)));
     }
 
@@ -887,7 +890,6 @@ export default {
     .hero-decor {
         --hero-line-lift: 31px;
         --hero-squiggle-cta-gap: 125px;
-        top: calc(100% + 42px);
         right: auto;
         left: max(
             calc(233px + var(--hero-squiggle-cta-gap)),
@@ -900,7 +902,7 @@ export default {
     }
 
     .cta-button {
-        margin-top: 90px;
+        margin-top: var(--hero-cta-gap);
         margin-left: 0;
         min-width: 233px;
         width: fit-content;
@@ -1038,6 +1040,10 @@ export default {
         --top-bar-logo-inset: 34px;
     }
 
+    .hero {
+        --hero-cta-gap: 60px;
+    }
+
     .portfolio-main {
         padding: var(--top-bar-height) 20px 0;
     }
@@ -1060,7 +1066,6 @@ export default {
         width: 225px;
         height: 49px;
         min-height: 49px;
-        margin-top: 60px;
         margin-left: 0;
         padding: 8px 20px;
         font-size: 22px;
