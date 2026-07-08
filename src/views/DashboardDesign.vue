@@ -102,7 +102,7 @@
                 <h2>Design</h2>
 
                 <h3>1. Plot first, compose later</h3>
-                <p>I began by sketching a range of data visualisation modules without worrying about screen layout.
+                <p>I began by sketching a range of data visualisation widgets without worrying about screen layout.
                     Some charts were discarded early; others moved into high‑fidelity wireframes and prototypes. This
                     allowed the best solutions to emerge before I committed to composition. It also gave me early
                     artifacts to share with stakeholders, speeding up iterations.</p>
@@ -241,7 +241,7 @@
                     device. These two goals required a clear division of content to minimise friction that users
                     could experience while seeking for information.</p>
 
-                <p>I addressed this by introducing a retractable sidebar to contain operational status modules – a
+                <p>I addressed this by introducing a retractable sidebar to contain operational status widgets – a
                     feature that is distinct from the dashboard but visually integrated as part of it. The enforced
                     perceptual grouping, as the result of creating boundaries between the two sets of content, makes
                     their distinct purposes immediately clear.</p>
@@ -276,7 +276,7 @@
                 <p>In a feedback session with 6 caregivers, all participants responded positively to the UX and
                     visual design, and specifically highlighted the clarity of the data presentation. Most found the
                     layout intuitive and easy to navigate, while a few found that a simple product tour could be
-                    beneficial given the number of modules present. The design was also successful in highlighting
+                    beneficial given the number of widgets present. The design was also successful in highlighting
                     features that contribute to the IoT product's value proposition, in particular the remote
                     dispense function, for which caregivers are primary users. In general, the caregivers felt that
                     the product feature could help improve the quality of care that they can deliver by lowering the
