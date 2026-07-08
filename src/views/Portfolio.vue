@@ -1060,10 +1060,6 @@ export default {
         line-height: 33px;
     }
 
-    .hero-intro-lead {
-        display: inline;
-    }
-
     .cta-button {
         width: 225px;
         height: 49px;
