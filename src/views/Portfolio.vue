@@ -582,8 +582,9 @@ export default {
     --about-gap: 340px;
     --about-image-text-gap: clamp(32px, calc(32px + (100vw - 997px) * 32 / 457), 64px);
     --about-bottom-pad: clamp(180px, calc(180px + (100vw - 997px) * 180 / 457), 360px);
+    --about-top-pad: 80px;
     margin-top: var(--about-gap);
-    padding: 80px 0 var(--about-bottom-pad);
+    padding: var(--about-top-pad) 0 var(--about-bottom-pad);
     background: var(--about-bg);
     box-sizing: border-box;
     overflow: visible;
@@ -758,7 +759,7 @@ export default {
         --about-gap: 340px;
         --about-bottom-pad: 360px;
         margin-top: 340px;
-        padding: 80px 0 var(--about-bottom-pad);
+        padding: var(--about-top-pad) 0 var(--about-bottom-pad);
     }
 
     .about-inner {
@@ -839,7 +840,7 @@ export default {
         --about-gap: 340px;
         --about-bottom-pad: 180px;
         margin-top: 340px;
-        padding: 80px 0 var(--about-bottom-pad);
+        padding: var(--about-top-pad) 0 var(--about-bottom-pad);
     }
 
     .about-inner {
@@ -938,7 +939,7 @@ export default {
     .about {
         margin-top: 80px;
         --about-bottom-pad: 276px;
-        padding: 80px 0 var(--about-bottom-pad);
+        padding: var(--about-top-pad) 0 var(--about-bottom-pad);
     }
 
     .about-inner {
@@ -960,7 +961,7 @@ export default {
 
     .about-heading {
         order: 2;
-        margin: 32px 0 32px;
+        margin: var(--about-top-pad) 0 32px;
     }
 
     .about-photo,
