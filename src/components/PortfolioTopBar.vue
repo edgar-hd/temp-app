@@ -184,7 +184,7 @@ export default {
 .logo-block {
     display: flex;
     align-items: flex-end;
-    gap: 28px;
+    gap: 20px;
     text-decoration: none;
     color: inherit;
 }
@@ -288,15 +288,13 @@ export default {
 
     .top-bar-content {
         align-items: flex-end;
+        gap: 0;
     }
 
     .logo-block {
         align-self: flex-start;
         margin-top: 20px;
-    }
-
-    .logo-name {
-        display: none;
+        width: 100%;
     }
 
     .nav-link {
