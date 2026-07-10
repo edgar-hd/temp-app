@@ -34,7 +34,7 @@ export default {
   --top-bar-height: 120px;
   background: #fff;
   color: #3c3f41;
-  font-family: Georgia, 'EB Garamond', 'Times New Roman', Times, serif;
+  font-family: 'EB Garamond', 'Times New Roman', Times, serif;
   font-size: 20px;
   min-height: 100vh;
 }
