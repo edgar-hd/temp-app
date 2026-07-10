@@ -51,7 +51,7 @@ export default {
   margin-left: max(20px, calc(50% - var(--project-content-w) / 2 + var(--project-content-offset)));
   margin-right: auto;
   overflow: visible;
-  font-family: Georgia, 'EB Garamond', 'Times New Roman', Times, serif;
+  font-family: 'EB Garamond', 'Times New Roman', Times, serif;
   font-weight: 400;
   font-style: normal;
   font-size: 20px;
