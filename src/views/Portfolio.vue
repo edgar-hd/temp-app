@@ -805,7 +805,7 @@ export default {
     }
 
     .hero {
-        margin-bottom: calc(var(--hero-logo-gap) + var(--top-bar-logo-inset));
+        margin-bottom: calc(2 * var(--hero-cta-gap));
     }
 
     .hero-intro-wrap {
@@ -816,7 +816,7 @@ export default {
     .hero-decor {
         top: calc(100% + var(--hero-cta-gap));
         right: auto;
-        left: 122px;
+        left: 61px;
     }
 
     .cta-button {
@@ -891,12 +891,8 @@ export default {
 
     .hero-decor {
         --hero-line-lift: 31px;
-        --hero-squiggle-cta-gap: 125px;
         right: auto;
-        left: max(
-            calc(233px + var(--hero-squiggle-cta-gap)),
-            calc(100% - 114px - 56px)
-        );
+        left: calc(100% - 40px - 56px);
     }
 
     .hero {
